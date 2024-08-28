@@ -1,0 +1,113 @@
+{
+    "Layout": {
+      "Navigation": {
+        "home": {
+          "title": "Acceuil",
+          "href": "/"
+        },
+        "about": {
+          "title": "A propos",
+          "href": "/about"
+        },
+        "derive" : {
+          "title": "Dérive 2024",
+          "href": "/derive-2024"
+        },
+        "previous": {
+          "title": "Editions précédentes",
+          "href": "/previous"
+        },
+        "darja": {
+          "title": "L'espace Darja",
+          "href": "/espace-darja"
+        },
+        "community": {
+          "title": "Communauté",
+          "href": "/community"
+        },
+        "contact": {
+          "title": "Contact",
+          "href": "/contact"
+        }
+      },
+      "Menu": {
+        "menu" : "menu",
+        "close": "fermer"
+       },
+      "Socials": {
+        "instagram": {
+          "url": "https://instagram.com/",
+          "title": "Instagram"
+        },
+        "facebook": {
+          "url": "https://facebook.com/",
+          "title": "Facebook"
+        },
+        "whatsapp": {
+          "url": "https://wa.me/+21297830605",
+          "title": "Whatsapp"
+        }
+      },
+      "Config": {
+        "logo": "DARJA",
+        "cta": "Explorer le cours"
+      }
+    },
+    "HomePage": {
+      "Hero": {
+        "title": "Bienvenue à l'espace Darja",
+        "description": "Rejoignez-nous à Darja, le festival de musique ultime célébrant la diversité des rythmes et des cultures. Vivez une fusion de sons traditionnels et contemporains, avec des performances d'artistes de renommée mondiale dans une ambiance inoubliable. Découvrez la magie de la musique à Darja !",
+        "subtitle": "Le festival Darja est une célébration musicale qui réunit des sons traditionnels et contemporains. Préparez-vous à vivre une expérience artistique unique, fusionnant diverses cultures dans une ambiance pleine de passion et de créativité.",
+        "about": "A propos"
+      },
+      "Work": {
+        "work1": {
+          "title": "C2 Montréal",
+          "category": "Amazigh Folk"
+        },
+        "work2": {
+          "title": "Office Studio",
+          "category": "Bluesy Weekend"
+        },
+        "work3": {
+          "title": "Locomotive",
+          "category": "Ahwach"
+        },
+        "work4": {
+          "title": "Silencio",
+          "category": "Darja Prod"
+        },
+        "moreWork": "Voir Plus",
+        "heading": "Travaux Récents",
+        "view": "Voir"
+      },
+      "Contact": {
+        "heading": "Contactez-nous",
+        "action": "Contact",
+        "Socials": {
+          "title": "Réseaux",
+          "instagram": {
+            "title": "Instagram",
+            "url": "https://instagram.com/"
+          },
+          "facebook": {
+            "title":"Facebook",
+            "url":"https://facebook.com/"
+          },
+          "whatsapp": {
+            "title": "Whatsapp",
+            "url":"https://wa.me/+21297830605"
+          }
+        },
+        "version":"Version",
+        "edition": "2024 © Edition"
+      }
+    },
+    "AboutPage": {
+      "Section": {
+        "title": "Apprenez avec JB Web Developer",
+        "description": "Apprenez avec JB propose des cours complets sur les technologies modernes de développement web. Notre mission est de doter les développeurs des compétences nécessaires pour créer des applications prêtes pour la production.",
+        "subscribe": "Regardez des cours gratuits sur YouTube"
+      }
+    }
+  }

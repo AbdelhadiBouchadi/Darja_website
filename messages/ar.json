@@ -1,0 +1,114 @@
+{
+  "Layout": {
+    "Navigation": {
+      "home": {
+        "title": "الرئيسية",
+        "href": "/"
+      },
+      "about": {
+        "title":" نبذة عنا",
+        "href": "/about"
+      },
+      "derive" : {
+        "title": "مشتقات 2024",
+        "href": "/derive-2024"
+      },
+      "previous": {
+        "title": "الإصدارات السابقة",
+        "href": "/previous"
+      },
+      "darja": {
+        "title": "فضاء درجة",
+        "href": "/espace-darja"
+      },
+      "community": {
+        "title": "مجتمع",
+        "href": "/community"
+      },
+      "contact": {
+        "title": "خاطبونا",
+        "href": "/contact"
+      }
+    },
+
+    "Menu": {
+      "menu" : "القائمة",
+      "close": "إغلق"
+    },
+    "Socials": {
+        "instagram": {
+          "url": "https://instagram.com/",
+          "title": "انستاغرام"
+        },
+        "facebook": {
+          "url": "https://facebook.com/",
+          "title": "فايسبوك"
+        },
+        "whatsapp": {
+          "url": "https://wa.me/+21297830605",
+          "title": "واتساب"
+        }
+      },
+    "Config": {
+      "logo": "درجة",
+      "cta": "Explorer le cours"
+    }
+  },
+  "HomePage": {
+    "Hero": {
+      "title": "مرحبا بكم في فضاء درجة",
+      "description": "انضموا إلينا في دارجة، المهرجان الموسيقي الأمثل الذي يحتفي بتنوع الإيقاعات والثقافات. استمتعوا بمزيج من الأصوات التقليدية والمعاصرة مع عروض لفنانين عالميين في أجواء لا تُنسى. اكتشفوا سحر الموسيقى في درجة",
+      "subtitle": "مهرجان دارجة هو احتفال موسيقي يجمع بين الأصوات التقليدية والمعاصرة. استعدوا لتجربة فنية فريدة تجمع بين الثقافات المختلفة في أجواء مليئة بالحماس والإبداع.",
+      "about": "نبذة عنا"
+    },
+    "Work": {
+        "work1": {
+          "title": "C2 مونتريال",
+          "category": "الفولك الأمازيغي"
+        },
+        "work2": {
+          "title": "استوديو المكتب",
+          "category": "الفولك الأمازيغي"
+        },
+        "work3": {
+          "title": "لوكوموتيف",
+          "category": "بلوزي ويكاند"
+        },
+        "work4": {
+          "title": "سيلانسيو",
+          "category": "إنتاج درجة"
+        },
+        "moreWork": "المزيد",
+        "heading": "الأعمال الأخيرة",
+        "view": "شاهد"
+      },
+    "Contact": {
+      "heading": "خاطبونا",
+      "action": "اتصال",
+      "Socials": {
+        "title": "الشبكات",
+        "instagram": {
+          "title": "انستغرام",
+          "url": "https://instagram.com/"
+        },
+        "facebook": {
+          "title":"فايسبوك",
+          "url":"https://facebook.com/"
+        },
+        "whatsapp": {
+          "title": "واتساب",
+          "url":"https://wa.me/+21297830605"
+        }
+      },
+      "version":"النسخة",
+      "edition": "2024 © الطبعة"
+    }
+  },
+  "AboutPage": {
+    "Section": {
+      "title": "Apprenez avec JB Web Developer",
+      "description": "Apprenez avec JB propose des cours complets sur les technologies modernes de développement web. Notre mission est de doter les développeurs des compétences nécessaires pour créer des applications prêtes pour la production.",
+      "subscribe": "Regardez des cours gratuits sur YouTube"
+    }
+  }
+}
