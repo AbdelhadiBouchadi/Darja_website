@@ -109,5 +109,10 @@
         "description": "Apprenez avec JB propose des cours complets sur les technologies modernes de développement web. Notre mission est de doter les développeurs des compétences nécessaires pour créer des applications prêtes pour la production.",
         "subscribe": "Regardez des cours gratuits sur YouTube"
       }
+    },
+    "LanguageSwitcher": {
+      "heading": "Langue",
+      "french": "Français",
+      "arabic": "Arabe"
     }
   }

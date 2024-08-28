@@ -9,7 +9,7 @@ import Nav from './nav';
 import { Transition } from '../ui/transitions';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import LocaleSwitcher from './locale-switcher';
+import LocaleSwitcher from './locale-switcher-select';
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
