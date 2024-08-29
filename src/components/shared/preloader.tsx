@@ -2,10 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { opacity, slideUp } from '@/lib/utils';
+import { cn, opacity, slideUp } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { useLenis } from '../hooks/use-lenis';
 import { useTimeOut } from '../hooks/use-time-out';
+import { useLocale } from 'next-intl';
+
+type PreloaderProps = {
+  pageName?: string;
+};
 
 const words = [
   'Hello',
@@ -17,9 +22,11 @@ const words = [
   'Hallo',
 ];
 
-export default function Preloader() {
+export default function Preloader({ pageName }: PreloaderProps) {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
+  const locale = useLocale();
+  const isArabic = locale === 'ar';
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -75,10 +82,13 @@ export default function Preloader() {
             variants={opacity}
             initial="initial"
             animate="enter"
-            className="flex text-white text-[42px] items-center absolute z-[1] "
+            className={cn(
+              'flex text-white text-[42px] items-center absolute z-[1] ',
+              isArabic ? 'arabic-title-bold' : 'latin-title-bold'
+            )}
           >
             <span className="block w-[10px] h-[10px] bg-white rounded-[50%] mx-[10px] "></span>
-            {words[index]}
+            {pageName ? pageName : words[index]}
           </motion.p>
           <svg className="absolute top-0 w-full h-[calc(100%+300px)] ">
             <motion.path
@@ -94,7 +104,12 @@ export default function Preloader() {
   );
 }
 
-export function Transition({ children }: { children: React.ReactNode }) {
+type TransitionProps = {
+  children: React.ReactNode;
+  pageName?: string; // Add pageName as a prop
+};
+
+export function Transition({ children, pageName }: TransitionProps) {
   const [isLoading, setLoading] = useState(true);
   const pathname = usePathname();
 
@@ -105,13 +120,13 @@ export function Transition({ children }: { children: React.ReactNode }) {
       window.scrollTo(0, 0);
     },
     duration: 2000,
-    deps: [],
+    deps: [pathname],
   });
 
   return (
     <div key={pathname} className="overflow-hidden">
       <AnimatePresence mode="wait">
-        {isLoading ? <Preloader /> : null}
+        {isLoading ? <Preloader pageName={pageName} /> : null}
       </AnimatePresence>
       {children}
     </div>
