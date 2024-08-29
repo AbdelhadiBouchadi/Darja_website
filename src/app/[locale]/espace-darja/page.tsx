@@ -1,3 +1,4 @@
+import AboutDarja from '@/components/shared/AboutDarja';
 import { Transition } from '@/components/shared/preloader';
 import { useTranslations } from 'next-intl';
 import React from 'react';
@@ -9,7 +10,7 @@ const EspaceDarja = () => {
 
   return (
     <Transition pageName={pageName}>
-      <div>EspaceDarja</div>
+      <AboutDarja />
     </Transition>
   );
 };

@@ -3,8 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRef } from 'react';
-import { useScroll, motion, useTransform, useSpring } from 'framer-motion';
-import Magnetic from './Magnetic';
+import { useScroll, motion, useTransform } from 'framer-motion';
 import RoundedBtn from './rounded';
 import { cn } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
