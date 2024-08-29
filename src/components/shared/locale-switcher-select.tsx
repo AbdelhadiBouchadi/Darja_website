@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { ChangeEvent, ReactNode, useTransition } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
@@ -17,14 +17,20 @@ import { GlobeIcon } from 'lucide-react';
 
 export default function LocaleSwitcher() {
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const locale = useLocale();
   const isArabic = locale === 'ar';
   const t = useTranslations('LanguageSwitcher');
 
   function handleLocaleChange(nextLocale: string) {
+    const path = pathname.replace(`/${locale}`, `/${nextLocale}`);
+    const search = searchParams.toString();
+    const newUrl = search ? `${path}?${search}` : path;
+
     startTransition(() => {
-      router.replace(`/${nextLocale}`);
+      router.replace(newUrl);
     });
   }
 

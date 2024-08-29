@@ -44,7 +44,7 @@ const Nav = ({ setIsActive }: NavProps) => {
               onClick={() => setIsActive(false)}
             >
               <Link
-                href={t(`Navigation.${key}.href`)}
+                href={`/${locale}${t(`Navigation.${key}.href`)}`}
                 className="flex flex-wrap overflow-hidden"
               >
                 <motion.div
