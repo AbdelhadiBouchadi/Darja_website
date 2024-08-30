@@ -32,7 +32,7 @@ const Contact = () => {
     >
       <div
         className={cn(
-          'pt-[200px] w-full max-w-[1800px] bg-[#141516] ',
+          'pt-[180px] w-full max-w-[1800px] bg-[#141516] ',
           isArabic ? 'arabic-title-bold' : 'latin-title-bold'
         )}
       >
@@ -68,7 +68,7 @@ const Contact = () => {
               <RoundedBtn
                 backgroundColor={'#696443'}
                 className={cn(
-                  'w-[180px] h-[180px] bg-[#00b0db] text-white rounded-full absolute flex items-center justify-center'
+                  'roundedBtnSize bg-[#00b0db] text-white rounded-full absolute flex items-center justify-center'
                 )}
               >
                 <p
@@ -102,7 +102,7 @@ const Contact = () => {
         </div>
         <div
           className={cn(
-            'flex flex-col lg:flex-row gap-[20px] mx-16  lg:mx-[200px] my-[180px] '
+            'flex flex-col lg:flex-row gap-[20px] mx-16  lg:mx-[200px] mt-[180px] mb-[50px] '
           )}
         >
           <Link href="mailto:darja@darjaprod.com" target="_blank">

@@ -33,8 +33,16 @@ const AboutDarja = () => {
             isArabic ? 'right-[calc(100%-250px)]' : 'left-[calc(100%-250px)]'
           }`}
         >
-          <RoundedBtn className="w-[180px] h-[180px] bg-[#696443] text-white rounded-full absolute flex items-center justify-center">
-            <p>view</p>
+          <RoundedBtn className="roundedBtnSize bg-[#696443] text-white rounded-full absolute flex items-center justify-center">
+            <div className="globe">
+              <div className="globe-wrap">
+                <div className="cirlce"></div>
+                <div className="cirlce"></div>
+                <div className="cirlce"></div>
+                <div className="cirlce-hor"></div>
+                <div className="cirlce-hor-middle"></div>
+              </div>
+            </div>
           </RoundedBtn>
         </div>
       </div>
