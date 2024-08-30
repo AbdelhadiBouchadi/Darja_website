@@ -5,7 +5,7 @@ import React from 'react';
 const Previously = () => {
   const t = useTranslations('Layout');
 
-  const pageName = t('Navigation.community.title');
+  const pageName = t('Navigation.previous.title');
 
   return (
     <Transition pageName={pageName}>

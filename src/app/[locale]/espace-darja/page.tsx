@@ -9,8 +9,9 @@ const EspaceDarja = () => {
   const pageName = t('Navigation.darja.title');
 
   return (
-    <Transition pageName={pageName}>
+    <Transition pageName={pageName} >
       <AboutDarja />
+
     </Transition>
   );
 };
