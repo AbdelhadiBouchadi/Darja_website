@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRef } from 'react';
 import { useScroll, motion, useTransform } from 'framer-motion';
@@ -10,17 +10,34 @@ import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 const Contact = () => {
+  const locale = useLocale();
+  const isArabic = locale === 'ar';
+  const t = useTranslations('HomePage.Contact');
+
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start end', 'end end'],
   });
+
   const x = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const y = useTransform(scrollYProgress, [0, 1], [-200, 0]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
-  const locale = useLocale();
-  const isArabic = locale === 'ar';
-  const t = useTranslations('HomePage.Contact');
+  const rotate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isArabic ? [-60, 0] : [120, 90]
+  );
+
+  const btn1Ref = useRef<HTMLAnchorElement>(null);
+  const btn2Ref = useRef<HTMLAnchorElement>(null);
+  const [maxBtnWidth, setMaxBtnWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    const btn1Width = btn1Ref.current?.offsetWidth || 0;
+    const btn2Width = btn2Ref.current?.offsetWidth || 0;
+    const maxWidth = Math.max(btn1Width, btn2Width);
+    setMaxBtnWidth(maxWidth);
+  }, []);
 
   return (
     <motion.div
@@ -49,11 +66,11 @@ const Contact = () => {
             <Image
               fill={true}
               alt={'image'}
-              src={`/images/background.jpg`}
+              src={`/images/slider-1.jpg`}
               className="object-cover"
             />
           </div>
-          <h2 className="text-[5vw] m-0 font-light text-[#696443] ">
+          <h2 className="text-4xl md:text-[5vw] m-0 font-light text-[#696443] ">
             {' '}
             {t('heading')}{' '}
           </h2>
@@ -91,7 +108,7 @@ const Contact = () => {
             xmlns="http://www.w3.org/2000/svg"
             className={cn(
               'absolute top-[30%] ',
-              isArabic ? 'right-[100%] ' : 'left-[100%]'
+              isArabic ? 'right-[100%]  ' : 'left-[100%]'
             )}
           >
             <path
@@ -105,8 +122,11 @@ const Contact = () => {
             'flex flex-col lg:flex-row gap-[20px] mx-16  lg:mx-[200px] mt-[180px] mb-[50px] '
           )}
         >
-          <Link href="mailto:darja@darjaprod.com" target="_blank">
-            <RoundedBtn className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#696443] before:bg-[#00b0db] after:bg-[#00b0db] px-16 py-4 text-base before:-top-1/2 hover:text-background">
+          <Link href="mailto:darja@darjaprod.com" target="_blank" ref={btn1Ref}>
+            <RoundedBtn
+              className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#696443] before:bg-[#00b0db] after:bg-[#00b0db] px-16 py-4 text-base before:-top-1/2 hover:text-background"
+              style={{ width: maxBtnWidth || 'auto' }}
+            >
               <p
                 className={cn(
                   'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg latin-title-bold text-[#696443] '
@@ -117,8 +137,11 @@ const Contact = () => {
               </p>
             </RoundedBtn>
           </Link>
-          <Link href="https://wa.me/+33627847430">
-            <RoundedBtn className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#696443] before:bg-[#00b0db] after:bg-[#00b0db] px-16 py-4 text-base before:-top-1/2 hover:text-white">
+          <Link href="https://wa.me/+33627847430" ref={btn2Ref}>
+            <RoundedBtn
+              className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#696443] before:bg-[#00b0db] after:bg-[#00b0db] px-16 py-4 text-base before:-top-1/2 hover:text-white"
+              style={{ width: maxBtnWidth || 'auto' }}
+            >
               <p
                 className={cn(
                   'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg latin-title-bold text-[#696443] '

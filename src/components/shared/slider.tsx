@@ -113,11 +113,11 @@ const SlidingImages = () => {
       </motion.div>
       <motion.div
         style={{ height }}
-        className={cn('relative mt-[100px] bg-[#141516]')}
+        className={cn('relative mt-24 bg-[#141516]')}
       >
         <div
           className={cn(
-            'h-full md:h-[1550%] w-[120%] -left-[10%] custom-border-radius bg-[#E9EAEB] absolute z-[1] '
+            'h-full md:h-[250%] w-[120%] -left-[10%] custom-border-radius bg-[#E9EAEB] absolute z-[1] '
           )}
           style={{ boxShadow: '0px 60px 50px rgba(0, 0, 0, 0.748)' }}
         ></div>
