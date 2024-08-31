@@ -476,7 +476,6 @@
 .single-about-image {
   width: 100%;
   display: block;
-  background: var(--color-white);
   overflow: hidden;
   position: relative;
 }
@@ -496,7 +495,7 @@
 } 
 
 .single-about-image .image-overlay:nth-child(1) {
-  background: url("../../../public/images/DSC07312-2.jpg") center center no-repeat;
+  background: url("../../../public/images/about-image.png") center center no-repeat;
   background-size: cover;
   top: -20vh;
   height: 105%;

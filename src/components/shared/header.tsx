@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <>
-      <Transition className="absolute md:top-12 top-4 md:left-8 left-6 z-30 hover:text-[#696443]/60 text-[#696443] ">
+      <Transition className="absolute md:top-12 top-4 md:left-8 left-6 z-30 hover:text-[#00b0db]/60 text-[#00b0db] ">
         <Link href={`/${locale}`}>
           <TextReveal
             className={cn(
