@@ -52,18 +52,20 @@ const SlidingImages = () => {
 
   const x1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const x2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
+  const height = useTransform(scrollYProgress, [0, 0.9], [150, 0]);
 
   return (
     <div
       ref={container}
       className={cn(
-        'flex flex-col gap-[3vw] relative mt-[200px] bg-white z-[1]'
+        'flex flex-col gap-[3vw] relative bg-[#E9EAEB] mt-16 md:mt-[200px] z-[1]'
       )}
     >
       <motion.div
         style={{ x: x1 }}
-        className={cn('flex relative gap-[3vw] w-[120vw] left-[-10vw] ')}
+        className={cn(
+          'hidden md:flex relative gap-[3vw] w-[120vw] left-[-10vw] '
+        )}
       >
         {slider1.map((project, index) => {
           return (
@@ -86,7 +88,9 @@ const SlidingImages = () => {
       </motion.div>
       <motion.div
         style={{ x: x2 }}
-        className={cn('flex relative gap-[3vw] w-[120vw] left-[-10vw] ')}
+        className={cn(
+          'hidden md:flex relative gap-[3vw] w-[120vw] left-[-10vw] '
+        )}
       >
         {slider2.map((project, index) => {
           return (
@@ -109,11 +113,11 @@ const SlidingImages = () => {
       </motion.div>
       <motion.div
         style={{ height }}
-        className={cn('bg-red-900 relative mt-[100px]')}
+        className={cn('relative mt-[100px] bg-[#141516]')}
       >
         <div
           className={cn(
-            'h-[1550%] w-[120%] -left-[10%] custom-border-radius bg-white absolute z-[1] '
+            'h-full md:h-[1550%] w-[120%] -left-[10%] custom-border-radius bg-[#E9EAEB] absolute z-[1] '
           )}
           style={{ boxShadow: '0px 60px 50px rgba(0, 0, 0, 0.748)' }}
         ></div>

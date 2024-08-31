@@ -19,7 +19,7 @@ export default function AboutSection() {
       // Arrow rotation
       gsap.to(arrowRef.current, {
         rotate: 180,
-        ease: 'none',
+        ease: 'power2.inOut',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top bottom',
@@ -28,10 +28,11 @@ export default function AboutSection() {
         },
       });
 
-      // Text sliding down
+      // Text sliding and fading in
       gsap.to([text1Ref.current, text2Ref.current], {
         y: 50,
-        ease: 'none',
+        opacity: 1,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top bottom',
@@ -40,24 +41,15 @@ export default function AboutSection() {
         },
       });
 
-      // Parallax effect on background image
+      // Background image zoom effect
       gsap.to(imageContainerRef.current, {
-        // Adjusting the 14th value of matrix3d
-        transform: 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)',
-        ease: 'none',
+        scale: 1.1, // Slight zoom in
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top bottom',
           end: 'bottom top',
           scrub: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            // Adjust the matrix3d transformation based on scroll progress
-            const yOffset = 275 * (1 - progress); // Adjust this value for desired effect
-            gsap.set(imageContainerRef.current, {
-              transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, ${yOffset}, 0, 1)`,
-            });
-          },
         },
       });
     });
@@ -142,12 +134,13 @@ export default function AboutSection() {
             </motion.p>
           </div>
           <div className="flex-col">
-            <div className="single-about-image" ref={imageContainerRef}>
+            <div className="single-about-image">
               <div
                 className="image-overlay overlay-image is-inview"
                 data-scroll
                 data-scroll-speed="-2"
                 data-scroll-position="top"
+                ref={imageContainerRef}
               ></div>
               <div className="image-overlay"></div>
             </div>

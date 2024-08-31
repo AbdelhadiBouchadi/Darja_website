@@ -1,6 +1,6 @@
 'use client';
 
-import { cn, descSlideUp } from '@/lib/utils';
+import { cn, descOpacity } from '@/lib/utils';
 import { useInView, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import React, { useRef } from 'react';
@@ -14,15 +14,15 @@ const AboutDarja = () => {
   const isInView = useInView(container);
 
   return (
-    <div className="my-32  flex flex-col justify-center 2xl:flex-row h-full">
+    <div className="mt-32 mb-8  flex flex-col justify-center 2xl:flex-row h-full">
       <div
         ref={container}
         className="max-w-[1400px] relative flex flex-col gap-[50px] border-b border-gray-500 pb-24 mx-16 xl:mx-[200px]"
       >
         <motion.h2
-          variants={descSlideUp}
+          variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
-          className={`text-6xl md:text-8xl m-0 font-semibold text-start bg-clip-text py-6 text-transparent bg-gradient-to-b from-[#696443] to-[#696443]/40 ${
+          className={`text-4xl md:text-8xl m-0 font-semibold text-start bg-clip-text py-6 text-transparent bg-gradient-to-b from-[#696443] to-[#696443]/40 ${
             isArabic ? 'arabic-title-bold' : 'latin-title-bold'
           }`}
         >

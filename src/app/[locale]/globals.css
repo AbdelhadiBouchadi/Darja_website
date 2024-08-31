@@ -288,6 +288,11 @@
   height: clamp(9em, 12vw, 11em);
 } 
 
+.roundedBtnSizeSm {
+  width: calc(clamp(9em, 12vw, 11em) * 0.75);
+  height: calc(clamp(9em, 12vw, 11em) * 0.75);
+}
+
 @keyframes digitalball {
   0%   {background: var(--color-blue);}
   50%   {background: #ff4444;}
@@ -428,7 +433,6 @@
 .about-image {
   padding-top: calc(var(--section-padding) * .75);
   padding-bottom: 0;
-  background: var(--color-white);
 }
 
 .about-image .bottom-lightgray {
