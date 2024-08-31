@@ -56,8 +56,8 @@
     "HomePage": {
       "Hero": {
         "title": "Bienvenue à l'espace Darja",
-        "description": "Rejoignez-nous à Darja, le festival de musique ultime célébrant la diversité des rythmes et des cultures. Vivez une fusion de sons traditionnels et contemporains, avec des performances d'artistes de renommée mondiale dans une ambiance inoubliable. Découvrez la magie de la musique à Darja !",
-        "subtitle": "Le festival Darja est une célébration musicale qui réunit des sons traditionnels et contemporains. Préparez-vous à vivre une expérience artistique unique, fusionnant diverses cultures dans une ambiance pleine de passion et de créativité.",
+        "description": "Darja c’est un lieu, niché au sixième étage du 113 de l’avenue Mers Sultan. Darja, traduisez < la marche > (d’escalier !) en français, c’est justement celle qui manquait à la ville blanche pour qu’enfin les danseurs et chorégraphes du monde entier puissent avoir accès à un espace dédié corps et âmes à la danse contemporaine.",
+        "subtitle": "Expérimenter, élaborer, questionner, construire et inventer, c’est ce lieu de création que l’Espace Darja souhaite offrir aux résidents qu’il accueille. Un lieu où l’acte artistique fait preuve d’ouverture et de générosité ; un lieu qui plonge dans la ville blanche, qui la frôle et s’en extrait, pour laisser chaque artiste choisir quelle place il lui laissera. Un territoire de rencontres, aussi, avec et autour de la danse, entre ceux qui la pratiquent et ceux qui la découvrent.",
         "about": "A propos"
       },
       "Work": {
@@ -106,8 +106,9 @@
     "AboutPage": {
       "Section": {
         "title": "Espace Darja",
-        "description": "Apprenez avec JB propose des cours complets sur les technologies modernes de développement web. Notre mission est de doter les développeurs des compétences nécessaires pour créer des applications prêtes pour la production.",
-        "subscribe": "Regardez des cours gratuits sur YouTube"
+        "description": "Darja apporte un profond élan d’espoir à tous ceux qui traversent son espace (enfants des rues, artistes professionnels et amateurs, femmes au foyer…) Les moments passés à Darja sont magiques, rares, intenses.",
+        "suspense": "Veuillez continuer la lecture"
+        
       }
     },
     "LanguageSwitcher": {

@@ -3,7 +3,9 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLocale, useTranslations } from 'next-intl';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +15,21 @@ export default function AboutSection() {
   const text1Ref = useRef(null);
   const text2Ref = useRef(null);
   const imageContainerRef = useRef(null);
+
+  const locale = useLocale();
+  const isArabic = locale === 'ar';
+
+  const t = useTranslations('AboutPage');
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end end'],
+  });
+  const rotate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isArabic ? [150, 0] : [-50, 100]
+  );
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -67,54 +84,37 @@ export default function AboutSection() {
       <div className="container">
         <div className="row">
           <div className="flex-col">
-            <div ref={arrowRef} className="arrow">
-              <svg
-                width="14px"
-                height="14px"
-                viewBox="0 0 14 14"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-              >
-                <title>arrow-up-right</title>
-                <g
-                  id="Page-1"
-                  stroke="none"
-                  strokeWidth="1"
-                  fill="none"
-                  fillRule="evenodd"
-                >
-                  <g
-                    id="Artboard"
-                    transform="translate(-1019.000000, -279.000000)"
-                    stroke="#FFFFFF"
-                    strokeWidth="1.5"
-                  >
-                    <g
-                      id="arrow-up-right"
-                      transform="translate(1026.000000, 286.000000) rotate(90.000000) translate(-1026.000000, -286.000000) translate(1020.000000, 280.000000)"
-                    >
-                      <polyline
-                        id="Path"
-                        points="2.76923077 0 12 0 12 9.23076923"
-                      ></polyline>
-                      <line x1="12" y1="0" x2="0" y2="12" id="Path"></line>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
+            <motion.svg
+              style={{ rotate, scale: 2 }}
+              width="9"
+              height="9"
+              viewBox="0 0 9 9"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={cn(
+                'absolute top-0 ',
+                isArabic ? 'left-[100%]  ' : 'right-[100%]'
+              )}
+            >
+              <path
+                d="M8 8.5C8.27614 8.5 8.5 8.27614 8.5 8L8.5 3.5C8.5 3.22386 8.27614 3 8 3C7.72386 3 7.5 3.22386 7.5 3.5V7.5H3.5C3.22386 7.5 3 7.72386 3 8C3 8.27614 3.22386 8.5 3.5 8.5L8 8.5ZM0.646447 1.35355L7.64645 8.35355L8.35355 7.64645L1.35355 0.646447L0.646447 1.35355Z"
+                fill="#696443"
+              />
+            </motion.svg>
             <motion.p
               ref={text1Ref}
               data-scroll=""
               data-scroll-speed="-1"
               data-scroll-position="top"
               data-scroll-offset="0%, -50%"
-              className="is-inview"
+              className={cn(
+                'is-inview',
+                isArabic
+                  ? 'arabic-text-regular text-2xl'
+                  : 'latin-text-medium text-xl'
+              )}
             >
-              I help companies from all over the world with tailor-made
-              solutions. With each project, I push my work to new horizons,
-              always putting quality first.
+              {t('Section.description')}
             </motion.p>
             <motion.p
               ref={text2Ref}
@@ -122,12 +122,18 @@ export default function AboutSection() {
               data-scroll-speed="-1"
               data-scroll-position="top"
               data-scroll-offset="0%, -50%"
-              className="is-inview"
+              className="is-inview my-8"
             >
               <span
                 style={{ opacity: 0.5, display: 'block', paddingTop: '.5em' }}
+                className={cn(
+                  isArabic
+                    ? 'arabic-text-regular text-2xl'
+                    : 'latin-text-medium text-xl'
+                )}
               >
-                Always exploring<span className="animate-dot">.</span>
+                {t('Section.suspense')}
+                <span className="animate-dot">.</span>
                 <span className="animate-dot">.</span>
                 <span className="animate-dot">.</span>
               </span>

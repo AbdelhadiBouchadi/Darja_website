@@ -453,15 +453,12 @@
 }
 
 .about-image .flex-col:nth-child(1) p {
-  margin-top: -.33em;
   display: block;
   will-change: transform;
 }
 
 .about-image .flex-col:nth-child(1) .arrow {
   position: absolute;
-  left: 0;
-  transform: rotate(-45deg);
   will-change: transform;
 }
 

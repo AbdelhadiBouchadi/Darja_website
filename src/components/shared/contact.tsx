@@ -58,19 +58,7 @@ const Contact = () => {
             'border-b border-gray-500 pb-24 mx-16 xl:mx-[200px] relative'
           )}
         >
-          <div
-            className={cn(
-              'w-[100px] h-[100px] relative rounded-full overflow-hidden flex justify-center items-center '
-            )}
-          >
-            <Image
-              fill={true}
-              alt={'image'}
-              src={`/images/slider-1.jpg`}
-              className="object-cover"
-            />
-          </div>
-          <h2 className="text-4xl md:text-[5vw] m-0 font-light text-[#696443] ">
+          <h2 className="text-4xl md:text-[5vw] m-0 md:my-6 font-light text-[#696443] ">
             {' '}
             {t('heading')}{' '}
           </h2>
