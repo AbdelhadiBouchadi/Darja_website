@@ -14,7 +14,7 @@ const AboutDarja = () => {
   const isInView = useInView(container);
 
   return (
-    <div className="my-32 xl:my-[200px] flex flex-col justify-center 2xl:flex-row h-full">
+    <div className="my-32  flex flex-col justify-center 2xl:flex-row h-full">
       <div
         ref={container}
         className="max-w-[1400px] relative flex flex-col gap-[50px] border-b border-gray-500 pb-24 mx-16 xl:mx-[200px]"
@@ -22,7 +22,7 @@ const AboutDarja = () => {
         <motion.h2
           variants={descSlideUp}
           animate={isInView ? 'open' : 'closed'}
-          className={`text-4xl xl:text-8xl m-0 font-bold text-[#696443] ${
+          className={`text-6xl md:text-8xl m-0 font-semibold text-start bg-clip-text py-6 text-transparent bg-gradient-to-b from-[#696443] to-[#696443]/40 ${
             isArabic ? 'arabic-title-bold' : 'latin-title-bold'
           }`}
         >
@@ -30,10 +30,12 @@ const AboutDarja = () => {
         </motion.h2>
         <div
           className={`absolute top-[calc(100%-75px)] ${
-            isArabic ? 'right-[calc(100%-250px)]' : 'left-[calc(100%-250px)]'
+            isArabic
+              ? 'right-[calc(100%-170px)] md:right-[calc(100%-250px)]'
+              : 'left-[calc(100%-170px)] md:left-[calc(100%-250px)]'
           }`}
         >
-          <RoundedBtn className="roundedBtnSize bg-[#696443] text-white rounded-full absolute flex items-center justify-center">
+          <RoundedBtn className="roundedBtnSize bg-[#696443] text-white rounded-full absolute flex items-center justify-center overlay">
             <div className="globe">
               <div className="globe-wrap">
                 <div className="circle"></div>

@@ -56,7 +56,7 @@ const Description = () => {
         >
           {t('Hero.subtitle')}
         </motion.p>
-        <Link href={`/${locale}/about`}>
+        <Link href={`/${locale}/espace-darja`}>
           <div data-scroll data-scroll-speed={0.1}>
             <RoundedBtn
               className={cn(

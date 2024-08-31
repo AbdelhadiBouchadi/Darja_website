@@ -17,10 +17,9 @@ const Nav = ({ setIsActive }: NavProps) => {
   const t = useTranslations('Layout');
   const navKeys = [
     'home',
-    'about',
+    'darja',
     'derive',
     'previous',
-    'darja',
     'community',
     'contact',
   ];
