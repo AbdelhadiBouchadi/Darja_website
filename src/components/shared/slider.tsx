@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { useScroll, useTransform, motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import React, { useRef } from 'react';
 
@@ -54,6 +55,9 @@ const SlidingImages = () => {
   const x2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const height = useTransform(scrollYProgress, [0, 0.9], [150, 0]);
 
+  const locale = useLocale();
+  const isArabic = locale === 'ar';
+
   return (
     <div
       ref={container}
@@ -64,7 +68,8 @@ const SlidingImages = () => {
       <motion.div
         style={{ x: x1 }}
         className={cn(
-          'hidden md:flex relative gap-[3vw] w-[120vw] left-[-10vw] '
+          'hidden md:flex relative gap-[3vw] w-[120vw]  ',
+          isArabic ? 'right-[-10vw]' : 'left-[-10vw]'
         )}
       >
         {slider1.map((project, index) => {
@@ -89,7 +94,8 @@ const SlidingImages = () => {
       <motion.div
         style={{ x: x2 }}
         className={cn(
-          'hidden md:flex relative gap-[3vw] w-[120vw] left-[-10vw] '
+          'hidden md:flex relative gap-[3vw] w-[120vw]  ',
+          isArabic ? 'right-[-10vw]' : 'left-[-10vw]'
         )}
       >
         {slider2.map((project, index) => {
