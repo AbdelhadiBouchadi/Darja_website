@@ -40,7 +40,7 @@ const Landing = () => {
         >
           <motion.p
             className={cn(
-              'font-bold text-3xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4',
+              'font-bold text-3xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-400 py-4',
               isArabic ? 'arabic-title-bold' : 'latin-title-bold'
             )}
           >

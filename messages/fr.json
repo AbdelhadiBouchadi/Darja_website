@@ -108,8 +108,14 @@
         "title": "Espace Darja",
         "description": "Darja apporte un profond élan d’espoir à tous ceux qui traversent son espace (enfants des rues, artistes professionnels et amateurs, femmes au foyer…) Les moments passés à Darja sont magiques, rares, intenses.",
         "suspense": "Veuillez continuer la lecture"
-        
+      },
+      "About": {
+        "title":"A propos de Darja",
+        "desc1": "Darja c’est un lieu, niché au sixième étage du 113 de l’avenue Mers Sultan. Darja, traduisez « la marche » (d’escalier !) en français, c’est justement celle qui manquait à la ville blanche pour qu’enfin les danseurs et chorégraphes du monde entier puissent avoir accès à un espace dédié corps et âmes à la danse contemporaine.",
+        "desc2": "Darja, c’est un lieu pour l’exploration et la découverte, pour l’ouverture vers de nouvelles perspectives pour l’art chorégraphique marocain, mais c’est aussi un désir, celui de la danseuse-chorégraphe Meryem Jazouli de faire résonner la danse au coeur de Casablanca à travers un espace de création, de production et de développement. Lieu de pratiques, de formation, d’expérimentations et de rencontres, Darja propose depuis 2012, résidences de création, ateliers, « temps-forts », restitutions et projets hors les murs, qui se succèdent, et s’entremêlent aussi parfois, pour tracer les chemins de jeunes danseurs en devenir, pour tisser un réseau porteur de créativité et de dialogue, propice à l’émergence d’une scène marocaine aussi dynamique que talentueuse.",
+        "desc3": "Et si transmettre est au coeur de la philosophie Darja, c’est autour d’une vraie réflexion sur les pratiques de la danse contemporaine et de leur imbrication dans le contexte du Maroc que s’articulent ses activités. Et si chaque résidence est empreinte d’expériences et de partages, c’est bien parce que chacune d’elles constitue un jalon pour inventer et réinventer le passionnant voyage artistique qu’a initié Darja au pays de la création."
       }
+
     },
     "LanguageSwitcher": {
       "heading": "Langue",
