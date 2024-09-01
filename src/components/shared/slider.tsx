@@ -9,38 +9,38 @@ import React, { useRef } from 'react';
 const slider1 = [
   {
     color: '#141516',
-    src: 'c2.jpg',
+    src: '14.png',
   },
   {
     color: '#00b0db',
-    src: 'decimal.jpg',
+    src: '15.png',
   },
   {
     color: '#141516',
-    src: 'funny.jpg',
+    src: '17.png',
   },
   {
     color: '#ee7103',
-    src: 'google.jpg',
+    src: '18.png',
   },
 ];
 
 const slider2 = [
   {
     color: '#ee7103',
-    src: 'maven.jpg',
+    src: '19.png',
   },
   {
     color: '#141516',
-    src: 'panda.jpg',
+    src: '31.png',
   },
   {
     color: '#00b0db',
-    src: 'powell.jpg',
+    src: '49.png',
   },
   {
     color: '#141516',
-    src: 'wix.jpg',
+    src: 'about-image.png',
   },
 ];
 

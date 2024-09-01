@@ -60,7 +60,7 @@ export default function AboutSection() {
 
       // Background image zoom effect
       gsap.to(imageContainerRef.current, {
-        scale: 1.1, // Slight zoom in
+        scale: 1.3, // Slight zoom in
         ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -108,7 +108,7 @@ export default function AboutSection() {
               data-scroll-position="top"
               data-scroll-offset="0%, -50%"
               className={cn(
-                'is-inview',
+                'is-inview leading-6',
                 isArabic
                   ? 'arabic-text-regular text-2xl'
                   : 'latin-text-medium text-xl'
@@ -122,7 +122,7 @@ export default function AboutSection() {
               data-scroll-speed="-1"
               data-scroll-position="top"
               data-scroll-offset="0%, -50%"
-              className="is-inview my-8"
+              className="is-inview leading-6 my-8"
             >
               <span
                 style={{ opacity: 0.5, display: 'block', paddingTop: '.5em' }}

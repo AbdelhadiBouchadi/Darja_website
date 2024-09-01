@@ -13,7 +13,6 @@ import Link from 'next/link';
 interface Project {
   title: string;
   src: string;
-  color: string;
   category: string;
 }
 
@@ -69,26 +68,22 @@ export default function Projects() {
   const projects: Project[] = [
     {
       title: title1,
-      src: 'c2montreal.png',
-      color: '#696443',
+      src: '14.png',
       category: category1,
     },
     {
       title: title2,
-      src: 'officestudio.png',
-      color: '#00b0db',
+      src: '15.png',
       category: category1,
     },
     {
       title: title3,
-      src: 'locomotive.png',
-      color: '#ee7103',
+      src: '31.png',
       category: category1,
     },
     {
       title: title4,
-      src: 'silencio.png',
-      color: '#00b0db',
+      src: '19.png',
       category: category1,
     },
   ];
@@ -211,13 +206,13 @@ export default function Projects() {
             )}
           >
             {projects.map((project, idx) => {
-              const { src, color } = project;
+              const { src } = project;
               return (
                 <div
                   className={cn(
                     'w-full h-full flex items-center justify-center'
                   )}
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: '#00b0db' }}
                   key={`modal_${idx}`}
                 >
                   <Image

@@ -2,27 +2,19 @@
 
 import { cn, descOpacity } from '@/lib/utils';
 import { useInView, motion } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLocale, useTranslations } from 'next-intl';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const Apropos = () => {
+const Creation = () => {
   const locale = useLocale();
   const isArabic = locale === 'ar';
   const t = useTranslations('AboutPage');
 
   const container = useRef(null);
   const text1Ref = useRef(null);
-  const text2Ref = useRef(null);
-  const text3Ref = useRef(null);
 
   const isInView = useInView(container);
   const isInView1 = useInView(text1Ref);
-  const isInView2 = useInView(text2Ref);
-  const isInView3 = useInView(text3Ref);
 
   return (
     <section className="about-services">
@@ -37,7 +29,7 @@ const Apropos = () => {
                 isArabic ? 'arabic-title-bold' : 'latin-title-bold'
               )}
             >
-              {t('About.title')}
+              {t('Creation.title')}
               <span className="animate-dot bg-clip-text py-6 text-transparent bg-gradient-to-b from-[#696443] to-[#696443]/40 mx-1">
                 .
               </span>
@@ -62,47 +54,13 @@ const Apropos = () => {
                 data-scroll-position="top"
                 data-scroll-offset="0%, -50%"
                 className={cn(
-                  'my-4 md:my-6 ',
+                  'my-4 md:my-6',
                   isArabic
                     ? 'arabic-text-regular text-2xl'
                     : 'latin-text-medium text-xl'
                 )}
               >
-                {t('About.desc1')}
-              </motion.p>
-              <motion.p
-                ref={text2Ref}
-                variants={descOpacity}
-                animate={isInView2 ? 'open' : 'closed'}
-                data-scroll=""
-                data-scroll-speed="-1"
-                data-scroll-position="top"
-                data-scroll-offset="0%, -50%"
-                className={cn(
-                  'my-4 md:my-6 ',
-                  isArabic
-                    ? 'arabic-text-regular text-2xl'
-                    : 'latin-text-medium text-xl'
-                )}
-              >
-                {t('About.desc2')}
-              </motion.p>
-              <motion.p
-                ref={text3Ref}
-                variants={descOpacity}
-                animate={isInView3 ? 'open' : 'closed'}
-                data-scroll=""
-                data-scroll-speed="-1"
-                data-scroll-position="top"
-                data-scroll-offset="0%, -50%"
-                className={cn(
-                  'my-4 md:my-6 ',
-                  isArabic
-                    ? 'arabic-text-regular text-2xl '
-                    : 'latin-text-medium text-xl '
-                )}
-              >
-                {t('About.desc2')}
+                {t('Creation.description')}
               </motion.p>
             </div>
           </div>
@@ -112,4 +70,4 @@ const Apropos = () => {
   );
 };
 
-export default Apropos;
+export default Creation;
