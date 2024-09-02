@@ -1,4 +1,5 @@
 import { Transition } from '@/components/shared/preloader';
+import PreviousHeader from '@/components/shared/PreviousHeader';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
@@ -9,7 +10,7 @@ const Previously = () => {
 
   return (
     <Transition pageName={pageName}>
-      <div>Previously</div>
+      <PreviousHeader />
     </Transition>
   );
 };

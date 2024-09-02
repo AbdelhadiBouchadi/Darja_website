@@ -1,6 +1,6 @@
 'use client';
 
-import { cn, descOpacity } from '@/lib/utils';
+import { cn, descOpacity, descSlideUp } from '@/lib/utils';
 import { useInView, motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -30,7 +30,7 @@ const Apropos = () => {
         <div className="row border-b border-gray-500  ">
           <div className="flex-col ">
             <motion.h2
-              variants={descOpacity}
+              variants={descSlideUp}
               animate={isInView ? 'open' : 'closed'}
               className={cn(
                 'text-4xl  md:text-6xl font-bold bg-clip-text py-6 text-transparent bg-gradient-to-b from-[#696443] to-[#696443]/40',

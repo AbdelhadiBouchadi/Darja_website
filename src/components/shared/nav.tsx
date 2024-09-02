@@ -30,11 +30,11 @@ const Nav = ({ setIsActive }: NavProps) => {
   return (
     <div
       className={cn(
-        'flex justify-between flex-col w-full h-full px-10 pt-[100px] pb-[50px] z-[999]',
+        'flex justify-center flex-col w-full h-full px-10 pt-[100px] pb-[50px] z-[999]',
         isArabic ? 'arabic-title-bold' : 'latin-title-bold'
       )}
     >
-      <div className="flex gap-2 flex-col">
+      <div className="flex gap-2 md:gap-4 lg:gap-6 2xl:gap-8 flex-col">
         {navKeys.map((key, i) => {
           return (
             <div
@@ -78,25 +78,6 @@ const Nav = ({ setIsActive }: NavProps) => {
           );
         })}
       </div>
-      {/* <motion.div className="flex flex-wrap">
-        {socialKeys.map((key, i) => {
-          return (
-            <MotionLink
-              href={t(`Socials.${key}.url`)}
-              className=" w-1/2 mt-1 text-background text-lg"
-              variants={slideIn}
-              custom={i}
-              initial="initial"
-              animate="enter"
-              exit="exit"
-              key={i}
-              target="_blank"
-            >
-              <TextReveal>{t(`Socials.${key}.title`)}</TextReveal>
-            </MotionLink>
-          );
-        })}
-      </motion.div> */}
     </div>
   );
 };

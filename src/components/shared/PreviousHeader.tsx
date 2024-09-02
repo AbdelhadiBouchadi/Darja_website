@@ -6,10 +6,10 @@ import React, { useRef } from 'react';
 import RoundedBtn from './rounded';
 import { descOpacity } from '@/lib/utils';
 
-const DeriveHeader = () => {
+const PreviousHeader = () => {
   const locale = useLocale();
   const isArabic = locale === 'ar';
-  const t = useTranslations('Derive2024');
+  const t = useTranslations('Previous');
 
   const container = useRef(null);
   const isInView = useInView(container);
@@ -53,4 +53,4 @@ const DeriveHeader = () => {
   );
 };
 
-export default DeriveHeader;
+export default PreviousHeader;
