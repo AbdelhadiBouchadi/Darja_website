@@ -158,7 +158,7 @@ const ContactSection = () => {
               </div>
               <RoundedBtn
                 className={cn(
-                  'group absolute top-[90%]  roundedBtnSize bg-[#00b0db] text-white rounded-full flex items-center justify-center cursor-pointer  mb-32',
+                  'group absolute top-[90%]  roundedBtnSize bg-[#00b0db] text-white rounded-full flex items-center justify-center cursor-pointer  mb-32 ',
                   isArabic
                     ? 'right-[calc(100%-200px)] md:right-[calc(100%-700px)] '
                     : 'left-[calc(100%-200px)] md:left-[calc(100%-700px)] '
@@ -166,7 +166,7 @@ const ContactSection = () => {
               >
                 <button
                   type="submit"
-                  className="w-full h-full flex items-center justify-center z-50"
+                  className="w-full h-full flex items-center justify-center z-50 text-2xl"
                   disabled={pending}
                 >
                   {pending ? (

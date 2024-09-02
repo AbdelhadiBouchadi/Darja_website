@@ -1,3 +1,4 @@
+import DeriveHeader from '@/components/shared/DeriveHeader';
 import { Transition } from '@/components/shared/preloader';
 import { useTranslations } from 'next-intl';
 import React from 'react';
@@ -9,7 +10,7 @@ const DerivePage = () => {
 
   return (
     <Transition pageName={pageName}>
-      <div>DerivePage</div>
+      <DeriveHeader />
     </Transition>
   );
 };

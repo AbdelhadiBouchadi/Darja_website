@@ -141,8 +141,11 @@
     },
     "submitBtn": "إرسال",
     "info": "معلومات عملية",
-    "contact": "وسائل الاتصال",
+    "contact": "عنوان درجة",
     "success":"تم الإرسال بنجاح"
+  },
+  "Derive2024": {
+    "heading": "مشتقات 2024"
   },
   "LanguageSwitcher": {
       "heading": "اللغة",
