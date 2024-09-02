@@ -1,3 +1,4 @@
+import ContactSection from '@/components/shared/ContactPage';
 import { Transition } from '@/components/shared/preloader';
 import { useTranslations } from 'next-intl';
 import React from 'react';
@@ -9,7 +10,7 @@ const ContactPage = () => {
 
   return (
     <Transition pageName={pageName}>
-      <div>ContactPage</div>
+      <ContactSection />
     </Transition>
   );
 };

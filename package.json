@@ -14,6 +14,8 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@react-email/components": "^0.0.24",
+    "@react-email/tailwind": "^0.1.0",
     "@studio-freight/lenis": "^1.0.42",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.0",
@@ -27,6 +29,8 @@
     "next-intl": "^3.17.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
+    "resend": "^4.0.0",
     "tailwind-merge": "^2.5.0",
     "tailwindcss-animate": "^1.0.7"
   },

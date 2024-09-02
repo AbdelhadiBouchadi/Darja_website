@@ -129,6 +129,19 @@
       }
 
     },
+    "ContactPage": {
+      "heading": "Contactez-nous",
+      "ContactForm": {
+        "name": "Quel est votre nom ?",
+        "namePlaceholder": "John Doe",
+        "email": "Votre adresse email ?",
+        "message": "Votre message",
+        "messagePlaceholder": "Bonjour, je suis ..."
+      },
+      "submitBtn": "Envoyer",
+      "info": "Informations pratiques",
+      "contact": "Coordonnées"
+    },
     "LanguageSwitcher": {
       "heading": "Langue",
       "french": "Français",
