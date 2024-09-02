@@ -21,7 +21,7 @@ const ContactSection = () => {
   const [isEmailFilled, setIsEmailFilled] = useState(false);
   const [isMessageFilled, setIsMessageFilled] = useState(false);
 
-  const { pending } = useFormStatus();
+  const [pending, setPending] = useState(false);
 
   // Event handlers
   const handleInputChange = (
@@ -29,6 +29,28 @@ const ContactSection = () => {
     setFilledState: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
     setFilledState(e.target.value !== '');
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    setPending(true);
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const { data, error } = await sendEmail(formData);
+
+      if (error) {
+        toast.error(error);
+        return;
+      }
+
+      toast.success(t('success'));
+    } catch (err) {
+      toast.error('Something went wrong. Please try again.');
+    } finally {
+      setPending(false);
+    }
   };
 
   return (
@@ -52,19 +74,7 @@ const ContactSection = () => {
         </div>
         <div className="row will-change-transform">
           <div className="flex-col">
-            <form
-              action={async (formData) => {
-                const { data, error } = await sendEmail(formData);
-
-                if (error) {
-                  toast.error(error);
-                  return;
-                }
-
-                toast.success('Email sent successfully!');
-              }}
-              className="form"
-            >
+            <form onSubmit={handleSubmit} className="form">
               <div
                 className={`form-col ${isNameFilled ? 'not-empty' : ''} ${
                   isArabic ? 'arabic-text-bold' : 'latin-text-bold'
@@ -136,7 +146,7 @@ const ContactSection = () => {
               >
                 <button
                   type="submit"
-                  className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] bg-gray-900 text-white rounded-full outline-none transition-all focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 dark:bg-white dark:bg-opacity-10 disabled:scale-100 disabled:bg-opacity-65 z-50"
+                  className="w-full h-full flex items-center justify-center z-50"
                   disabled={pending}
                 >
                   {pending ? (
@@ -147,10 +157,6 @@ const ContactSection = () => {
                 </button>
               </RoundedBtn>
             </form>
-          </div>
-          <div className="flex-col">
-            <h5> {t('info')} </h5>
-            <ul className="links-wrap"></ul>
           </div>
         </div>
       </div>

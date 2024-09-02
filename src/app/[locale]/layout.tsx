@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { Providers } from '@/components/shared/providers';
 import Header from '@/components/shared/header';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,6 +35,7 @@ export default async function RootLayout({
           <Providers>
             <Header />
             {children}
+            <Toaster position="top-right" />
           </Providers>
         </NextIntlClientProvider>
       </body>

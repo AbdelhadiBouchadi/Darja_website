@@ -141,7 +141,8 @@
     },
     "submitBtn": "إرسال",
     "info": "معلومات عملية",
-    "contact": "وسائل الاتصال"
+    "contact": "وسائل الاتصال",
+    "success":"تم الإرسال بنجاح"
   },
   "LanguageSwitcher": {
       "heading": "اللغة",

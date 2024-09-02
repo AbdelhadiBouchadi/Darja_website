@@ -140,7 +140,8 @@
       },
       "submitBtn": "Envoyer",
       "info": "Informations pratiques",
-      "contact": "Coordonnées"
+      "contact": "Coordonnées",
+      "success": "Email envoyé avec succès"
     },
     "LanguageSwitcher": {
       "heading": "Langue",
