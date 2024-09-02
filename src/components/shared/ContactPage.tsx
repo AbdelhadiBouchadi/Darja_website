@@ -59,13 +59,13 @@ const ContactSection = () => {
       <div className="container medium">
         <div className="row will-change-transform">
           <div
-            className="flex-col border-b border-[#696443]/40 relative pb-24"
+            className="flex-col border-b border-[#696443]/40 relative pb-24 mb-12"
             ref={container}
           >
             <motion.h2
               variants={descOpacity}
               animate={isInView ? 'open' : 'closed'}
-              className={`text-2xl md:text-6xl m-0 font-semibold text-start bg-clip-text py-6 text-transparent bg-gradient-to-b from-[#696443] to-[#696443]/40 ${
+              className={`text-4xl lg:text-6xl m-0 font-semibold text-start bg-clip-text py-6 text-transparent bg-gradient-to-b from-[#696443] to-[#696443]/40 ${
                 isArabic ? 'arabic-title-bold' : 'latin-title-bold'
               }`}
             >
