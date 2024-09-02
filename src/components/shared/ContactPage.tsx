@@ -8,6 +8,7 @@ import React, { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import RoundedBtn from './rounded';
 import { useFormStatus } from 'react-dom';
+import Link from 'next/link';
 
 const ContactSection = () => {
   const t = useTranslations('ContactPage');
@@ -58,7 +59,7 @@ const ContactSection = () => {
       <div className="container medium">
         <div className="row will-change-transform">
           <div
-            className="flex-col border-b border-[#696443]/40"
+            className="flex-col border-b border-[#696443]/40 relative pb-24"
             ref={container}
           >
             <motion.h2
@@ -70,10 +71,29 @@ const ContactSection = () => {
             >
               {t('heading')}
             </motion.h2>
+            <div
+              className={`absolute top-[calc(100%-75px)] ${
+                isArabic
+                  ? 'right-[calc(100%-170px)] md:right-[calc(100%-250px)]'
+                  : 'left-[calc(100%-170px)] md:left-[calc(100%-250px)]'
+              }`}
+            >
+              <RoundedBtn className="roundedBtnSize bg-[#696443] text-white rounded-full absolute flex items-center justify-center overlay">
+                <div className="globe">
+                  <div className="globe-wrap">
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle-hor"></div>
+                    <div className="circle-hor-middle"></div>
+                  </div>
+                </div>
+              </RoundedBtn>
+            </div>
           </div>
         </div>
         <div className="row will-change-transform">
-          <div className="flex-col">
+          <div className="flex-col order-2 md:order-1">
             <form onSubmit={handleSubmit} className="form">
               <div
                 className={`form-col ${isNameFilled ? 'not-empty' : ''} ${
@@ -138,10 +158,10 @@ const ContactSection = () => {
               </div>
               <RoundedBtn
                 className={cn(
-                  'group absolute top-[85%]  roundedBtnSize bg-[#00b0db] text-white rounded-full flex items-center justify-center cursor-pointer  mb-32',
+                  'group absolute top-[90%]  roundedBtnSize bg-[#00b0db] text-white rounded-full flex items-center justify-center cursor-pointer  mb-32',
                   isArabic
-                    ? 'right-[calc(100%-200px)] md:right-[calc(100%-400px)] xl:right-[calc(100%-700px)]'
-                    : 'left-[calc(100%-200px)] md:left-[calc(100%-400px)] xl:right-[calc(100%-700px)]'
+                    ? 'right-[calc(100%-200px)] md:right-[calc(100%-700px)] '
+                    : 'left-[calc(100%-200px)] md:left-[calc(100%-700px)] '
                 )}
               >
                 <button
@@ -157,6 +177,52 @@ const ContactSection = () => {
                 </button>
               </RoundedBtn>
             </form>
+          </div>
+          <div
+            className={cn(
+              'flex-col pt-[1.66em] text-white order-1 md:order-2',
+              isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
+            )}
+          >
+            <h5 className={cn('opacity-30 ', isArabic ? 'text-2xl' : '')}>
+              {' '}
+              {t('info')}{' '}
+            </h5>
+            <ul className="links-wrap">
+              <li>
+                <Link
+                  href="mailto:administration@espacedarja.com"
+                  target="_blank"
+                  dir="ltr"
+                >
+                  administration@espacedarja.com
+                </Link>
+              </li>
+              <li>
+                <Link href="tel:+212522274448" target="_blank" dir="ltr">
+                  05 22 27 44 48
+                </Link>
+              </li>
+            </ul>
+
+            <h5 className={cn('opacity-30 ', isArabic ? 'text-2xl' : '')}>
+              {' '}
+              {t('contact')}{' '}
+            </h5>
+            <ul className="links-wrap">
+              <li>
+                <p dir="ltr">Mers Sultan, Casablanca</p>
+              </li>
+              <li>
+                <p dir="ltr">113 Avenue Mers Sultan</p>
+              </li>
+              <li>
+                <p dir="ltr">6ème étage</p>
+              </li>
+              <li>
+                <p dir="ltr">Appt. 12</p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

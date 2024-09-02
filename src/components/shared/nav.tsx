@@ -54,7 +54,7 @@ const Nav = ({ setIsActive }: NavProps) => {
                   whileHover="whileHover"
                   whileTap="whileHover"
                   exit="exit"
-                  className="text-3xl text-background flex items-center justify-between"
+                  className="text-3xl text-background flex items-center justify-center"
                 >
                   <motion.span
                     variants={{
@@ -78,7 +78,7 @@ const Nav = ({ setIsActive }: NavProps) => {
           );
         })}
       </div>
-      <motion.div className="flex flex-wrap">
+      {/* <motion.div className="flex flex-wrap">
         {socialKeys.map((key, i) => {
           return (
             <MotionLink
@@ -96,7 +96,7 @@ const Nav = ({ setIsActive }: NavProps) => {
             </MotionLink>
           );
         })}
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 };
