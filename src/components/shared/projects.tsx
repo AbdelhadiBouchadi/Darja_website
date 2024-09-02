@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
 import RoundedBtn from './rounded';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 import Project from './project';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';

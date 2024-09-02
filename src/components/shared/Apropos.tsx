@@ -1,6 +1,6 @@
 'use client';
 
-import { cn, descOpacity, descSlideUp } from '@/lib/utils';
+import { cn, descOpacity, descSlideUp } from '../../lib/utils';
 import { useInView, motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

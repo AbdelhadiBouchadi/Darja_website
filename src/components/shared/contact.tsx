@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { useRef } from 'react';
 import { useScroll, motion, useTransform } from 'framer-motion';
 import RoundedBtn from './rounded';
-import { cn } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { cn } from '../../lib/utils';
 
 const Contact = () => {
   const locale = useLocale();

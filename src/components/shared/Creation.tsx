@@ -1,6 +1,6 @@
 'use client';
 
-import { cn, descOpacity, descSlideUp } from '@/lib/utils';
+import { cn, descOpacity, descSlideUp } from '../../lib/utils';
 import { useInView, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import React, { useRef } from 'react';

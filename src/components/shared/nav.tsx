@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Dispatch, SetStateAction } from 'react';
-import { cn, perspective, slideIn } from '@/lib/utils';
-import { TextReveal } from '../ui/typography';
+import { cn, perspective, slideIn } from '../../lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 
 interface NavProps {

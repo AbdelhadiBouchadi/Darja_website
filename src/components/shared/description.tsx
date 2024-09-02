@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
-import { cn, descOpacity, descSlideUp } from '@/lib/utils';
+import { cn, descOpacity, descSlideUp } from '../../lib/utils';
 import RoundedBtn from './rounded';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';

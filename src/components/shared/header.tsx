@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { AnimatePresence, motion } from 'framer-motion';
 import { TextReveal } from '../ui/typography';
-import { cn, menu } from '@/lib/utils';
+import { cn, menu } from '../../lib/utils';
 import Nav from './nav';
 import { Transition } from '../ui/transitions';
 import Link from 'next/link';

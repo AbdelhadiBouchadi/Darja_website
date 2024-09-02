@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { cn, opacity, slideUp } from '@/lib/utils';
+import { cn, opacity, slideUp } from '../../lib/utils';
 import { usePathname } from 'next/navigation';
 import { useLenis } from '../hooks/use-lenis';
 import { useTimeOut } from '../hooks/use-time-out';

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { cn, descOpacity, descSlideUp } from '@/lib/utils';
+import { cn, descSlideUp } from '../../lib/utils';
 import { useInView, motion, useTransform, useScroll } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

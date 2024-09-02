@@ -1,7 +1,7 @@
-import DeriveHeader from '@/components/shared/DeriveHeader';
-import { Transition } from '@/components/shared/preloader';
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import { Transition } from '../../../components/shared/preloader';
+import DeriveHeader from '../../../components/shared/DeriveHeader';
 
 const DerivePage = () => {
   const t = useTranslations('Layout');

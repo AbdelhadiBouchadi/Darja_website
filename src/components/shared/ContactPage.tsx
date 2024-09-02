@@ -1,7 +1,5 @@
 'use client';
 
-import { sendEmail } from '@/lib/actions/sendEmail';
-import { cn, descOpacity } from '@/lib/utils';
 import { useInView, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import React, { useRef, useState } from 'react';
@@ -9,6 +7,8 @@ import toast from 'react-hot-toast';
 import RoundedBtn from './rounded';
 import { useFormStatus } from 'react-dom';
 import Link from 'next/link';
+import { sendEmail } from '../../lib/actions/sendEmail';
+import { cn, descOpacity } from '../../lib/utils';
 
 const ContactSection = () => {
   const t = useTranslations('ContactPage');

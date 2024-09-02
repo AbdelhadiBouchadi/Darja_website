@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { cn, landingSlideUp } from '@/lib/utils';
+import { cn, landingSlideUp } from '../../lib/utils';
 import { ImagesSlider } from './images-slider';
 import { useLocale, useTranslations } from 'next-intl';
 

@@ -1,9 +1,9 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { motion, HTMLMotionProps } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { useState } from 'react';
+import { cn } from '../../lib/utils';
 
 interface SectionHeadingProps extends HTMLMotionProps<'h3'> {}
 

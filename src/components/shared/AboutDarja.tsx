@@ -1,10 +1,10 @@
 'use client';
 
-import { cn, descOpacity } from '@/lib/utils';
 import { useInView, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import React, { useRef } from 'react';
 import RoundedBtn from './rounded';
+import { descOpacity } from '../../lib/utils';
 
 const AboutDarja = () => {
   const locale = useLocale();

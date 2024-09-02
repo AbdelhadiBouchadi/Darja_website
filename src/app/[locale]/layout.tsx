@@ -3,9 +3,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
-import { Providers } from '@/components/shared/providers';
-import Header from '@/components/shared/header';
 import { Toaster } from 'react-hot-toast';
+import { Providers } from '../../components/shared/providers';
+import Header from '../../components/shared/header';
 
 const inter = Inter({ subsets: ['latin'] });
 

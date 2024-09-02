@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 import { useLocale } from 'next-intl';
 import React from 'react';
 

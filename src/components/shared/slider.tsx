@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';

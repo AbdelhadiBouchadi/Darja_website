@@ -4,7 +4,7 @@ import { useInView, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import React, { useRef } from 'react';
 import RoundedBtn from './rounded';
-import { descOpacity } from '@/lib/utils';
+import { descOpacity } from '../../lib/utils';
 
 const DeriveHeader = () => {
   const locale = useLocale();

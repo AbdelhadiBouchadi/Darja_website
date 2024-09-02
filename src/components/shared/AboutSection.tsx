@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 

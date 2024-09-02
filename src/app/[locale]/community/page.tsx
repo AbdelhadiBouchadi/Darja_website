@@ -1,6 +1,6 @@
-import { Transition } from '@/components/shared/preloader';
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import { Transition } from '../../../components/shared/preloader';
 
 const Community = () => {
   const t = useTranslations('Layout');

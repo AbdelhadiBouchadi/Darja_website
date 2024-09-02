@@ -1,6 +1,5 @@
 'use client';
 
-import { useCursorVariants } from '@/context/context';
 import {
   useMotionValue,
   useSpring,
@@ -10,6 +9,7 @@ import {
 } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useEffect } from 'react';
+import { useCursorVariants } from '../../context/context';
 
 export const Cursor = () => {
   const { variant } = useCursorVariants();
