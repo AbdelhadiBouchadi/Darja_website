@@ -145,7 +145,12 @@
     "success":"تم الإرسال بنجاح"
   },
   "Derive2024": {
-    "heading": "مشتقات 2024"
+    "heading": "مشتقات 2024",
+    "work": "أعمالنا",
+    "artists": "الفنانين"
+  },
+  "ArtistsPage": {
+    "heading": "الفنانين"
   },
   "Previous": {
     "heading": "الإصدارات السابقة"

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Dispatch, SetStateAction } from 'react';
-import { cn, perspective, slideIn } from '../../lib/utils';
+import { cn, perspective } from '../../lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 
 interface NavProps {
@@ -12,7 +12,6 @@ interface NavProps {
 }
 
 const Nav = ({ setIsActive }: NavProps) => {
-  const MotionLink = motion(Link);
   const t = useTranslations('Layout');
   const navKeys = [
     'home',
@@ -22,7 +21,6 @@ const Nav = ({ setIsActive }: NavProps) => {
     'community',
     'contact',
   ];
-  const socialKeys = ['instagram', 'facebook', 'whatsapp'];
   const locale = useLocale();
   const isArabic = locale === 'ar';
 

@@ -78,9 +78,9 @@ const Residence = () => {
 
   return (
     <section className="about-services" ref={sectionRef}>
-      <div className="container" ref={container}>
+      <div className="container">
         <div className="row border-b border-gray-500  ">
-          <div className="flex-col ">
+          <div className="flex-col " ref={container}>
             <motion.h2
               variants={descSlideUp}
               animate={isInView ? 'open' : 'closed'}

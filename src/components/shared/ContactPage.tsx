@@ -180,7 +180,7 @@ const ContactSection = () => {
           </div>
           <div
             className={cn(
-              'flex-col pt-[1.66em] text-white order-1 md:order-2',
+              'flex-col pt-[1.66em] text-white order-1 md:order-2 justify-center',
               isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
             )}
           >

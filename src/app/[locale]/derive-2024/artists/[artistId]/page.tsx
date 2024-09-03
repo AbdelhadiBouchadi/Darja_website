@@ -1,6 +1,6 @@
 import React from 'react';
 
-const page = () => {
+const page = ({ params }: SearchParamProps) => {
   return <div>page</div>;
 };
 

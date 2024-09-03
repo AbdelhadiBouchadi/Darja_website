@@ -144,7 +144,12 @@
       "success": "Email envoyé avec succès"
     },
     "Derive2024": {
-      "heading": "Dérive 2024"
+      "heading": "Dérive 2024",
+      "work": "Nos travaux",
+      "artists": "Artistes"
+    },
+    "ArtistsPage": {
+      "heading": "Nos Artistes"
     },
     "Previous": {
       "heading": "Editions Précédentes"

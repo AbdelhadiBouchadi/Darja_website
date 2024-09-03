@@ -4,11 +4,9 @@ import { useState, useEffect, useRef, MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
-import RoundedBtn from './rounded';
 import { cn } from '../../lib/utils';
 import Project from './project';
 import { useLocale, useTranslations } from 'next-intl';
-import Link from 'next/link';
 
 interface Project {
   title: string;
@@ -32,7 +30,8 @@ const scaleAnimation = {
   },
 };
 
-export default function Projects() {
+export default function DeriveProjects() {
+  const [view, setView] = useState<'grid' | 'table'>('grid'); // State for view toggle
   const [modal, setModal] = useState<{ active: boolean; index: number }>({
     active: false,
     index: 0,
@@ -52,40 +51,13 @@ export default function Projects() {
   const locale = useLocale();
   const isArabic = locale === 'ar';
   const t = useTranslations('HomePage.Work');
+  const t2 = useTranslations('Derive2024');
 
-  const title1 = t('work1.title');
-  const title2 = t('work2.title');
-  const title3 = t('work3.title');
-  const title4 = t('work4.title');
-
-  const category1 = t('work1.category');
-  const category2 = t('work2.category');
-  const category3 = t('work3.category');
-  const category4 = t('work4.category');
-
-  const moreWork = t('moreWork');
-
-  const projects: Project[] = [
-    {
-      title: title1,
-      src: '14.png',
-      category: category1,
-    },
-    {
-      title: title2,
-      src: '15.png',
-      category: category2,
-    },
-    {
-      title: title3,
-      src: '31.png',
-      category: category3,
-    },
-    {
-      title: title4,
-      src: '19.png',
-      category: category4,
-    },
+  const DeriveProjects: Project[] = [
+    { title: t('work1.title'), src: '14.png', category: t('work1.category') },
+    { title: t('work2.title'), src: '15.png', category: t('work2.category') },
+    { title: t('work3.title'), src: '31.png', category: t('work3.category') },
+    { title: t('work4.title'), src: '19.png', category: t('work4.category') },
   ];
 
   useEffect(() => {
@@ -142,7 +114,7 @@ export default function Projects() {
         moveItems(e.clientX, e.clientY);
       }}
       className={cn(
-        'flex flex-col items-center px-8 xl:px-[200px] mt-32 mb-0 md:my-32 '
+        'flex flex-col items-center px-8 xl:px-32 mt-32 mb-0 md:my-32 '
       )}
     >
       <div
@@ -162,11 +134,11 @@ export default function Projects() {
               isArabic ? 'arabic-title-bold' : 'latin-title-bold'
             )}
           >
-            {t('heading')}
+            {t2('work')}
           </h5>
         </div>
 
-        {projects.map((project, index) => (
+        {DeriveProjects.map((project, index) => (
           <Project
             key={index}
             index={index}
@@ -176,19 +148,7 @@ export default function Projects() {
           />
         ))}
       </div>
-      <Link href={`/${locale}/derive-2024`}>
-        <RoundedBtn className='relative group inline-flex items-center justify-center overflow-hidden rounded-full font-bold ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[""] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[""] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-solid border-[#141516] hover:border-[#00b0db] before:bg-[#00b0db] after:bg-[#00b0db] px-16 py-4 text-base before:-top-1/2 hover:text-background'>
-          <p
-            className={cn(
-              'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg ',
-              isArabic ? 'arabic-title-bold text-2xl' : 'latin-title-bold'
-            )}
-          >
-            {' '}
-            {moreWork}{' '}
-          </p>
-        </RoundedBtn>
-      </Link>
+
       <>
         <motion.div
           ref={modalContainer}
@@ -205,7 +165,7 @@ export default function Projects() {
               'w-full h-full relative transition-[top] duration-500 ease-[cubic-bezier(0.76, 0, 0.24, 1)]'
             )}
           >
-            {projects.map((project, idx) => {
+            {DeriveProjects.map((project, idx) => {
               const { src } = project;
               return (
                 <div
