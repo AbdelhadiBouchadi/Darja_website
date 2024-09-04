@@ -8,8 +8,8 @@ import UsersTable from '@/components/dashboard/users/UsersTable';
 import { useState } from 'react';
 
 interface UserStats {
-  totalUsers: number;
-  adminUsers: number;
+  totalUsers: number | string;
+  totalAdmins: number | string;
 }
 
 const UsersPage = ({
@@ -34,13 +34,13 @@ const UsersPage = ({
           <StatCard
             name="Utilisateurs"
             icon={UsersIcon}
-            value={userStats.totalUsers.toLocaleString()}
+            value={userStats.totalUsers}
             color="#6366F1"
           />
           <StatCard
             name="Admin"
             icon={UserCheck}
-            value={userStats.adminUsers.toLocaleString()}
+            value={userStats.totalAdmins}
             color="#6EE7B7"
           />
         </motion.div>

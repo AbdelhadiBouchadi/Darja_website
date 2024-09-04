@@ -84,20 +84,21 @@ export async function getAllUsers() {
   }
 }
 
-export async function getUserStats() {
+export async function getUserCounts() {
   try {
-    const totalUsers = await User.countDocuments();
-    const adminUsers = await User.countDocuments({ isAdmin: true });
+    // Connect to the database
+    await connectToDatabase();
+
+    // Fetch all users
+    const users = await User.find();
+    const admins = await User.find({ isAdmin: true });
 
     return {
-      totalUsers,
-      adminUsers,
+      totalUsers: users.length, // Total users count
+      totalAdmins: admins.length, // Total admins count
     };
   } catch (error) {
     console.error('Failed to fetch user statistics:', error);
-    return {
-      totalUsers: 0,
-      adminUsers: 0,
-    };
+    throw new Error('Failed to fetch user statistics');
   }
 }

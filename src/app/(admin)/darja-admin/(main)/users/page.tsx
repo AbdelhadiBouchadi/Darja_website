@@ -1,12 +1,12 @@
 import UsersPage from '@/components/dashboard/UsersPage';
-import { getUserById, getUserStats } from '@/lib/actions/user.actions';
+import { getUserById, getUserCounts } from '@/lib/actions/user.actions';
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
 const Users = async () => {
   // Get user statistics
-  const userStats = await getUserStats();
+  const userStats = await getUserCounts();
 
   // Get current user from Clerk
   const activeUser = await currentUser();
