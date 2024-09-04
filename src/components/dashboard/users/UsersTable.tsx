@@ -1,60 +1,48 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { getAllUsers } from '@/lib/actions/user.actions';
+import Image from 'next/image';
 
 interface User {
-  id: number;
-  name: string;
+  _id: string;
+  username: string; // Added from your Mongoose model
   email: string;
-  role: string;
+  photo: string; // Added from your Mongoose model
+  firstName?: string; // Optional
+  lastName?: string; // Optional
+  isAdmin: boolean; // Changed from 'role' to 'isAdmin'
+  createdAt: Date; // Added from your Mongoose model
 }
 
-const userData: User[] = [
-  {
-    id: 1,
-    name: 'John Doe',
-    email: 'john@example.com',
-    role: 'Utilisateur',
-  },
-  {
-    id: 2,
-    name: 'Jane Smith',
-    email: 'jane@example.com',
-    role: 'Admin',
-  },
-  {
-    id: 3,
-    name: 'Bob Johnson',
-    email: 'bob@example.com',
-    role: 'Utilisateur',
-  },
-  {
-    id: 4,
-    name: 'Alice Brown',
-    email: 'alice@example.com',
-    role: 'Utilisateur',
-  },
-  {
-    id: 5,
-    name: 'Charlie Wilson',
-    email: 'charlie@example.com',
-    role: 'Admin',
-  },
-];
+interface UsersTableProps {
+  currentUserIsAdmin: boolean; // Add this prop
+}
 
-const UsersTable = () => {
+const UsersTable = ({ currentUserIsAdmin }: UsersTableProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [filteredUsers, setFilteredUsers] = useState<User[]>(userData);
+  const [users, setUsers] = useState<User[]>([]);
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    async function fetchUsers() {
+      const allUsers = await getAllUsers();
+      setUsers(allUsers);
+      setFilteredUsers(allUsers);
+    }
+
+    fetchUsers();
+  }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
-    const filtered = userData.filter(
+    const filtered = filteredUsers.filter(
       (user) =>
-        user.name.toLowerCase().includes(term) ||
+        user.username?.toLowerCase().includes(term) ||
         user.email.toLowerCase().includes(term)
     );
     setFilteredUsers(filtered);
@@ -68,7 +56,7 @@ const UsersTable = () => {
       transition={{ delay: 0.2 }}
     >
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-gray-100">Users</h2>
+        <h2 className="text-xl font-semibold text-gray-100">Utilisateurs</h2>
         <div className="relative">
           <input
             type="text"
@@ -103,11 +91,11 @@ const UsersTable = () => {
 
           <tbody className="divide-y divide-gray-700">
             {filteredUsers.map((user) => {
-              const isAdmin = user.role === 'Admin';
+              const isAdmin = user.isAdmin;
 
               return (
                 <motion.tr
-                  key={user.id}
+                  key={user._id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
@@ -116,12 +104,12 @@ const UsersTable = () => {
                     <div className="flex items-center">
                       <div className="flex-shrink-0 h-10 w-10">
                         <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-                          {user.name.charAt(0)}
+                          {user.username.charAt(0)}
                         </div>
                       </div>
                       <div className="ml-4">
                         <div className="text-sm font-medium text-gray-100">
-                          {user.name}
+                          {user.username}
                         </div>
                       </div>
                     </div>
@@ -136,20 +124,32 @@ const UsersTable = () => {
                         'px-2 inline-flex text-xs leading-5 font-semibold rounded-full  ',
                         isAdmin
                           ? 'bg-[#6EE7B7]/60 text-gray-300'
-                          : 'bg-blue-800 text-blue-100'
+                          : 'bg-red-800 text-blue-100'
                       )}
                     >
-                      {user.role}
+                      <div className="w-full flex justify-between items-center gap-2">
+                        <Image
+                          src={
+                            isAdmin
+                              ? '/assets/check.svg'
+                              : '/assets/cancelled.svg'
+                          }
+                          alt="status"
+                          width={24}
+                          height={24}
+                          className="h-fit w-3"
+                        />
+                        Admin
+                      </div>
                     </span>
                   </td>
 
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                    <button className="text-indigo-400 hover:text-indigo-300 mr-2">
-                      Modifier
-                    </button>
-                    <button className="text-red-400 hover:text-red-300">
-                      Supprimer
-                    </button>
+                    {currentUserIsAdmin && (
+                      <button className="text-red-400 hover:text-red-300">
+                        Supprimer
+                      </button>
+                    )}
                   </td>
                 </motion.tr>
               );

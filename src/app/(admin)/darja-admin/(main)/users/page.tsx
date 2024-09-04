@@ -1,46 +1,36 @@
-'use client';
+import UsersPage from '@/components/dashboard/UsersPage';
+import { getUserById, getUserStats } from '@/lib/actions/user.actions';
+import { currentUser } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
+import React from 'react';
 
-import { UserCheck, UsersIcon, UserX } from 'lucide-react';
-import { motion } from 'framer-motion';
-import Navbar from '@/components/shared/Navbar';
-import StatCard from '@/components/shared/StatsCard';
-import UsersTable from '@/components/dashboard/users/UsersTable';
+const page = async () => {
+  // Get user statistics
+  const userStats = await getUserStats();
 
-const userStats = {
-  totalUsers: 152845,
-  adminUsers: 98520,
-};
+  // Get current user from Clerk
+  const activeUser = await currentUser();
 
-const UsersPage = () => {
+  if (!activeUser) {
+    redirect('/sign-in');
+    return null; // Ensure no component renders if redirecting
+  }
+
+  // Fetch additional user details from your database using Clerk's user ID
+  const currentUserFromDb = await getUserById(activeUser.id);
+
+  if (!currentUserFromDb) {
+    redirect('/sign-in');
+    return null; // Ensure no component renders if the user is not found in the database
+  }
+
+  // Pass user stats and additional user data to your UsersPage component
   return (
-    <div className="flex-1 overflow-auto relative z-10">
-      <Navbar title="Gérer les utilisateurs" />
-
-      <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
-        {/* STATS */}
-        <motion.div
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-2 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <StatCard
-            name="Utilisateurs"
-            icon={UsersIcon}
-            value={userStats.totalUsers.toLocaleString()}
-            color="#6366F1"
-          />
-          <StatCard
-            name="Admin"
-            icon={UserCheck}
-            value={userStats.adminUsers.toLocaleString()}
-            color="#6EE7B7"
-          />
-        </motion.div>
-
-        <UsersTable />
-      </main>
-    </div>
+    <UsersPage
+      userStats={userStats}
+      isAdmin={currentUserFromDb.isAdmin} // Use the isAdmin from your database
+    />
   );
 };
-export default UsersPage;
+
+export default page;

@@ -21,11 +21,12 @@ export async function createUser(user: CreateUserParams) {
   }
 }
 
-export async function getUserById(userId: string) {
+export async function getUserById(clerkId: string) {
   try {
     await connectToDatabase();
 
-    const user = await User.findById(userId);
+    // Use `findOne` instead of `findById`
+    const user = await User.findOne({ clerkId });
 
     if (!user) throw new Error('User not found');
     return JSON.parse(JSON.stringify(user));
@@ -38,6 +39,7 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
   try {
     await connectToDatabase();
 
+    // Use `findOneAndUpdate` with `clerkId`
     const updatedUser = await User.findOneAndUpdate({ clerkId }, user, {
       new: true,
     });
@@ -67,5 +69,35 @@ export async function deleteUser(clerkId: string) {
     return deletedUser ? JSON.parse(JSON.stringify(deletedUser)) : null;
   } catch (error) {
     handleError(error);
+  }
+}
+
+export async function getAllUsers() {
+  try {
+    await connectToDatabase();
+
+    const users = await User.find({}); // Retrieves all users from the database
+
+    return JSON.parse(JSON.stringify(users));
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+export async function getUserStats() {
+  try {
+    const totalUsers = await User.countDocuments();
+    const adminUsers = await User.countDocuments({ isAdmin: true });
+
+    return {
+      totalUsers,
+      adminUsers,
+    };
+  } catch (error) {
+    console.error('Failed to fetch user statistics:', error);
+    return {
+      totalUsers: 0,
+      adminUsers: 0,
+    };
   }
 }
