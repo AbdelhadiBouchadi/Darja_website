@@ -10,7 +10,6 @@ export default async function Home() {
   if (!userId) redirect('/sign-in');
 
   const user = await getUserById(userId);
-  console.log(user);
 
   return (
     <div className="flex-1 overflow-auto relative z-10">
