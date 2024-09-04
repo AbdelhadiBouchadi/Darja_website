@@ -13,6 +13,7 @@ import {
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
+import { UserButton } from '@clerk/nextjs';
 
 const SIDEBAR_ITEMS = [
   {
@@ -98,6 +99,10 @@ const Sidebar = () => {
             </Link>
           ))}
         </nav>
+
+        <div className="flex justify-center items-center cursor-pointer gap-2 p-4">
+          <UserButton showName={isSidebarOpen} />
+        </div>
       </div>
     </motion.div>
   );

@@ -67,8 +67,6 @@ export async function POST(req: Request) {
       photo: image_url,
     };
 
-    console.log(user);
-
     const newUser = await createUser(user);
 
     if (newUser) {
@@ -90,6 +88,7 @@ export async function POST(req: Request) {
       lastName: last_name!,
       username: username!,
       photo: image_url,
+      isAdmin: false,
     };
 
     const updatedUser = await updateUser(id, user);

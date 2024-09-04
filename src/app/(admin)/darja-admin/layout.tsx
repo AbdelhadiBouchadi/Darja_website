@@ -2,13 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/nextjs';
+import { ClerkProvider } from '@clerk/nextjs';
+import { frFR } from '@clerk/localizations';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
+    <ClerkProvider localization={frFR}>
+      <html lang="fr">
         <body className={inter.className}>
           {children}
           <Toaster />
