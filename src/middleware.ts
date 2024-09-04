@@ -35,7 +35,7 @@ export const config = {
     '/(fr|ar)/:path*',
     // Match paths for Clerk (admin panel)
     '/admin(.*)',
-    '/darja-amin(.*)',
+    '/darja-admin(.*)',
     // Ensure the root path and other paths are included
     '/',
   ],

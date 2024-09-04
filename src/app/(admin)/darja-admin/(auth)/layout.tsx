@@ -2,10 +2,7 @@ import ThemeToggler from '@/components/shared/ThemeToggler';
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-[100vh] flex items-center justify-center relative">
-      <div className="absolute bottom-5 right-0 text-white">
-        <ThemeToggler />
-      </div>
+    <div className="flex-center min-h-screen w-full bg-primary-50 bg-dotted-pattern bg-cover bg-fixed bg-center">
       {children}
     </div>
   );
