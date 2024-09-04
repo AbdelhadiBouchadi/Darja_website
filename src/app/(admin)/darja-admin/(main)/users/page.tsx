@@ -4,7 +4,7 @@ import { UserCheck, UsersIcon, UserX } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/shared/Navbar';
 import StatCard from '@/components/shared/StatsCard';
-import UsersTable from '@/components/dashboard/posts/PostsTable';
+import UsersTable from '@/components/dashboard/users/UsersTable';
 
 const userStats = {
   totalUsers: 152845,

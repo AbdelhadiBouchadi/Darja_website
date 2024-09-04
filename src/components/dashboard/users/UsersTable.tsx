@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface User {
   id: number;
@@ -16,7 +17,7 @@ const userData: User[] = [
     id: 1,
     name: 'John Doe',
     email: 'john@example.com',
-    role: 'Customer',
+    role: 'Utilisateur',
   },
   {
     id: 2,
@@ -28,19 +29,19 @@ const userData: User[] = [
     id: 3,
     name: 'Bob Johnson',
     email: 'bob@example.com',
-    role: 'Customer',
+    role: 'Utilisateur',
   },
   {
     id: 4,
     name: 'Alice Brown',
     email: 'alice@example.com',
-    role: 'Customer',
+    role: 'Utilisateur',
   },
   {
     id: 5,
     name: 'Charlie Wilson',
     email: 'charlie@example.com',
-    role: 'Moderator',
+    role: 'Admin',
   },
 ];
 
@@ -101,47 +102,58 @@ const UsersTable = () => {
           </thead>
 
           <tbody className="divide-y divide-gray-700">
-            {filteredUsers.map((user) => (
-              <motion.tr
-                key={user.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0 h-10 w-10">
-                      <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-                        {user.name.charAt(0)}
+            {filteredUsers.map((user) => {
+              const isAdmin = user.role === 'Admin';
+
+              return (
+                <motion.tr
+                  key={user.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0 h-10 w-10">
+                        <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
+                          {user.name.charAt(0)}
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <div className="text-sm font-medium text-gray-100">
+                          {user.name}
+                        </div>
                       </div>
                     </div>
-                    <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-100">
-                        {user.name}
-                      </div>
-                    </div>
-                  </div>
-                </td>
+                  </td>
 
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-300">{user.email}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-800 text-blue-100">
-                    {user.role}
-                  </span>
-                </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-300">{user.email}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span
+                      className={cn(
+                        'px-2 inline-flex text-xs leading-5 font-semibold rounded-full  ',
+                        isAdmin
+                          ? 'bg-[#6EE7B7]/60 text-gray-300'
+                          : 'bg-blue-800 text-blue-100'
+                      )}
+                    >
+                      {user.role}
+                    </span>
+                  </td>
 
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  <button className="text-indigo-400 hover:text-indigo-300 mr-2">
-                    Modifier
-                  </button>
-                  <button className="text-red-400 hover:text-red-300">
-                    Supprimer
-                  </button>
-                </td>
-              </motion.tr>
-            ))}
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    <button className="text-indigo-400 hover:text-indigo-300 mr-2">
+                      Modifier
+                    </button>
+                    <button className="text-red-400 hover:text-red-300">
+                      Supprimer
+                    </button>
+                  </td>
+                </motion.tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

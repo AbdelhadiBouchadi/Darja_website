@@ -43,13 +43,13 @@ const SIDEBAR_ITEMS = [
     name: 'Partenaires Financiers',
     icon: HandCoins,
     color: '#EC4899',
-    href: '/darja-admin/users',
+    href: '/darja-admin/finance',
   },
   {
     name: 'Partenaires Culturels',
     icon: BookUser,
     color: '#EC4899',
-    href: '/darja-admin/users',
+    href: '/darja-admin/culture',
   },
 ];
 

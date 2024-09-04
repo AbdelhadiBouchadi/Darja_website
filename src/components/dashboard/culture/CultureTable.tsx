@@ -1,64 +1,43 @@
 'use client';
 
-import { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Search } from 'lucide-react';
 
-interface Artist {
+interface Culture {
   id: number;
   name: string;
-  category: string;
   createdAt: string;
 }
 
-const artistData: Artist[] = [
+const cultureData: Culture[] = [
   {
     id: 1,
-    name: 'Eric Clapton',
-    category: 'blues',
+    name: 'moussem',
     createdAt: '2024',
   },
   {
     id: 2,
-    name: 'Eric Clapton',
-    category: 'blues',
+    name: 'institut français',
     createdAt: '2024',
   },
   {
     id: 3,
-    name: 'Eric Clapton',
-    category: 'blues',
+    name: 'goeth',
     createdAt: '2024',
   },
   {
     id: 4,
-    name: 'Eric Clapton',
-    category: 'blues',
+    name: 'union européen',
     createdAt: '2024',
   },
   {
     id: 5,
-    name: 'Eric Clapton',
-    category: 'blues',
+    name: 'état marocain',
     createdAt: '2024',
   },
 ];
 
-const ArtistsTable = () => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  const [filteredArtists, setFilteredArtists] = useState<Artist[]>(artistData);
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const term = e.target.value.toLowerCase();
-    setSearchTerm(term);
-    const filtered = artistData.filter(
-      (post) =>
-        post.name.toLowerCase().includes(term) ||
-        post.category.toLowerCase().includes(term)
-    );
-    setFilteredArtists(filtered);
-  };
-
+const CultureTable = () => {
   return (
     <motion.div
       className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
@@ -67,17 +46,9 @@ const ArtistsTable = () => {
       transition={{ delay: 0.2 }}
     >
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-gray-100">Les Artistes</h2>
-        <div className="relative hidden sm:block">
-          <input
-            type="text"
-            placeholder="Rechercher..."
-            className="bg-gray-700 text-white placeholder-gray-400 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={searchTerm}
-            onChange={handleSearch}
-          />
-          <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
-        </div>
+        <h2 className="text-xl font-semibold text-gray-100">
+          Partenaires culturels
+        </h2>
       </div>
 
       <div className="overflow-x-auto">
@@ -87,11 +58,9 @@ const ArtistsTable = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Nom
               </th>
+
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Catégorie
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                1 rejoint le :
+                Ajouté le :
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
@@ -100,9 +69,9 @@ const ArtistsTable = () => {
           </thead>
 
           <tbody className="divide-y divide-gray-700">
-            {filteredArtists.map((artist) => (
+            {cultureData.map((partner) => (
               <motion.tr
-                key={artist.id}
+                key={partner.id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -111,23 +80,20 @@ const ArtistsTable = () => {
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
                       <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-                        {artist.name.charAt(0)}
+                        {partner.name.charAt(0)}
                       </div>
                     </div>
                     <div className="ml-4">
                       <div className="text-sm font-medium text-gray-100">
-                        {artist.name}
+                        {partner.name}
                       </div>
                     </div>
                   </div>
                 </td>
 
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-300">{artist.category}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-300">
-                    {artist.createdAt}
+                    {partner.createdAt}
                   </div>
                 </td>
 
@@ -148,4 +114,4 @@ const ArtistsTable = () => {
   );
 };
 
-export default ArtistsTable;
+export default CultureTable;
