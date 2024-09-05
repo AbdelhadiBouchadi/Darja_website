@@ -7,13 +7,13 @@ import {
   HouseIcon,
   Menu,
   NewspaperIcon,
-  Settings,
   Users,
 } from 'lucide-react';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { UserButton } from '@clerk/nextjs';
+import { cn } from '@/lib/utils';
 
 const SIDEBAR_ITEMS = [
   {
@@ -64,12 +64,17 @@ const Sidebar = () => {
       }`}
       animate={{ width: isSidebarOpen ? 256 : 80 }}
     >
-      <div className="h-full bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r border-gray-700">
+      <div
+        className={cn(
+          'h-full bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 flex flex-col items-center border-r border-gray-700 transition-all duration-300 ease-in-out',
+          isSidebarOpen ? 'items-start' : 'items-center'
+        )}
+      >
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="p-2 rounded-full hover:bg-gray-700 transition-colors max-w-fit"
+          className="p-4 rounded-full hover:bg-gray-700 transition-colors max-w-fit"
         >
           <Menu size={24} />
         </motion.button>
@@ -100,8 +105,9 @@ const Sidebar = () => {
           ))}
         </nav>
 
-        <div className="flex justify-center items-center cursor-pointer gap-2 p-4">
-          <UserButton showName={isSidebarOpen} />
+        <div className="flex items-center cursor-pointer gap-2 p-4">
+          <UserButton />
+          {isSidebarOpen && <p className="ml-4 whitespace-nowrap">Profile</p>}
         </div>
       </div>
     </motion.div>

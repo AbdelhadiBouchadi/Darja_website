@@ -6,9 +6,11 @@ import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { getAllUsers } from '@/lib/actions/user.actions';
 import Image from 'next/image';
+import { DeleteConfirmation } from './DeleteUserConfirmation';
 
 interface User {
   _id: string;
+  clerkId: string;
   username: string; // Added from your Mongoose model
   email: string;
   photo: string; // Added from your Mongoose model
@@ -57,7 +59,7 @@ const UsersTable = ({ currentUserIsAdmin }: UsersTableProps) => {
     >
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-semibold text-gray-100">Utilisateurs</h2>
-        <div className="relative">
+        <div className="relative hidden md:block">
           <input
             type="text"
             placeholder="Rechercher..."
@@ -83,9 +85,11 @@ const UsersTable = ({ currentUserIsAdmin }: UsersTableProps) => {
                 Role
               </th>
 
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Actions
-              </th>
+              {currentUserIsAdmin && (
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Actions
+                </th>
+              )}
             </tr>
           </thead>
 
@@ -123,11 +127,11 @@ const UsersTable = ({ currentUserIsAdmin }: UsersTableProps) => {
                       className={cn(
                         'px-2 inline-flex text-xs leading-5 font-semibold rounded-full  ',
                         isAdmin
-                          ? 'bg-[#6EE7B7]/60 text-gray-300'
+                          ? 'bg-green-800 text-gray-300'
                           : 'bg-red-800 text-blue-100'
                       )}
                     >
-                      <div className="w-full flex justify-between items-center gap-2">
+                      <div className="w-full p-2 flex justify-center items-center gap-2">
                         <Image
                           src={
                             isAdmin
@@ -146,9 +150,7 @@ const UsersTable = ({ currentUserIsAdmin }: UsersTableProps) => {
 
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                     {currentUserIsAdmin && (
-                      <button className="text-red-400 hover:text-red-300">
-                        Supprimer
-                      </button>
+                      <DeleteConfirmation clerkId={user.clerkId} />
                     )}
                   </td>
                 </motion.tr>
