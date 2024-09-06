@@ -25,6 +25,7 @@
     "@react-email/components": "^0.0.24",
     "@react-email/tailwind": "^0.1.0",
     "@studio-freight/lenis": "^1.0.42",
+    "@uploadthing/react": "^6.7.2",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -38,6 +39,7 @@
     "next-auth": "^4.24.7",
     "next-intl": "^3.17.2",
     "next-themes": "^0.3.0",
+    "query-string": "^9.1.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
@@ -47,6 +49,7 @@
     "svix": "^1.32.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "uploadthing": "^6.13.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {

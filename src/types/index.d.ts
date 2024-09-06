@@ -1,5 +1,17 @@
 /* eslint-disable no-unused-vars */
 
+// ====== URL QUERY PARAMS
+export type UrlQueryParams = {
+  params: string;
+  key: string;
+  value: string | null;
+};
+
+export type RemoveUrlQueryParams = {
+  params: string;
+  keysToRemove: string[];
+};
+
 declare type SearchParamProps = {
   params: { [key: string]: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -26,3 +38,34 @@ export type UpdateUserParams = {
 export type CreatePostCategoryParams = {
   postCategoryName: string;
 };
+
+// POST PARAMS
+export type CreatePostParams = {
+  frenchTitle: string;
+  arabicTitle: string;
+  frenchText: string;
+  arabicText: string;
+  imageSource: string;
+  videoSource: string;
+  postCategoryId: string;
+  url: string;
+};
+
+export type UpdatePostParams = {
+  _id: string;
+  frenchTitle: string;
+  arabicTitle: string;
+  frenchText: string;
+  arabicText: string;
+  imageSource?: string;
+  videoSource?: string;
+  postCategoryId?: string;
+  url?: string;
+};
+
+export type DeletePostParams = {
+  postId: string;
+  path: string;
+};
+
+export type getAllPostsParams = {};

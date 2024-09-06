@@ -49,6 +49,6 @@ const PostSchema = new Schema({
   },
 });
 
-const User = models?.User || model('User', PostSchema);
+const Post = models?.Post || model('Post', PostSchema);
 
-export default User;
+export default Post;
