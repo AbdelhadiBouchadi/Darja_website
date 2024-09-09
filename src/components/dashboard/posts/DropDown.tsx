@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Select,
   SelectContent,
@@ -23,6 +25,8 @@ import {
   createPostCategory,
   getAllPostCategories,
 } from '@/lib/actions/postCategory.actions';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from '@/components/ui/button';
 
 type DropdownProps = {
   value?: string;
@@ -56,23 +60,23 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
       <SelectTrigger className="select-field">
         <SelectValue placeholder="Catégorie" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className=" bg-gray-800 bg-opacity-50 backdrop-blur-md  shadow-lg border ">
         {categories.length > 0 &&
           categories.map((category) => (
             <SelectItem
               key={category._id}
               value={category._id}
-              className="select-item p-regular-14"
+              className="select-item text-gray-100  focus:text-gray-900"
             >
               {category.name}
             </SelectItem>
           ))}
 
         <AlertDialog>
-          <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500">
+          <AlertDialogTrigger className="flex w-full rounded-sm py-3 pl-8 bg-gray-800 bg-opacity-50 backdrop-blur-md  shadow-lg text-gray-100  focus:text-gray-900">
             Ajouter une catégorie
           </AlertDialogTrigger>
-          <AlertDialogContent className="bg-white">
+          <AlertDialogContent className=" bg-gray-800 bg-opacity-50 backdrop-blur-md  shadow-lg border text-gray-500 ">
             <AlertDialogHeader>
               <AlertDialogTitle>Nouvelle Catégorie</AlertDialogTitle>
               <AlertDialogDescription>
@@ -88,6 +92,10 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
               <AlertDialogCancel>Annuler</AlertDialogCancel>
               <AlertDialogAction
                 onClick={() => startTransition(handleAddCategory)}
+                className={cn(
+                  buttonVariants({ variant: 'outline' }),
+                  'bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg   border border-gray-700 '
+                )}
               >
                 Ajouter
               </AlertDialogAction>

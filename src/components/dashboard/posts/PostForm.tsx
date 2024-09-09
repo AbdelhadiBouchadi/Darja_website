@@ -117,7 +117,11 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <Input placeholder="Titre du poste en français" {...field} />
+                  <Input
+                    placeholder="Titre du poste en français"
+                    className="input-field"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -130,7 +134,8 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    placeholder="Titre du poste en arabe"
+                    placeholder="العنوان  باللغة العربية"
+                    className="input-field"
                     {...field}
                     dir="rtl"
                   />
@@ -162,7 +167,11 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <Input placeholder="Source de la video" {...field} />
+                  <Input
+                    placeholder="Source de la video"
+                    className="input-field"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -193,7 +202,7 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
               <FormItem className="w-full">
                 <FormControl className="h-72">
                   <Textarea
-                    placeholder="Texte en arabe"
+                    placeholder="المحتوى باللغة العربية"
                     {...field}
                     className="textarea rounded-2xl"
                     dir="rtl"
@@ -211,7 +220,11 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl>
-                <Input placeholder="Lien util à partager" {...field} />
+                <Input
+                  placeholder="Lien util à partager"
+                  className="input-field"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

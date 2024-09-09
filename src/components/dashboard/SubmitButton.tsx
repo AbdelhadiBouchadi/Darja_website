@@ -12,7 +12,11 @@ const SubmitButton = ({ isLoading, className, children }: ButtonProps) => {
     <Button
       type="submit"
       disabled={isLoading}
-      className={className ?? 'shad-primary-btn w-full'}
+      className={
+        className ??
+        ' w-full p-4 bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl  border border-gray-700 my-4'
+      }
+      variant="outline"
     >
       {isLoading ? (
         <div className="flex items-center gap-4">

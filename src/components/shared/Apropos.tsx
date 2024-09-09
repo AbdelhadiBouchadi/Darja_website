@@ -62,7 +62,7 @@ const Apropos = () => {
                 data-scroll-position="top"
                 data-scroll-offset="0%, -50%"
                 className={cn(
-                  'my-4 md:my-6 ',
+                  'my-4 md:my-6 flex justify-center items-center ',
                   isArabic
                     ? 'arabic-text-regular text-2xl'
                     : 'latin-text-medium text-xl'
@@ -79,7 +79,7 @@ const Apropos = () => {
                 data-scroll-position="top"
                 data-scroll-offset="0%, -50%"
                 className={cn(
-                  'my-4 md:my-6 ',
+                  'my-4 md:my-6 flex justify-center items-center',
                   isArabic
                     ? 'arabic-text-regular text-2xl'
                     : 'latin-text-medium text-xl'
@@ -96,9 +96,9 @@ const Apropos = () => {
                 data-scroll-position="top"
                 data-scroll-offset="0%, -50%"
                 className={cn(
-                  'my-4 md:my-6 ',
+                  'my-4 md:my-6 flex justify-center items-center',
                   isArabic
-                    ? 'arabic-text-regular text-2xl '
+                    ? 'arabic-text-regular text-xl '
                     : 'latin-text-medium text-xl '
                 )}
               >

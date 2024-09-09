@@ -21,15 +21,11 @@ const Users = async () => {
 
   if (!currentUserFromDb) {
     redirect('/darja-admin/sign-in');
-    return null; // Ensure no component renders if the user is not found in the database
+    return null;
   }
 
-  // Pass user stats and additional user data to your UsersPage component
   return (
-    <UsersPage
-      userStats={userStats}
-      isAdmin={currentUserFromDb.isAdmin} // Use the isAdmin from your database
-    />
+    <UsersPage userStats={userStats} isAdmin={currentUserFromDb.isAdmin} />
   );
 };
 

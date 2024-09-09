@@ -6,6 +6,7 @@ import { connectToDatabase } from '../database';
 import Post, { IPost } from '../database/models/post.model';
 import { handleError } from '../utils';
 import { revalidatePath } from 'next/cache';
+import { Types } from 'mongoose';
 
 const getPostCategoryByName = async (name: string) => {
   return PostCategory.findOne({ name: { $regex: name, $options: 'i' } });
@@ -80,7 +81,7 @@ export async function getPostById(postId: string) {
   try {
     await connectToDatabase();
 
-    const post = await Post.findById(postId);
+    const post = await Post.findById(new Types.ObjectId(postId));
 
     if (!post) throw new Error('Error getting post by its Id');
 

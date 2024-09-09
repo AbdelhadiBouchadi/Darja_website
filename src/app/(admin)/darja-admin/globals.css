@@ -91,3 +91,26 @@
   }
 }
 
+@layer utilities {
+  /* SHADCN OVERRIDES */
+  .select-field {
+    @apply w-full bg-gray-800 bg-opacity-50 backdrop-blur-md overflow-hidden shadow-lg border  h-[54px] placeholder:text-gray-500 rounded-xl px-5 py-3 border-none focus-visible:ring-transparent focus:ring-transparent !important;
+  }
+
+  .input-field {
+    @apply bg-gray-800 h-[54px]  placeholder:text-gray-500 rounded-xl  px-4 py-3 border-none  !important;
+  }
+
+  .textarea {
+    @apply bg-gray-800 flex flex-1 placeholder:text-gray-500  px-5 py-3 border-none focus-visible:ring-transparent !important;
+  }
+
+  .button {
+    @apply rounded-xl h-[54px] ;
+  }
+
+  .select-item {
+    @apply py-3 cursor-pointer  focus:bg-gray-800;
+  }
+}
+

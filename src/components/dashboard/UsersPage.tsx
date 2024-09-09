@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/shared/Navbar';
 import StatCard from '@/components/shared/StatsCard';
 import UsersTable from '@/components/dashboard/users/UsersTable';
-import { useState } from 'react';
 
 interface UserStats {
   totalUsers: number | string;
