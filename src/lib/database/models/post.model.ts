@@ -40,7 +40,7 @@ const PostSchema = new Schema({
   },
   postCategory: {
     type: Schema.Types.ObjectId,
-    ref: 'PostCategory',
+    ref: 'postCategory',
   },
   url: { type: String },
   createdAt: {

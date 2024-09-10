@@ -38,7 +38,7 @@ export async function createPost(post: CreatePostParams) {
 }
 
 // Update Post
-export async function updatePost(post: UpdatePostParams) {
+export async function updatePost({ post }: UpdatePostParams) {
   try {
     await connectToDatabase();
 
@@ -50,7 +50,7 @@ export async function updatePost(post: UpdatePostParams) {
 
     const updatedPost = await Post.findByIdAndUpdate(
       post._id,
-      { ...post },
+      { ...post, postCategory: post.postCategoryId },
       { new: true }
     );
 
@@ -63,7 +63,7 @@ export async function updatePost(post: UpdatePostParams) {
 }
 
 // Delete post
-export async function deletePost(postId: DeletePostParams) {
+export async function deletePost(postId: string) {
   try {
     await connectToDatabase();
 
@@ -139,5 +139,26 @@ export async function getRelatedPosts({
   } catch (error) {
     console.error('Error Getting Related Posts', error);
     handleError(error);
+  }
+}
+
+export async function getPostCounts() {
+  try {
+    // Connect to the database
+    await connectToDatabase();
+
+    // Fetch all posts and post categories
+    const posts = await Post.find();
+    const postCategories = await PostCategory.find();
+
+    // Return the total counts for both
+    return {
+      totalPosts: posts.length, // Total posts count
+      totalPostCategories: postCategories.length, // Total post categories count
+    };
+  } catch (error) {
+    console.error('Failed to fetch post statistics:', error);
+    handleError(error);
+    throw new Error('Failed to fetch post statistics');
   }
 }

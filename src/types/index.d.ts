@@ -52,20 +52,21 @@ export type CreatePostParams = {
 };
 
 export type UpdatePostParams = {
-  _id: string;
-  frenchTitle: string;
-  arabicTitle: string;
-  frenchText: string;
-  arabicText: string;
-  imageSource?: string;
-  videoSource?: string;
-  postCategoryId?: string;
-  url?: string;
+  post: {
+    _id: string;
+    frenchTitle: string;
+    arabicTitle: string;
+    frenchText: string;
+    arabicText: string;
+    imageSource: string;
+    videoSource: string;
+    postCategoryId: string;
+    url: string;
+  };
 };
 
 export type DeletePostParams = {
   postId: string;
-  path: string;
 };
 
 export type getAllPostsParams = {};

@@ -48,6 +48,7 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof postFormSchema>) {
+    console.log('Submitted values:', values); // Debugging
     setIsLoading(true);
 
     let uploadedImageUrl = values.imageSource;
@@ -86,14 +87,13 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
 
       try {
         const updatedPost = await updatePost({
-          ...values,
-          imageSource: uploadedImageUrl,
-          _id: postId,
+          post: { ...values, imageSource: uploadedImageUrl, _id: postId },
         });
 
         if (updatedPost) {
+          console.log(updatedPost.postCategoryId);
           form.reset();
-          router.push(`/derive-2024/${updatedPost._id}`);
+          // router.push(`/derive-2024/${updatedPost._id}`);
         }
       } catch (error) {
         console.error('Error updating the post', error);
@@ -153,8 +153,8 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <Dropdown
-                    onChangeHandler={field.onChange}
                     value={field.value}
+                    onChangeHandler={(value) => field.onChange(value)}
                   />
                 </FormControl>
                 <FormMessage />

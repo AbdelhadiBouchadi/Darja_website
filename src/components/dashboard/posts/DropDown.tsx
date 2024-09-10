@@ -30,7 +30,7 @@ import { buttonVariants } from '@/components/ui/button';
 
 type DropdownProps = {
   value?: string;
-  onChangeHandler?: () => void;
+  onChangeHandler?: (value: string) => void;
 };
 
 const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
@@ -38,6 +38,8 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
   const [newCategory, setNewCategory] = useState('');
 
   const handleAddCategory = () => {
+    if (newCategory.trim() === '') return; // Avoid adding empty categories
+
     createPostCategory({
       postCategoryName: newCategory.trim(),
     }).then((category) => {
@@ -56,7 +58,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
   }, []);
 
   return (
-    <Select onValueChange={onChangeHandler} defaultValue={value}>
+    <Select defaultValue={value} onValueChange={onChangeHandler}>
       <SelectTrigger className="select-field">
         <SelectValue placeholder="Catégorie" />
       </SelectTrigger>
@@ -84,6 +86,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
                   type="text"
                   placeholder="Nom de catégorie"
                   className="input-field mt-3"
+                  value={newCategory} // Bind value to state
                   onChange={(e) => setNewCategory(e.target.value)}
                 />
               </AlertDialogDescription>

@@ -15,16 +15,17 @@ import {
 } from '@/components/ui/alert-dialog';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
-import { deleteUser } from '@/lib/actions/user.actions';
+import { deletePost } from '@/lib/actions/post.actions';
+import { DeletePostParams } from '@/types';
 
-export const DeleteConfirmation = ({ clerkId }: { clerkId: string }) => {
+export const DeleteConfirmation = ({ postId }: { postId: string }) => {
   let [isPending, startTransition] = useTransition();
 
   return (
     <AlertDialog>
       <AlertDialogTrigger
         className={cn(
-          'capitalize text-red-500',
+          'capitalize text-red-500 hover:bg-red-500 hover:text-gray-100',
           buttonVariants({ variant: 'ghost' })
         )}
       >
@@ -34,7 +35,7 @@ export const DeleteConfirmation = ({ clerkId }: { clerkId: string }) => {
       <AlertDialogContent className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg border border-gray-700">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-gray-100">
-            Etes-vous sur de vouloir supprimer cet utilisateur?
+            Etes-vous sur de vouloir supprimer ce poste?
           </AlertDialogTitle>
           <AlertDialogDescription className="text-gray-100">
             Cette action est permanente
@@ -47,7 +48,7 @@ export const DeleteConfirmation = ({ clerkId }: { clerkId: string }) => {
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await deleteUser(clerkId);
+                await deletePost(postId);
               })
             }
             className="bg-red-600 hover:bg-red-600/40"

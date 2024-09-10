@@ -1,60 +1,52 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
+import { getAllPosts } from '@/lib/actions/post.actions';
+import { DeleteConfirmation } from './DeleteConfirmation';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 interface Post {
-  id: number;
-  title: string;
-  category: string;
-  createdAt: string;
+  _id: string;
+  frenchTitle: string;
+  arabicTitle: string;
+  frenctText: string;
+  arabicText: string;
+  imageSource?: string;
+  videoSource?: string;
+  postCategory: { _id: string; name: string };
+  url?: string;
+  createdAt: Date;
 }
 
-const postData: Post[] = [
-  {
-    id: 1,
-    title: 'C2 Montréal',
-    category: 'bluesy night',
-    createdAt: '2024',
-  },
-  {
-    id: 2,
-    title: 'C2 Montréal',
-    category: 'bluesy night',
-    createdAt: '2024',
-  },
-  {
-    id: 3,
-    title: 'C2 Montréal',
-    category: 'bluesy night',
-    createdAt: '2024',
-  },
-  {
-    id: 4,
-    title: 'C2 Montréal',
-    category: 'bluesy night',
-    createdAt: '2024',
-  },
-  {
-    id: 5,
-    title: 'C2 Montréal',
-    category: 'bluesy night',
-    createdAt: '2024',
-  },
-];
+interface PostsTableProps {
+  currentUserIsAdmin: boolean;
+}
 
-const PostsTable = () => {
+const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [filteredPosts, setFilteredPosts] = useState<Post[]>(postData);
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const allPosts = await getAllPosts('');
+      setPosts(allPosts);
+      setFilteredPosts(allPosts);
+    }
+
+    fetchPosts();
+  }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
-    const filtered = postData.filter(
+    const filtered = posts.filter(
       (post) =>
-        post.title.toLowerCase().includes(term) ||
-        post.category.toLowerCase().includes(term)
+        post.frenchTitle.toLowerCase().includes(term) || // Fixed typo from 'title' to 'frenchTitle'
+        post.postCategory.name.toLowerCase().includes(term)
     );
     setFilteredPosts(filtered);
   };
@@ -93,16 +85,18 @@ const PostsTable = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Crée le :
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Actions
-              </th>
+              {currentUserIsAdmin && (
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Actions
+                </th>
+              )}
             </tr>
           </thead>
 
           <tbody className="divide-y divide-gray-700">
             {filteredPosts.map((post) => (
               <motion.tr
-                key={post.id}
+                key={post._id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -111,32 +105,42 @@ const PostsTable = () => {
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
                       <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-                        {post.title.charAt(0)}
+                        {post.frenchTitle.charAt(0)}
                       </div>
                     </div>
                     <div className="ml-4">
                       <div className="text-sm font-medium text-gray-100">
-                        {post.title}
+                        {post.frenchTitle}
                       </div>
                     </div>
                   </div>
                 </td>
 
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-300">{post.category}</div>
+                  <div className="text-sm text-gray-300">
+                    {post.postCategory.name}
+                  </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-300">{post.createdAt}</div>
+                  <div className="text-sm text-gray-300">
+                    {new Date(post.createdAt).toLocaleDateString()}
+                  </div>
                 </td>
 
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  <button className="text-indigo-400 hover:text-indigo-300 mr-2">
-                    Modifier
-                  </button>
-                  <button className="text-red-400 hover:text-red-300">
-                    Supprimer
-                  </button>
-                </td>
+                {currentUserIsAdmin && (
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    <Button
+                      asChild
+                      className=" bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-md  border border-gray-700 my-4 mx-2"
+                      variant="outline"
+                    >
+                      <Link href={`/darja-admin/posts/${post._id}/update`}>
+                        Modifier
+                      </Link>
+                    </Button>
+                    <DeleteConfirmation postId={post._id} />
+                  </td>
+                )}
               </motion.tr>
             ))}
           </tbody>
