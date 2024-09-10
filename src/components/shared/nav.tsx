@@ -14,10 +14,10 @@ interface NavProps {
 const Nav = ({ setIsActive }: NavProps) => {
   const t = useTranslations('Layout');
   const navKeys = [
-    'home',
-    'darja',
+    'about',
     'derive',
     'previous',
+    'darja',
     'community',
     'contact',
   ];
@@ -28,7 +28,7 @@ const Nav = ({ setIsActive }: NavProps) => {
     <div
       className={cn(
         'flex justify-center flex-col w-full h-full px-10 pt-[100px] pb-[50px] z-[999]',
-        isArabic ? 'arabic-title-bold' : 'latin-title-bold'
+        isArabic ? 'arabic-subtitle-bold' : 'latin-subtitle-bold'
       )}
     >
       <div className="flex gap-2 md:gap-4 lg:gap-6 2xl:gap-8 flex-col">

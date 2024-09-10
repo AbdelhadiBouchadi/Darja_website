@@ -13,7 +13,6 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
-import { GlobeIcon } from 'lucide-react';
 
 export default function LocaleSwitcher() {
   const router = useRouter();
@@ -39,6 +38,7 @@ export default function LocaleSwitcher() {
       <DropdownMenuTrigger asChild className="bg-transparent">
         <Button
           type="button"
+          variant="ghost"
           size="icon"
           className="group w-full px-2 transition-all duration-300"
         >

@@ -89,8 +89,7 @@ export default function Preloader({ pageName }: PreloaderProps) {
             <span
               className={cn(
                 'block w-[10px] h-[10px] bg-white rounded-[50%] mx-[10px] ',
-                pageName ? 'arabic-title-bold' : 'latin-title-bold',
-                isArabic ? 'arabic-title-bold' : 'latin-title-bold'
+                pageName ? '' : 'latin-title-bold'
               )}
               dir={pageName ? '' : 'ltr'}
             ></span>

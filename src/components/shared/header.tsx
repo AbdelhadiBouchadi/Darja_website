@@ -84,7 +84,7 @@ function Button({
         <motion.div
           className={cn(
             'relative w-full h-full',
-            isArabic ? 'arabic-title-bold' : 'latin-title-bold'
+            isArabic ? 'arabic-subtitle-bold' : 'latin-subtitle-bold'
           )}
           animate={{ top: isActive ? '-100%' : '0%' }}
           transition={{

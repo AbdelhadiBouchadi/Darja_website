@@ -14,7 +14,7 @@ export const ImagesSlider = ({
   direction = 'up',
 }: {
   images: string[];
-  children: React.ReactNode;
+  children?: React.ReactNode;
   overlay?: React.ReactNode;
   overlayClassName?: string;
   className?: string;

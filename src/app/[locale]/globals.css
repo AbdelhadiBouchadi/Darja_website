@@ -113,102 +113,102 @@
   }
   @font-face {
     font-family: 'Rowdies-Light';
-    src: url('/fonts/Rowdies-Light.ttf') format('ttf');
+    src: url('/fonts/Rowdies-Light.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Rowdies-Regular', sans-serif;
-    src: url('/fonts/Rowdies-Regular.ttf') format('ttf');
+    font-family: 'Rowdies-Regular';
+    src: url('/fonts/Rowdies-Regular.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: 'FedraSerifMultiscript Bold', sans-serif ;
-    src: url('/fonts/FedraSerifMultiscript Bold.otf') format('otf');
+    font-family: 'FedraSerifMultiscript Bold';
+    src: url('/fonts/FedraSerifMultiscript Bold.otf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'FedraSerifMultiscript Book', sans-serif ;
-    src: url('/fonts/FedraSerifMultiscript Book.otf') format('otf');
+    font-family: 'FedraSerifMultiscript Book';
+    src: url('/fonts/FedraSerifMultiscript Book.otf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: 'Poppins-Bold', sans-serif ;
-    src: url('/fonts/Poppins-Bold.ttf') format('ttf');
+    font-family: 'Poppins-Bold';
+    src: url('/fonts/Poppins-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Poppins-Light', sans-serif ;
-    src: url('/fonts/Poppins-Light.ttf') format('ttf');
+    font-family: 'Poppins-Light';
+    src: url('/fonts/Poppins-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Poppins-Regular', sans-serif ;
-    src: url('/fonts/Poppins-Regular.ttf') format('ttf');
+    font-family: 'Poppins-Regular';
+    src: url('/fonts/Poppins-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Poppins-SemiBold', sans-serif ;
-    src: url('/fonts/Poppins-SemiBold.ttf') format('ttf');
+    font-family: 'Poppins-SemiBold';
+    src: url('/fonts/Poppins-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: 'EBGaramond-Bold', sans-serif ;
-    src: url('/fonts/EBGaramond-Bold.ttf') format('ttf');
+    font-family: 'EBGaramond-Bold';
+    src: url('/fonts/EBGaramond-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'EBGaramond-Medium', sans-serif ;
-    src: url('/fonts/EBGaramond-Medium.ttf') format('ttf');
+    font-family: 'EBGaramond-Medium';
+    src: url('/fonts/EBGaramond-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'EBGaramond-Regular', sans-serif ;
-    src: url('/fonts/EBGaramond-Regular.ttf') format('ttf');
+    font-family: 'EBGaramond-Regular';
+    src: url('/fonts/EBGaramond-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'EBGaramond-SemiBold', sans-serif ;
-    src: url('/fonts/EBGaramond-SemiBold.ttf') format('ttf');
+    font-family: 'EBGaramond-SemiBold';
+    src: url('/fonts/EBGaramond-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: 'AdobeArabic-Bold', sans-serif ;
-    src: url('/fonts/AdobeArabic-Bold.otf') format('otf');
+    font-family: 'AdobeArabic-Bold';
+    src: url('/fonts/AdobeArabic-Bold.otf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'AdobeArabic-Regular', sans-serif ;
-    src: url('/fonts/dobeArabic-Regular.otf') format('otf');
+    font-family: 'AdobeArabic-Regular';
+    src: url('/fonts/dobeArabic-Regular.otf') format('trueype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
