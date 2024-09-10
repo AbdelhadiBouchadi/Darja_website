@@ -43,7 +43,7 @@ export default function LocaleSwitcher() {
           className="group w-full px-2 transition-all duration-300"
         >
           {/* <GlobeIcon className="size-8 text-[#00b0db] group-hover:text-white " /> */}
-          <p className="latin-title-bold font-[800] text-xl text-[#00b0db] group-hover:text-white ">
+          <p className="latin-title-bold font-[800] text-xl text-[#00b0db]">
             {' '}
             FR / AR
           </p>
