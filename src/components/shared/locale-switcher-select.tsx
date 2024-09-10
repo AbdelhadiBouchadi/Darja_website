@@ -39,11 +39,14 @@ export default function LocaleSwitcher() {
       <DropdownMenuTrigger asChild className="bg-transparent">
         <Button
           type="button"
-          variant="default"
           size="icon"
-          className="group transition-all duration-300"
+          className="group w-full px-2 transition-all duration-300"
         >
-          <GlobeIcon className="size-8 text-[#00b0db] group-hover:text-white " />
+          {/* <GlobeIcon className="size-8 text-[#00b0db] group-hover:text-white " /> */}
+          <p className="latin-title-bold font-[800] text-xl text-[#00b0db] group-hover:text-white ">
+            {' '}
+            FR / AR
+          </p>
         </Button>
       </DropdownMenuTrigger>
 

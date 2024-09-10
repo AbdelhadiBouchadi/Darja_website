@@ -83,11 +83,17 @@ export default function Preloader({ pageName }: PreloaderProps) {
             initial="initial"
             animate="enter"
             className={cn(
-              'flex text-white text-[42px] items-center absolute z-[1] ',
-              isArabic ? 'arabic-title-bold' : 'latin-title-bold'
+              'flex font-bold text-white text-[42px] items-center absolute z-[1] '
             )}
           >
-            <span className="block w-[10px] h-[10px] bg-white rounded-[50%] mx-[10px] "></span>
+            <span
+              className={cn(
+                'block w-[10px] h-[10px] bg-white rounded-[50%] mx-[10px] ',
+                pageName ? 'arabic-title-bold' : 'latin-title-bold',
+                isArabic ? 'arabic-title-bold' : 'latin-title-bold'
+              )}
+              dir={pageName ? '' : 'ltr'}
+            ></span>
             {pageName ? pageName : words[index]}
           </motion.p>
           <svg className="absolute top-0 w-full h-[calc(100%+300px)] ">

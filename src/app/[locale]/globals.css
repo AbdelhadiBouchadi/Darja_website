@@ -105,21 +105,21 @@
   }
 
   @font-face {
-    font-family: 'Rowdies-Bold', sans-serif;
+    font-family: 'Rowdies-Bold';
     src: url('/fonts/Rowdies-Bold.ttf') format('ttf');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Rowdies-Light', sans-serif;
+    font-family: 'Rowdies-Light';
     src: url('/fonts/Rowdies-Light.ttf') format('ttf');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Rowdies-Regular', sans-serif;
+    font-family: 'Rowdies-Regular';
     src: url('/fonts/Rowdies-Regular.ttf') format('ttf');
     font-weight: 600;
     font-style: normal;
@@ -142,28 +142,28 @@
   }
 
   @font-face {
-    font-family: 'Poppins-Bold', sans-serif ;
+    font-family: 'Poppins-Bold' ;
     src: url('/fonts/Poppins-Bold.ttf') format('ttf');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Poppins-Light', sans-serif ;
+    font-family: 'Poppins-Light' ;
     src: url('/fonts/Poppins-Light.ttf') format('ttf');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Poppins-Regular', sans-serif ;
+    font-family: 'Poppins-Regular' ;
     src: url('/fonts/Poppins-Regular.ttf') format('ttf');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
   @font-face {
-    font-family: 'Poppins-SemiBold', sans-serif ;
+    font-family: 'Poppins-SemiBold' ;
     src: url('/fonts/Poppins-SemiBold.ttf') format('ttf');
     font-weight: 600;
     font-style: normal;
@@ -225,10 +225,10 @@
   }
 
   .arabic-title-bold {
-    font-family: 'FedraSerifMultiscript Bold';
+    font-family: 'FedraSerifMultiscript Bold', sans-serif;
   }
   .arabic-title-regular {
-    font-family: 'FedraSerifMultiscript Book';
+    font-family: 'FedraSerifMultiscript Book', sans-serif;
   }
 
   .latin-subtitle-bold {
@@ -245,30 +245,30 @@
   }
 
   .arabic-subtitle-bold {
-    font-family: 'FedraSerifMultiscript Bold';
+    font-family: 'FedraSerifMultiscript Bold',sans-serif;
   }
   .arabic-subtitle-regular {
-    font-family: 'FedraSerifMultiscript Book';
+    font-family: 'FedraSerifMultiscript Book', sans-serif;
   }
 
   .latin-text-bold {
-    font-family: 'EBGaramond-Bold';
+    font-family: 'EBGaramond-Bold', sans-serif;
   }
   .latin-text-medium {
-    font-family: 'EBGaramond-Medium';
+    font-family: 'EBGaramond-Medium', sans-serif;
   }
   .latin-text-regular {
-    font-family: 'EBGaramond-Regular';
+    font-family: 'EBGaramond-Regular', sans-serif;
   }
   .latin-text-semibold {
-    font-family: 'EBGaramond-Semibold';
+    font-family: 'EBGaramond-Semibold', sans-serif;
   }
 
   .arabic-text-bold {
-    font-family: 'AdobeArabic-Bold' ;
+    font-family: 'AdobeArabic-Bold', sans-serif ;
   }
   .arabic-text-regular {
-    font-family: 'AdobeArabic-Regular' ;
+    font-family: 'AdobeArabic-Regular', sans-serif ;
   }
 
 

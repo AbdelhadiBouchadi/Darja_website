@@ -24,11 +24,13 @@ const Header = () => {
         <Link href={`/${locale}`}>
           <TextReveal
             className={cn(
-              'font-semibold tracking-widest text-2xl',
-              isArabic ? 'arabic-title-bold text-3xl' : 'latin-title-bold'
+              'font-[800]  text-3xl',
+              isArabic
+                ? 'arabic-title-bold'
+                : 'tracking-widest latin-title-bold'
             )}
           >
-            {t('Config.logo').toString()}
+            {t('Config.logo')}
           </TextReveal>
         </Link>
       </Transition>
