@@ -57,7 +57,7 @@ const Contact = () => {
             'border-b border-gray-500 pb-24 mx-16 xl:mx-[200px] relative'
           )}
         >
-          <h2 className="text-4xl md:text-[5vw] m-0 md:my-6 font-light text-[#696443] ">
+          <h2 className="text-4xl md:text-[5vw] m-0 md:my-6 font-light text-[#ee7103] ">
             {' '}
             {t('heading')}{' '}
           </h2>
@@ -70,9 +70,9 @@ const Contact = () => {
           >
             <Link href={`/${locale}/contact`}>
               <RoundedBtn
-                backgroundColor={'#696443'}
+                backgroundColor={'#00b0db'}
                 className={cn(
-                  'roundedBtnSize bg-[#00b0db] text-white rounded-full absolute flex items-center justify-center'
+                  'roundedBtnSize bg-[#ee7103] text-white rounded-full absolute flex items-center justify-center'
                 )}
               >
                 <p
@@ -100,7 +100,7 @@ const Contact = () => {
           >
             <path
               d="M8 8.5C8.27614 8.5 8.5 8.27614 8.5 8L8.5 3.5C8.5 3.22386 8.27614 3 8 3C7.72386 3 7.5 3.22386 7.5 3.5V7.5H3.5C3.22386 7.5 3 7.72386 3 8C3 8.27614 3.22386 8.5 3.5 8.5L8 8.5ZM0.646447 1.35355L7.64645 8.35355L8.35355 7.64645L1.35355 0.646447L0.646447 1.35355Z"
-              fill="#696443"
+              fill="#ee7103"
             />
           </motion.svg>
         </div>
@@ -115,12 +115,12 @@ const Contact = () => {
             ref={btn1Ref}
           >
             <RoundedBtn
-              className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#696443] before:bg-[#00b0db] after:bg-[#00b0db] px-16 py-4 text-base before:-top-1/2 hover:text-background"
+              className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#ee7103] before:bg-[#ee7103] after:bg-[#ee7103] px-16 py-4 text-base before:-top-1/2 hover:text-background"
               style={{ width: maxBtnWidth || 'auto' }}
             >
               <p
                 className={cn(
-                  'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg latin-title-bold text-[#696443] '
+                  'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg latin-title-bold text-[#ee7103] '
                 )}
                 dir="ltr"
               >
@@ -130,12 +130,12 @@ const Contact = () => {
           </Link>
           <Link href="tel:+212522274448" ref={btn2Ref}>
             <RoundedBtn
-              className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#696443] before:bg-[#00b0db] after:bg-[#00b0db] px-16 py-4 text-base before:-top-1/2 hover:text-white"
+              className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#ee7103] before:bg-[#ee7103] after:bg-[#ee7103] px-16 py-4 text-base before:-top-1/2 hover:text-white"
               style={{ width: maxBtnWidth || 'auto' }}
             >
               <p
                 className={cn(
-                  'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg latin-title-bold text-[#696443] '
+                  'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg latin-title-bold text-[#ee7103] '
                 )}
                 dir="ltr"
               >
