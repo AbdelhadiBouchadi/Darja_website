@@ -10,6 +10,8 @@ import Link from 'next/link';
 import { Headphones } from 'lucide-react';
 
 const ArtistsPage = () => {
+  const isAdmin = false;
+
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Navbar title="Gérer les artistes" />
@@ -30,7 +32,7 @@ const ArtistsPage = () => {
           />
         </motion.div>
 
-        <PostsTable />
+        <PostsTable currentUserIsAdmin={isAdmin} />
 
         <Button
           asChild
