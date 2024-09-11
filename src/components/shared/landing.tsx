@@ -17,6 +17,7 @@ const Landing = () => {
     '/images/slider4.jpg',
     '/images/slider5.jpg',
     '/images/slider6.png',
+    '/images/slider7.jpg',
   ];
 
   return (

@@ -59,7 +59,10 @@ const DesktopHeader = () => {
                 <div
                   className={cn(
                     'text-xl  flex items-center justify-center',
-                    isScrolled ? 'text-[#141516] ' : 'text-background'
+                    isScrolled ? 'text-[#141516] ' : 'text-background',
+                    isArabic
+                      ? 'arabic-subtitle-regular'
+                      : 'latin-subtitle-regular'
                   )}
                 >
                   <span>{t(`Navigation.${key}.title`)}</span>
