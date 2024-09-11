@@ -114,7 +114,7 @@ function Button({
             <TextReveal
               className={cn('capitalize font-bold', isArabic ? 'text-xl' : '')}
             >
-              {t('Menu.close').toString()}
+              {t('Menu.close')}
             </TextReveal>
           </motion.div>
         </motion.div>

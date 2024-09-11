@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import LocaleSwitcher from './locale-switcher-select';
+import DesktopNav from './DesktopNav';
 
 const DesktopHeader = () => {
   const t = useTranslations('Layout');
@@ -34,9 +35,9 @@ const DesktopHeader = () => {
   return (
     <div
       className={cn(
-        'w-full justify-between hidden md:flex md:justify-between md:items-center py-2 px-4 fixed top-0 z-40 transition-all duration-300 ',
+        'w-full justify-between hidden md:flex md:justify-between md:items-center py-2 px-4 fixed top-0 z-40 transition-all duration-300',
         isScrolled
-          ? 'bg-gray-200/60 backdrop-blur-sm backdrop-filter '
+          ? 'bg-gray-200/60 backdrop-blur-sm backdrop-filter shadow-md '
           : 'bg-transparent bg-opacity-60'
       )}
     >
@@ -48,30 +49,7 @@ const DesktopHeader = () => {
           alt="logo_image"
         />
       </Link>
-      <div className="flex gap-2 md:gap-4 lg:gap-6 2xl:gap-8">
-        {navKeys.map((key, i) => {
-          return (
-            <div key={`b_${i}`} className="flex ">
-              <Link
-                href={`/${locale}${t(`Navigation.${key}.href`)}`}
-                className="flex flex-wrap overflow-hidden"
-              >
-                <div
-                  className={cn(
-                    'text-xl  flex items-center justify-center',
-                    isScrolled ? 'text-[#141516] ' : 'text-background',
-                    isArabic
-                      ? 'arabic-subtitle-regular'
-                      : 'latin-subtitle-regular'
-                  )}
-                >
-                  <span>{t(`Navigation.${key}.title`)}</span>
-                </div>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
+      <DesktopNav />
       <div className=" hover:text-gray-600/80 text-gray-950/40">
         <LocaleSwitcher />
       </div>
