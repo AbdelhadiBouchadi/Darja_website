@@ -51,7 +51,7 @@ const MainPage = () => {
         transition={{ duration: 1 }}
         className="w-full flex flex-col gap-8"
       >
-        <PostsTable />
+        <PostsTable currentUserIsAdmin={false} />
         <ArtistsTable />
       </motion.div>
     </main>
