@@ -56,6 +56,26 @@ const Description = () => {
         >
           {t('Hero.subtitle')}
         </motion.p>
+        <motion.p
+          variants={descOpacity}
+          animate={isInView ? 'open' : 'closed'}
+          className={cn(
+            'text-lg w-[80%] font-light m-0 ',
+            isArabic ? 'arabic-subtitle-regular' : 'latin-text-regular'
+          )}
+        >
+          {t('Hero.subtitle2')}
+        </motion.p>
+        <motion.p
+          variants={descOpacity}
+          animate={isInView ? 'open' : 'closed'}
+          className={cn(
+            'text-lg w-[80%] font-light m-0 ',
+            isArabic ? 'arabic-subtitle-regular' : 'latin-text-regular'
+          )}
+        >
+          {t('Hero.subtitle3')}
+        </motion.p>
         <Link href={`/${locale}/espace-darja`}>
           <div data-scroll data-scroll-speed={0.1}>
             <RoundedBtn

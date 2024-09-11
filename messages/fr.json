@@ -56,8 +56,10 @@
     "HomePage": {
       "Hero": {
         "title": "Bienvenue à la Dérive Casablancaise 2024",
-        "description": "Darja c’est un lieu, niché au sixième étage du 113 de l’avenue Mers Sultan. Darja, traduisez < la marche > (d’escalier !) en français, c’est justement celle qui manquait à la ville blanche pour qu’enfin les danseurs et chorégraphes du monde entier puissent avoir accès à un espace dédié corps et âmes à la danse contemporaine.",
-        "subtitle": "Expérimenter, élaborer, questionner, construire et inventer, c’est ce lieu de création que l’Espace Darja souhaite offrir aux résidents qu’il accueille. Un lieu où l’acte artistique fait preuve d’ouverture et de générosité ; un lieu qui plonge dans la ville blanche, qui la frôle et s’en extrait, pour laisser chaque artiste choisir quelle place il lui laissera. Un territoire de rencontres, aussi, avec et autour de la danse, entre ceux qui la pratiquent et ceux qui la découvrent.",
+        "description": "Dérive casablancaise est un temps de partage de créations et de débats. Sa première édition en 2022 a rassemblé des artistes (écritures contemporaines et arts vivants) et des acteurs culturels du pourtour méditerranéen.",
+        "subtitle": "Ce projet, initié et organisé depuis 2018 par le Théâtre des 13 Vents - Centre dramatique national de Montpellier, France, sous forme de Rencontres des Arts de la Scène en Méditerranée puis d’une Biennale des arts de la scène en Méditerranée, constitue un véritable moment de rassemblement et de partage.",
+        "subtitle2": "En faisant écho à cette initiative en 2022 à Casablanca, Dérive casablancaise a créé, à partir de Casablanca et pendant 5 jours, un espace où des questions artistiques et politiques appartenant à la création en Méditerranée ont été réfléchies entre artistes, tandis que des œuvres de théâtre, danse, musique, cinéma et poésie ont été partagées avec le public dans différents lieux de la ville.",
+        "subtitle3": "Une édition qui s’est révélée être nécessaire pour continuer à (ré)agir face à une réalité et une actualité toujours plus (o)ppressantes et face à une temporalité des systèmes qui altère insidieusement les moments importants à la création et au travail artistique en imposant un rythme de plus en plus court et précipité.",
         "about": "A propos"
       },
       "Work": {

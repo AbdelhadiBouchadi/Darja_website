@@ -11,10 +11,12 @@ const Landing = () => {
   const isArabic = locale === 'ar';
 
   const images = [
-    '/images/image-slider4.png',
-    '/images/slider-1.png',
-    '/images/slider-2.png',
-    '/images/slider-3.png',
+    '/images/slider1.jpg',
+    '/images/slider2.jpg',
+    '/images/slider3.jpg',
+    '/images/slider4.jpg',
+    '/images/slider5.jpg',
+    '/images/slider6.png',
   ];
 
   return (

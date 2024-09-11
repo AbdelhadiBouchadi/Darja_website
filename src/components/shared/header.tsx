@@ -10,6 +10,7 @@ import { Transition } from '../ui/transitions';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import LocaleSwitcher from './locale-switcher-select';
+import Image from 'next/image';
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -20,18 +21,14 @@ const Header = () => {
 
   return (
     <>
-      <Transition className="absolute md:top-12 top-4 md:left-8 left-6 z-30 hover:text-[#00b0db]/60 text-[#00b0db] ">
+      <Transition className="absolute md:top-8 top-4 md:left-8 left-6 z-30 hover:text-[#00b0db]/60 text-[#00b0db] flex md:hidden ">
         <Link href={`/${locale}`}>
-          <TextReveal
-            className={cn(
-              'font-[800]  text-3xl',
-              isArabic
-                ? 'arabic-title-bold'
-                : 'tracking-widest latin-title-bold'
-            )}
-          >
-            {t('Config.logo')}
-          </TextReveal>
+          <Image
+            src="/assets/derive-logo.png"
+            width={60}
+            height={60}
+            alt="logo_image"
+          />
         </Link>
       </Transition>
 
@@ -42,7 +39,10 @@ const Header = () => {
         animate={{
           height: isActive ? (isMobile ? '100%' : '94%') : '0',
         }}
-        className="fixed top-0 md:top-12 md:right-12 right-0 z-20"
+        className={cn(
+          'fixed md:right-12 right-0 z-20 flex md:hidden',
+          isActive ? 'top-0' : 'top-6'
+        )}
       >
         <motion.div
           className="md:w-[480px] w-full h-full bg-[#00b0db] relative rounded-3xl"
@@ -119,7 +119,7 @@ function Button({
           </motion.div>
         </motion.div>
       </div>
-      <div className="fixed md:top-12 top-4 md:right-48 right-32 z-30 hover:text-gray-600/80 text-gray-950/40">
+      <div className="fixed  top-10 right-32 z-30 hover:text-gray-600/80 text-gray-950/40">
         <LocaleSwitcher />
       </div>
     </>
