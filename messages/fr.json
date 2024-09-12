@@ -18,8 +18,8 @@
           "href": "/previous"
         },
         "darja": {
-          "title": "L'espace Darja",
-          "href": "/espace-darja"
+          "title": "AR2D",
+          "href": "/ar2d"
         },
         "community": {
           "title": "Communauté",
@@ -108,7 +108,7 @@
     },
     "AboutPage": {
       "Section": {
-        "title": "Espace Darja",
+        "title": "A propos de AR2D",
         "description": "Darja apporte un profond élan d’espoir à tous ceux qui traversent son espace (enfants des rues, artistes professionnels et amateurs, femmes au foyer…) Les moments passés à Darja sont magiques, rares, intenses.",
         "suspense": "Veuillez continuer la lecture"
       },
