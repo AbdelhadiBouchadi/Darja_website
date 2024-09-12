@@ -7,15 +7,11 @@ import { Toaster } from 'react-hot-toast';
 import { Providers } from '../../components/shared/providers';
 import Header from '../../components/shared/header';
 import DesktopHeader from '@/components/shared/DesktopHeader';
+import { constructMetadata } from '@/lib/utils';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Dérive Casablancaise',
-  description:
-    "Rejoignez-nous à Darja, le festival de musique ultime célébrant la diversité des rythmes et des cultures. Vivez une fusion de sons traditionnels et contemporains, avec des performances d'artistes de renommée mondiale dans une ambiance inoubliable. Découvrez la magie de la musique à Darja !",
-};
-
+export const metadata = constructMetadata();
 export default async function RootLayout({
   children,
   params: { locale },

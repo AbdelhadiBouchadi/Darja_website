@@ -2,6 +2,7 @@ import { RemoveUrlQueryParams, UrlQueryParams } from '@/types';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import qs from 'query-string';
+import { Metadata } from 'next';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -239,4 +240,28 @@ export function removeKeysFromQuery({
     },
     { skipNull: true }
   );
+}
+
+export function constructMetadata({
+  title = 'Dérive Casablancaise',
+  description = "Rejoignez-nous à Darja, le festival de musique ultime célébrant la diversité des rythmes et des cultures. Vivez une fusion de sons traditionnels et contemporains, avec des performances d'artistes de renommée mondiale dans une ambiance inoubliable. Découvrez la magie de la musique à Darja !",
+  image = '/thumbnail.png',
+  icons = '/favicon.ico',
+}: {
+  title?: string;
+  description?: string;
+  image?: string;
+  icons?: string;
+} = {}): Metadata {
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: image }],
+    },
+    icons,
+    metadataBase: new URL('https://derivecasablancaise.vercel.app/'),
+  };
 }
