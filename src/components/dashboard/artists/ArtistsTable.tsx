@@ -1,60 +1,53 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
+import { getAllPosts } from '@/lib/actions/post.actions';
+import { DeleteConfirmation } from './DeleteConfirmation';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { getAllArtists } from '@/lib/actions/artists.actions';
 
 interface Artist {
-  id: number;
-  name: string;
-  category: string;
-  createdAt: string;
+  _id: string;
+  frenchName: string;
+  arabicName: string;
+  frenctText: string;
+  arabicText: string;
+  imageSource?: string;
+  videoSource?: string;
+  artistCategory: { _id: string; name: string };
+  url?: string;
+  createdAt: Date;
 }
 
-const artistData: Artist[] = [
-  {
-    id: 1,
-    name: 'Eric Clapton',
-    category: 'blues',
-    createdAt: '2024',
-  },
-  {
-    id: 2,
-    name: 'Eric Clapton',
-    category: 'blues',
-    createdAt: '2024',
-  },
-  {
-    id: 3,
-    name: 'Eric Clapton',
-    category: 'blues',
-    createdAt: '2024',
-  },
-  {
-    id: 4,
-    name: 'Eric Clapton',
-    category: 'blues',
-    createdAt: '2024',
-  },
-  {
-    id: 5,
-    name: 'Eric Clapton',
-    category: 'blues',
-    createdAt: '2024',
-  },
-];
+interface ArtistsTableProps {
+  currentUserIsAdmin: boolean;
+}
 
-const ArtistsTable = () => {
+const ArtistsTable = ({ currentUserIsAdmin }: ArtistsTableProps) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [filteredArtists, setFilteredArtists] = useState<Artist[]>(artistData);
+  const [filteredArtists, setFilteredArtists] = useState<Artist[]>([]);
+  const [artists, setArtists] = useState<Artist[]>([]);
+
+  useEffect(() => {
+    async function fetchArtists() {
+      const allArtists = await getAllArtists('');
+      setArtists(allArtists);
+      setFilteredArtists(allArtists);
+    }
+
+    fetchArtists();
+  }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
-    const filtered = artistData.filter(
-      (post) =>
-        post.name.toLowerCase().includes(term) ||
-        post.category.toLowerCase().includes(term)
+    const filtered = artists.filter(
+      (artist) =>
+        artist.frenchName.toLowerCase().includes(term) || // Fixed typo from 'title' to 'frenchTitle'
+        artist.artistCategory.name.toLowerCase().includes(term)
     );
     setFilteredArtists(filtered);
   };
@@ -91,18 +84,20 @@ const ArtistsTable = () => {
                 Catégorie
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                1 rejoint le :
+                Crée le :
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Actions
-              </th>
+              {currentUserIsAdmin && (
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  Actions
+                </th>
+              )}
             </tr>
           </thead>
 
           <tbody className="divide-y divide-gray-700">
             {filteredArtists.map((artist) => (
               <motion.tr
-                key={artist.id}
+                key={artist._id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -111,34 +106,42 @@ const ArtistsTable = () => {
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
                       <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-                        {artist.name.charAt(0)}
+                        {artist.frenchName.charAt(0)}
                       </div>
                     </div>
                     <div className="ml-4">
                       <div className="text-sm font-medium text-gray-100">
-                        {artist.name}
+                        {artist.frenchName}
                       </div>
                     </div>
                   </div>
                 </td>
 
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-300">{artist.category}</div>
+                  <div className="text-sm text-gray-300">
+                    {artist.artistCategory.name}
+                  </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-300">
-                    {artist.createdAt}
+                    {new Date(artist.createdAt).toLocaleDateString()}
                   </div>
                 </td>
 
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  <button className="text-indigo-400 hover:text-indigo-300 mr-2">
-                    Modifier
-                  </button>
-                  <button className="text-red-400 hover:text-red-300">
-                    Supprimer
-                  </button>
-                </td>
+                {currentUserIsAdmin && (
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    <Button
+                      asChild
+                      className=" bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-md  border border-gray-700 my-4 mx-2"
+                      variant="outline"
+                    >
+                      <Link href={`/darja-admin/artists/${artist._id}/update`}>
+                        Modifier
+                      </Link>
+                    </Button>
+                    <DeleteConfirmation artistId={artist._id} />
+                  </td>
+                )}
               </motion.tr>
             ))}
           </tbody>

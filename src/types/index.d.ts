@@ -39,6 +39,10 @@ export type CreatePostCategoryParams = {
   postCategoryName: string;
 };
 
+export type CreateArtistCategoryParams = {
+  artistCategoryName: string;
+};
+
 // POST PARAMS
 export type CreatePostParams = {
   frenchTitle: string;
@@ -69,4 +73,32 @@ export type DeletePostParams = {
   postId: string;
 };
 
-export type getAllPostsParams = {};
+// Artist Params
+export type CreateArtistParams = {
+  frenchName: string;
+  arabicName: string;
+  frenchText: string;
+  arabicText: string;
+  imageSource: string;
+  videoSource: string;
+  artistCategoryId: string;
+  url: string;
+};
+
+export type UpdateArtistParams = {
+  artist: {
+    _id: string;
+    frenchName: string;
+    arabicName: string;
+    frenchText: string;
+    arabicText: string;
+    imageSource: string;
+    videoSource: string;
+    artistCategoryId: string;
+    url: string;
+  };
+};
+
+export type DeleteArtistParams = {
+  artistId: string;
+};

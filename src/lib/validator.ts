@@ -18,3 +18,22 @@ export const postFormSchema = z.object({
   postCategoryId: z.string(),
   url: z.string().url(),
 });
+
+export const artistFormSchema = z.object({
+  frenchName: z
+    .string()
+    .min(3, 'Le nom doit consister de 3 caractères ou plus.'),
+  arabicName: z
+    .string()
+    .min(3, 'Le nom doit consister de 3 caractères ou plus.'),
+  frenchText: z
+    .string()
+    .min(3, 'Le texte doit consister de 3 caractères ou plus.'),
+  arabicText: z
+    .string()
+    .min(3, 'Le texte doit consister de 3 caractères ou plus.'),
+  imageSource: z.string(),
+  videoSource: z.string(),
+  artistCategoryId: z.string(),
+  url: z.string().url(),
+});

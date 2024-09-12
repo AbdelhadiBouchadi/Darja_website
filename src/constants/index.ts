@@ -39,3 +39,14 @@ export const postDefaultValues = {
   postCategoryId: '',
   url: '',
 };
+
+export const artistDefaultValues = {
+  frenchName: '',
+  arabicName: '',
+  frenchText: '',
+  arabicText: '',
+  imageSource: '',
+  videoSource: '',
+  artistCategoryId: '',
+  url: '',
+};
