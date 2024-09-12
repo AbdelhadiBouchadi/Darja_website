@@ -52,7 +52,7 @@ const MainPage = () => {
         className="w-full flex flex-col gap-8"
       >
         <PostsTable currentUserIsAdmin={false} />
-        <ArtistsTable />
+        <ArtistsTable currentUserIsAdmin={false} />
       </motion.div>
     </main>
   );
