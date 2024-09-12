@@ -47,6 +47,7 @@ const DesktopHeader = () => {
           width={60}
           height={60}
           alt="logo_image"
+          priority
         />
       </Link>
       <DesktopNav />
