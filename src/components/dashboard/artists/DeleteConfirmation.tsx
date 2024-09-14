@@ -17,7 +17,13 @@ import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 import { deleteArtist } from '@/lib/actions/artists.actions';
 
-export const DeleteConfirmation = ({ artistId }: { artistId: string }) => {
+export const DeleteConfirmation = ({
+  artistId,
+  onDelete,
+}: {
+  artistId: string;
+  onDelete: (artistId: string) => void;
+}) => {
   let [isPending, startTransition] = useTransition();
 
   return (
@@ -48,6 +54,7 @@ export const DeleteConfirmation = ({ artistId }: { artistId: string }) => {
             onClick={() =>
               startTransition(async () => {
                 await deleteArtist(artistId);
+                onDelete(artistId);
               })
             }
             className="bg-red-600 hover:bg-red-600/40"

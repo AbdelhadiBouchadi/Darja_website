@@ -40,6 +40,14 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
     fetchPosts();
   }, []);
 
+  const handleDelete = (postId: string) => {
+    // Update both posts and filteredPosts states after deletion
+    setPosts((prevPosts) => prevPosts.filter((post) => post._id !== postId));
+    setFilteredPosts((prevFiltered) =>
+      prevFiltered.filter((post) => post._id !== postId)
+    );
+  };
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
@@ -138,7 +146,10 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
                         Modifier
                       </Link>
                     </Button>
-                    <DeleteConfirmation postId={post._id} />
+                    <DeleteConfirmation
+                      postId={post._id}
+                      onDelete={handleDelete}
+                    />
                   </td>
                 )}
               </motion.tr>

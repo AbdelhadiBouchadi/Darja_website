@@ -63,13 +63,19 @@ export async function updatePost({ post }: UpdatePostParams) {
 }
 
 // Delete post
-export async function deletePost(postId: string) {
+export async function deletePost({
+  postId,
+  path,
+}: {
+  postId: string;
+  path: string;
+}) {
   try {
     await connectToDatabase();
 
     const deletedPost = await Post.findByIdAndDelete(postId);
 
-    if (deletedPost) revalidatePath('/darja-admin/posts');
+    if (deletedPost) revalidatePath(path);
   } catch (error) {
     console.error('Error deleting post', error);
     handleError(error);

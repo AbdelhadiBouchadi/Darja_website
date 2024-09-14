@@ -41,6 +41,15 @@ const ArtistsTable = ({ currentUserIsAdmin }: ArtistsTableProps) => {
     fetchArtists();
   }, []);
 
+  const handleDelete = (artistId: string) => {
+    setArtists((prevArtists) =>
+      prevArtists.filter((artist) => artist._id !== artistId)
+    );
+    setFilteredArtists((prevFiltered) =>
+      prevFiltered.filter((artist) => artist._id !== artistId)
+    );
+  };
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
@@ -139,7 +148,10 @@ const ArtistsTable = ({ currentUserIsAdmin }: ArtistsTableProps) => {
                         Modifier
                       </Link>
                     </Button>
-                    <DeleteConfirmation artistId={artist._id} />
+                    <DeleteConfirmation
+                      artistId={artist._id}
+                      onDelete={handleDelete}
+                    />
                   </td>
                 )}
               </motion.tr>

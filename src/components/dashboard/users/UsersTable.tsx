@@ -39,6 +39,16 @@ const UsersTable = ({ currentUserIsAdmin }: UsersTableProps) => {
     fetchUsers();
   }, []);
 
+  const handleDelete = (clerkId: string) => {
+    // Update both posts and filteredPosts states after deletion
+    setUsers((prevUsers) =>
+      prevUsers.filter((user) => user.clerkId !== clerkId)
+    );
+    setFilteredUsers((prevFiltered) =>
+      prevFiltered.filter((user) => user.clerkId !== clerkId)
+    );
+  };
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
@@ -150,7 +160,10 @@ const UsersTable = ({ currentUserIsAdmin }: UsersTableProps) => {
 
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                     {currentUserIsAdmin && (
-                      <DeleteConfirmation clerkId={user.clerkId} />
+                      <DeleteConfirmation
+                        clerkId={user.clerkId}
+                        onDelete={handleDelete}
+                      />
                     )}
                   </td>
                 </motion.tr>

@@ -16,9 +16,16 @@ import {
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 import { deletePost } from '@/lib/actions/post.actions';
-import { DeletePostParams } from '@/types';
+import { usePathname } from 'next/navigation';
 
-export const DeleteConfirmation = ({ postId }: { postId: string }) => {
+export const DeleteConfirmation = ({
+  postId,
+  onDelete,
+}: {
+  postId: string;
+  onDelete: (postId: string) => void;
+}) => {
+  const pathname = usePathname();
   let [isPending, startTransition] = useTransition();
 
   return (
@@ -48,7 +55,8 @@ export const DeleteConfirmation = ({ postId }: { postId: string }) => {
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await deletePost(postId);
+                await deletePost({ postId, path: pathname });
+                onDelete(postId);
               })
             }
             className="bg-red-600 hover:bg-red-600/40"

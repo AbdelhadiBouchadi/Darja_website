@@ -17,7 +17,13 @@ import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 import { deleteUser } from '@/lib/actions/user.actions';
 
-export const DeleteConfirmation = ({ clerkId }: { clerkId: string }) => {
+export const DeleteConfirmation = ({
+  clerkId,
+  onDelete,
+}: {
+  clerkId: string;
+  onDelete: (clerkId: string) => void;
+}) => {
   let [isPending, startTransition] = useTransition();
 
   return (
@@ -48,6 +54,7 @@ export const DeleteConfirmation = ({ clerkId }: { clerkId: string }) => {
             onClick={() =>
               startTransition(async () => {
                 await deleteUser(clerkId);
+                onDelete(clerkId);
               })
             }
             className="bg-red-600 hover:bg-red-600/40"
