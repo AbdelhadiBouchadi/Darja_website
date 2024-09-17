@@ -37,6 +37,7 @@ export const postDefaultValues = {
   imageSource: '',
   videoSource: '',
   postCategoryId: '',
+  isInHomepage: false,
   url: '',
 };
 
@@ -48,5 +49,6 @@ export const artistDefaultValues = {
   imageSource: '',
   videoSource: '',
   artistCategoryId: '',
+  isInHomepage: false,
   url: '',
 };

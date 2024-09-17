@@ -1,15 +1,7 @@
 'use server';
 
-import {
-  CreateArtistParams,
-  CreatePostParams,
-  DeletePostParams,
-  UpdateArtistParams,
-  UpdatePostParams,
-} from '@/types';
-import PostCategory from '../database/models/postCategory.model';
+import { CreateArtistParams, UpdateArtistParams } from '@/types';
 import { connectToDatabase } from '../database';
-import Post, { IPost } from '../database/models/post.model';
 import { handleError } from '../utils';
 import { revalidatePath } from 'next/cache';
 import { Types } from 'mongoose';
@@ -168,5 +160,23 @@ export async function getArtistsCounts() {
     console.error('Failed to fetch artist statistics:', error);
     handleError(error);
     throw new Error('Failed to fetch artist statistics');
+  }
+}
+
+export async function getHomepageArtists() {
+  try {
+    await connectToDatabase();
+
+    // Find posts where isInHomepage is true
+    const artistsQuery = Artist.find({ isInHomepage: true }).sort({
+      createdAt: 'desc',
+    });
+
+    const artists = await populatePost(artistsQuery); // Populating postCategory if needed
+
+    return JSON.parse(JSON.stringify(artists));
+  } catch (error) {
+    console.error('Error fetching homepage posts:', error);
+    handleError(error);
   }
 }

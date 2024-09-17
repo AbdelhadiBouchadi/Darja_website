@@ -112,5 +112,9 @@
   .select-item {
     @apply py-3 cursor-pointer  focus:bg-gray-800;
   }
+
+  .checkbox-label {
+    @apply cursor-pointer text-sm font-medium text-gray-100 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
+  }
 }
 

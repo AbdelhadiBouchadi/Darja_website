@@ -23,6 +23,7 @@ import { FileUploader } from '../FileUploader';
 import SubmitButton from '../SubmitButton';
 import { IArtist } from '@/lib/database/models/artist.model';
 import { createArtist, updateArtist } from '@/lib/actions/artists.actions';
+import { Checkbox } from '@/components/ui/checkbox';
 
 type ArtistFormProps = {
   type: 'Create' | 'Update';
@@ -239,6 +240,28 @@ const ArtistForm = ({ type, artist, artistId }: ArtistFormProps) => {
                   imageUrl={field.value}
                   setFiles={setFiles}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="isInHomepage"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormControl>
+                <div className="flex items-center gap-4">
+                  <Checkbox
+                    id="isInHomepage"
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                  <label htmlFor="isInHomepage" className="checkbox-label">
+                    Ajouter cet artiste à la page d'accueil
+                  </label>
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>

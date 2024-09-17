@@ -52,6 +52,7 @@ export type CreatePostParams = {
   imageSource: string;
   videoSource: string;
   postCategoryId: string;
+  isInHomepage: boolean;
   url: string;
 };
 
@@ -65,6 +66,7 @@ export type UpdatePostParams = {
     imageSource: string;
     videoSource: string;
     postCategoryId: string;
+    isInHomepage: boolean;
     url: string;
   };
 };
@@ -82,6 +84,7 @@ export type CreateArtistParams = {
   imageSource: string;
   videoSource: string;
   artistCategoryId: string;
+  isInHomepage: boolean;
   url: string;
 };
 
@@ -95,6 +98,7 @@ export type UpdateArtistParams = {
     imageSource: string;
     videoSource: string;
     artistCategoryId: string;
+    isInHomepage: boolean;
     url: string;
   };
 };

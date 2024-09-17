@@ -1,9 +1,9 @@
 'use server';
 
-import { CreatePostParams, DeletePostParams, UpdatePostParams } from '@/types';
+import { CreatePostParams, UpdatePostParams } from '@/types';
 import PostCategory from '../database/models/postCategory.model';
 import { connectToDatabase } from '../database';
-import Post, { IPost } from '../database/models/post.model';
+import Post from '../database/models/post.model';
 import { handleError } from '../utils';
 import { revalidatePath } from 'next/cache';
 import { Types } from 'mongoose';
@@ -166,5 +166,23 @@ export async function getPostCounts() {
     console.error('Failed to fetch post statistics:', error);
     handleError(error);
     throw new Error('Failed to fetch post statistics');
+  }
+}
+
+export async function getHomepagePosts() {
+  try {
+    await connectToDatabase();
+
+    // Find posts where isInHomepage is true
+    const postsQuery = Post.find({ isInHomepage: true }).sort({
+      createdAt: 'desc',
+    });
+
+    const posts = await populatePost(postsQuery); // Populating postCategory if needed
+
+    return JSON.parse(JSON.stringify(posts));
+  } catch (error) {
+    console.error('Error fetching homepage posts:', error);
+    handleError(error);
   }
 }

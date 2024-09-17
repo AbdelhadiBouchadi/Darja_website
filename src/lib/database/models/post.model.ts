@@ -11,6 +11,7 @@ export interface IPost extends Document {
   videoSource?: string;
   postCategory: { _id: string; name: string };
   url?: string;
+  isInHomepage: boolean;
   createdAt: Date;
   __v?: number;
 }
@@ -43,6 +44,7 @@ const PostSchema = new Schema({
     ref: 'postCategory',
   },
   url: { type: String },
+  isInHomepage: { type: Boolean, default: false },
   createdAt: {
     type: Date,
     default: Date.now,

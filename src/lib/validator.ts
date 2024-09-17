@@ -16,6 +16,7 @@ export const postFormSchema = z.object({
   imageSource: z.string(),
   videoSource: z.string(),
   postCategoryId: z.string(),
+  isInHomepage: z.boolean(),
   url: z.string().url(),
 });
 
@@ -35,5 +36,6 @@ export const artistFormSchema = z.object({
   imageSource: z.string(),
   videoSource: z.string(),
   artistCategoryId: z.string(),
+  isInHomepage: z.boolean(),
   url: z.string().url(),
 });

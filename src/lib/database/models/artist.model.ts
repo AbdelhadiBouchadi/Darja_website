@@ -11,6 +11,7 @@ export interface IArtist extends Document {
   videoSource?: string;
   artistCategory: { _id: string; name: string };
   url?: string;
+  isInHomepage: boolean;
   createdAt: Date;
   __v?: number;
 }
@@ -43,6 +44,7 @@ const ArtistSchema = new Schema({
     ref: 'artistCategory',
   },
   url: { type: String },
+  isInHomepage: { type: Boolean, default: false },
   createdAt: {
     type: Date,
     default: Date.now,
