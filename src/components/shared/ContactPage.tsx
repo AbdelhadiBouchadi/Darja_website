@@ -191,16 +191,16 @@ const ContactSection = () => {
             <ul className="links-wrap">
               <li>
                 <Link
-                  href="mailto:administration@espacedarja.com"
+                  href="mailto:darja.ar2d@gmail.com"
                   target="_blank"
                   dir="ltr"
                 >
-                  administration@espacedarja.com
+                  darja.ar2d@gmail.com
                 </Link>
               </li>
               <li>
-                <Link href="tel:+212522274448" target="_blank" dir="ltr">
-                  05 22 27 44 48
+                <Link href="tel:+212663052322" target="_blank" dir="ltr">
+                  +212 6 63 05 23 22
                 </Link>
               </li>
             </ul>

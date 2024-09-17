@@ -9,11 +9,14 @@ import { cn } from '../../lib/utils';
 import Project from './project';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { getHomepagePosts } from '@/lib/actions/post.actions';
 
 interface Project {
-  title: string;
-  src: string;
-  category: string;
+  _id: string;
+  frenchTitle: string;
+  arabicTitle: string;
+  imageSource: string;
+  postCategory: { _id: string; name: string };
 }
 
 const scaleAnimation = {
@@ -37,6 +40,10 @@ export default function Projects() {
     active: false,
     index: 0,
   });
+  const [posts, setPosts] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const { active, index } = modal;
   const modalContainer = useRef<HTMLDivElement>(null);
   const cursor = useRef<HTMLDivElement>(null);
@@ -53,40 +60,22 @@ export default function Projects() {
   const isArabic = locale === 'ar';
   const t = useTranslations('HomePage.Work');
 
-  const title1 = t('work1.title');
-  const title2 = t('work2.title');
-  const title3 = t('work3.title');
-  const title4 = t('work4.title');
-
-  const category1 = t('work1.category');
-  const category2 = t('work2.category');
-  const category3 = t('work3.category');
-  const category4 = t('work4.category');
-
   const moreWork = t('moreWork');
 
-  const projects: Project[] = [
-    {
-      title: title1,
-      src: '14.png',
-      category: category1,
-    },
-    {
-      title: title2,
-      src: '15.png',
-      category: category2,
-    },
-    {
-      title: title3,
-      src: '31.png',
-      category: category3,
-    },
-    {
-      title: title4,
-      src: '19.png',
-      category: category4,
-    },
-  ];
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await getHomepagePosts(); // Fetch posts from server action
+        setPosts(response);
+      } catch (err) {
+        setError('Failed to load homepage posts.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   useEffect(() => {
     if (modalContainer.current && cursor.current && cursorLabel.current) {
@@ -142,7 +131,7 @@ export default function Projects() {
         moveItems(e.clientX, e.clientY);
       }}
       className={cn(
-        'flex flex-col items-center px-8 xl:px-[200px] mt-32 mb-0 md:my-32 '
+        'flex flex-col items-center px-8 xl:px-[100px] mt-32 mb-0 md:my-32 '
       )}
     >
       <div
@@ -166,14 +155,19 @@ export default function Projects() {
           </h5>
         </div>
 
-        {projects.map((project, index) => (
-          <Project
+        {posts.map((project, index) => (
+          <Link
+            href={`/${locale}/derive-2024/posts/${project._id}`}
             key={index}
-            index={index}
-            title={project.title}
-            manageModal={manageModal}
-            category={project.category}
-          />
+            className="w-full"
+          >
+            <Project
+              index={index}
+              title={isArabic ? project.arabicTitle : project.frenchTitle}
+              manageModal={manageModal}
+              category={project.postCategory.name}
+            />
+          </Link>
         ))}
       </div>
       <Link href={`/${locale}/derive-2024`}>
@@ -205,8 +199,8 @@ export default function Projects() {
               'w-full h-full relative transition-[top] duration-500 ease-[cubic-bezier(0.76, 0, 0.24, 1)]'
             )}
           >
-            {projects.map((project, idx) => {
-              const { src } = project;
+            {posts.map((project, idx) => {
+              const { imageSource, _id } = project;
               return (
                 <div
                   className={cn(
@@ -216,7 +210,7 @@ export default function Projects() {
                   key={`modal_${idx}`}
                 >
                   <Image
-                    src={`/images/${src}`}
+                    src={imageSource}
                     width={300}
                     height={0}
                     alt="image"

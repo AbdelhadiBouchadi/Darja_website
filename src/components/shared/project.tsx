@@ -20,12 +20,12 @@ const Project = ({ index, title, manageModal, category }: ProjectProps) => {
       onMouseEnter={(e) => manageModal(true, index, e.clientX, e.clientY)}
       onMouseLeave={(e) => manageModal(false, index, e.clientX, e.clientY)}
       className={cn(
-        'flex w-full justify-between items-center px-8 py-8 xl:py-[50px] xl:px-[100px] border-t border-t-[#C9C9C9] cursor-pointer transition-all duration-200 last:border-b last:border-b-[#C9C9C9] hover:text-[#ee7103] group '
+        'flex w-full justify-between items-center px-8 py-8 xl:py-[50px] border-t border-t-[#C9C9C9] cursor-pointer transition-all duration-200 last:border-b last:border-b-[#C9C9C9] hover:text-[#ee7103] group '
       )}
     >
       <h2
         className={cn(
-          'font-normal text-2xl md:text-4xl xl:text-[60px] transition-all duration-300 group-hover:transform group-hover:-translate-x-2  ',
+          'font-normal text-2xl md:text-4xl  transition-all duration-300 group-hover:transform group-hover:-translate-x-2  ',
           isArabic ? 'arabic-title-bold' : 'latin-title-bold'
         )}
       >

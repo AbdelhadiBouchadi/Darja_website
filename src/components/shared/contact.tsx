@@ -110,7 +110,7 @@ const Contact = () => {
           )}
         >
           <Link
-            href="mailto:administration@espacedarja.com"
+            href="mailto:darja.ar2d@gmail.com"
             target="_blank"
             ref={btn1Ref}
           >
@@ -124,11 +124,11 @@ const Contact = () => {
                 )}
                 dir="ltr"
               >
-                administration@espacedarja.com
+                darja.ar2d@gmail.com
               </p>
             </RoundedBtn>
           </Link>
-          <Link href="tel:+212522274448" ref={btn2Ref}>
+          <Link href="tel:+212663052322" ref={btn2Ref}>
             <RoundedBtn
               className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#ee7103] before:bg-[#ee7103] after:bg-[#ee7103] px-16 py-4 text-base before:-top-1/2 hover:text-white"
               style={{ width: maxBtnWidth || 'auto' }}
@@ -139,7 +139,7 @@ const Contact = () => {
                 )}
                 dir="ltr"
               >
-                05 22 27 44 48
+                +212 6 63 05 23 22
               </p>
             </RoundedBtn>
           </Link>
