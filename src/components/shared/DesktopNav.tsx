@@ -80,12 +80,12 @@ const DesktopNav = () => {
           return (
             <NavigationMenuItem
               key={`b_${i}`}
-              className="w-full h-full mx-auto flex justify-center items-center border-l-2 border-white "
+              className="w-full h-full  flex justify-center items-center border-l-2 border-white hover:bg-[#00b0db] hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b0db] text-[#00b0db] data-[state=open]:bg-[#00b0db] bg-[#094142] "
             >
               <NavigationMenuLink
                 href={`/${locale}${t(`Navigation.${key}.href`)}`}
                 className={cn(
-                  'group  h-10 w-max items-center justify-center  px-4 py-2 transition-colors bg-[#094142]  text-xl font-extrabold hover:bg-[#00b0db] hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b0db] text-[#00b0db] data-[state=open]:bg-[#00b0db] ',
+                  'group  h-10 w-max items-center justify-center  px-4 py-2 transition-colors   text-xl font-extrabold  ',
                   isArabic ? 'arabic-subtitle-regular' : 'latin-title-bold'
                 )}
               >
@@ -94,7 +94,7 @@ const DesktopNav = () => {
             </NavigationMenuItem>
           );
         })}
-        <NavigationMenuItem className="w-full h-full flex justify-center items-center border-l-2 border-white mx-auto">
+        <NavigationMenuItem className="w-full h-full flex justify-center items-center border-l-2 border-white hover:bg-[#00b0db] hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b0db] text-[#00b0db] data-[state=open]:bg-[#00b0db] bg-[#094142] ">
           <LocaleSwitcher />
         </NavigationMenuItem>
       </NavigationMenuList>

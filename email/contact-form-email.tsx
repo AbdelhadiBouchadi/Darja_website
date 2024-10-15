@@ -26,7 +26,7 @@ export default function ContactFormEmail({
   return (
     <Html>
       <Head />
-      <Preview>Un nouveau message de la part de Espace Darja</Preview>
+      <Preview>Un nouveau message de la part de Dérive Casablancaise</Preview>
       <Tailwind>
         <Body className="bg-gray-100 text-black">
           <Container>

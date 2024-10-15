@@ -1,26 +1,10 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { useLocale, useTranslations } from 'next-intl';
-import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import LocaleSwitcher from './locale-switcher-select';
 import DesktopNav from './DesktopNav';
 
 const DesktopHeader = () => {
-  const t = useTranslations('Layout');
-  const navKeys = [
-    'about',
-    'derive',
-    'previous',
-    'darja',
-    'community',
-    'contact',
-  ];
-  const locale = useLocale();
-  const isArabic = locale === 'ar';
-
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = () => {

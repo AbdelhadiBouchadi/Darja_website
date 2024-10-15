@@ -20,8 +20,7 @@ export default function LocaleSwitcher() {
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const locale = useLocale();
-  const isArabic = locale === 'ar';
-  const t = useTranslations('LanguageSwitcher');
+  const nextLocale = locale === 'fr' ? 'ar' : 'fr';
 
   function handleLocaleChange(nextLocale: string) {
     const path = pathname.replace(`/${locale}`, `/${nextLocale}`);
@@ -34,56 +33,11 @@ export default function LocaleSwitcher() {
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild className="bg-transparent">
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          className="group w-full px-2 transition-all duration-300"
-        >
-          {/* <GlobeIcon className="size-8 text-[#00b0db] group-hover:text-white " /> */}
-          <p className="latin-title-bold font-[800] text-xl text-[#00b0db]">
-            {' '}
-            FR / AR
-          </p>
-        </Button>
-      </DropdownMenuTrigger>
-
-      <DropdownMenuContent align="end" className="bg-[#00b0db] text-white">
-        <DropdownMenuLabel
-          className={cn(
-            isArabic ? 'arabic-subtitle-bold text-xl' : 'latin-subtitle-bold'
-          )}
-        >
-          {' '}
-          {t('heading')}{' '}
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-
-        <DropdownMenuCheckboxItem
-          checked={locale === 'fr'}
-          onClick={() => handleLocaleChange('fr')}
-          disabled={isPending}
-          className={cn(
-            isArabic ? 'arabic-subtitle-bold text-lg' : 'latin-subtitle-bold'
-          )}
-          dir={isArabic ? 'rtl' : 'ltr'}
-        >
-          {t('french')}
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={locale === 'ar'}
-          onClick={() => handleLocaleChange('ar')}
-          disabled={isPending}
-          className={cn(
-            isArabic ? 'arabic-subtitle-bold text-lg' : 'latin-subtitle-bold'
-          )}
-          dir={isArabic ? 'rtl' : 'ltr'}
-        >
-          {t('arabic')}
-        </DropdownMenuCheckboxItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div
+      className="cursor-pointer"
+      onClick={() => handleLocaleChange(nextLocale)}
+    >
+      <p className="latin-title-bold font-[800] text-xl"> FR / AR</p>
+    </div>
   );
 }
