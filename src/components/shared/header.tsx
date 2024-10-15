@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { AnimatePresence, motion } from 'framer-motion';
 import { TextReveal } from '../ui/typography';
@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <>
-      <Transition className="absolute md:top-8 top-4 md:left-8 left-6 z-30 hover:text-[#00b0db]/60 text-[#00b0db] flex md:hidden ">
+      <Transition className="absolute md:top-8 top-4 md:left-8 left-6 z-30 hover:text-[#00b0db]/60 text-[#00b0db] flex xl:hidden ">
         <Link href={`/${locale}`}>
           <Image
             src="/assets/derive-logo.png"
@@ -40,8 +40,8 @@ const Header = () => {
           height: isActive ? (isMobile ? '100%' : '94%') : '0',
         }}
         className={cn(
-          'fixed md:right-12 right-0 z-20 flex md:hidden',
-          isActive ? 'top-0' : 'top-6'
+          'fixed md:right-6 right-0 z-20 flex xl:hidden',
+          isActive ? 'top-0 md:top-10' : 'top-6 md:top-10'
         )}
       >
         <motion.div
@@ -79,7 +79,7 @@ function Button({
   const isArabic = locale === 'ar';
 
   return (
-    <>
+    <React.Fragment>
       <div className="absolute md:top-0 top-4 right-4 md:right-0 w-[100px] h-10 rounded-full overflow-hidden cursor-pointer">
         <motion.div
           className={cn(
@@ -122,6 +122,6 @@ function Button({
       <div className="fixed  top-10 right-32 z-30 hover:text-gray-600/80 text-gray-950/40">
         <LocaleSwitcher />
       </div>
-    </>
+    </React.Fragment>
   );
 }

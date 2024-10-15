@@ -35,25 +35,10 @@ const DesktopHeader = () => {
   return (
     <div
       className={cn(
-        'w-full justify-between hidden md:flex md:justify-between md:items-center py-2 px-4 fixed top-0 z-40 transition-all duration-300',
-        isScrolled
-          ? 'bg-gray-200/60 backdrop-blur-sm backdrop-filter shadow-md '
-          : 'bg-transparent bg-opacity-60'
+        'w-screen justify-center hidden xl:flex xl:justify-center xl:items-center fixed top-0 z-40 transition-all duration-300 gap-20 bg-[#094142] h-[15vh] '
       )}
     >
-      <Link href={`/${locale}`} className="flex justify-center items-center">
-        <Image
-          src="/assets/derive-logo.png"
-          width={60}
-          height={60}
-          alt="logo_image"
-          priority
-        />
-      </Link>
       <DesktopNav />
-      <div className=" hover:text-gray-600/80 text-gray-950/40">
-        <LocaleSwitcher />
-      </div>
     </div>
   );
 };
