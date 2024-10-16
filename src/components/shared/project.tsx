@@ -8,10 +8,9 @@ interface ProjectProps {
   index: number;
   title: string;
   manageModal: (active: boolean, index: number, x: number, y: number) => void;
-  category: string;
 }
 
-const Project = ({ index, title, manageModal, category }: ProjectProps) => {
+const Project = ({ index, title, manageModal }: ProjectProps) => {
   const locale = useLocale();
   const isArabic = locale === 'ar';
 
@@ -31,14 +30,6 @@ const Project = ({ index, title, manageModal, category }: ProjectProps) => {
       >
         {title}
       </h2>
-      <p
-        className={cn(
-          'font-normal text-lg transition-all duration-300 group-hover:transform group-hover:translate-x-2 text-[#696443]',
-          isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
-        )}
-      >
-        {category}
-      </p>
     </div>
   );
 };

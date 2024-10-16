@@ -21,17 +21,6 @@ const Header = () => {
 
   return (
     <>
-      <Transition className="absolute md:top-8 top-4 md:left-8 left-6 z-30 hover:text-[#00b0db]/60 text-[#00b0db] flex xl:hidden ">
-        <Link href={`/${locale}`}>
-          <Image
-            src="/assets/derive-logo.png"
-            width={60}
-            height={60}
-            alt="logo_image"
-          />
-        </Link>
-      </Transition>
-
       <motion.div
         initial={{
           height: isActive ? '100%' : '0',
@@ -119,7 +108,7 @@ function Button({
           </motion.div>
         </motion.div>
       </div>
-      <div className="fixed  top-10 right-32 z-30 hover:text-gray-600/80 text-gray-950/40">
+      <div className="fixed  top-11 right-32 z-30 text-[#00b0db]  ">
         <LocaleSwitcher />
       </div>
     </React.Fragment>

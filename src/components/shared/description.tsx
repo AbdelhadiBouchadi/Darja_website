@@ -16,7 +16,7 @@ const Description = () => {
   const phrase = t('Hero.description');
 
   return (
-    <div className="px-16 xl:px-[200px] my-32 xl:my-[200px] flex flex-col justify-center 2xl:flex-row h-full ">
+    <div className="px-16 xl:px-[200px] my-64 xl:my-[200px] flex flex-col justify-center 2xl:flex-row h-full ">
       <div
         ref={description}
         className="max-w-[1400px] relative flex flex-col gap-[50px] "

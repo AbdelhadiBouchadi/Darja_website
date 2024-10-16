@@ -49,9 +49,11 @@
           "title": "Whatsapp"
         }
       },
-      "Config": {
-        "logo": "Dérive",
-        "cta": "Explorer le cours"
+      "SubHeader": {
+        "derive": "Dérive",
+        "casa": "Casablancaise 2024",
+        "date": "04 - 08.12.2024",
+        "lieu": "Casablanca"
       }
     },
     "HomePage": {

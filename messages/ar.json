@@ -50,10 +50,12 @@
           "title": "واتساب"
         }
       },
-    "Config": {
-      "logo": "منعطف",
-      "cta": "Explorer le cours"
-    }
+    "SubHeader": {
+        "derive": "منعطف",
+        "casa": "بيضاوي 2024",
+        "date": "04 - 08.12.2024",
+        "lieu": "الدار البيضاء"
+      }
   },
   "HomePage": {
     "Hero": {

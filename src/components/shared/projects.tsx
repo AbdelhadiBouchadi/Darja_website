@@ -16,7 +16,6 @@ interface Project {
   frenchTitle: string;
   arabicTitle: string;
   imageSource: string;
-  postCategory: { _id: string; name: string };
 }
 
 const scaleAnimation = {
@@ -165,7 +164,6 @@ export default function Projects() {
               index={index}
               title={isArabic ? project.arabicTitle : project.frenchTitle}
               manageModal={manageModal}
-              category={project.postCategory.name}
             />
           </Link>
         ))}

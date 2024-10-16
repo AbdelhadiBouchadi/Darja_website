@@ -20,8 +20,6 @@ const DesktopNav = () => {
   const locale = useLocale();
   const isArabic = locale === 'ar';
 
-  const [isScrolled, setIsScrolled] = useState(false);
-
   const [triggerWidth, setTriggerWidth] = useState(0);
 
   useEffect(() => {
@@ -29,15 +27,6 @@ const DesktopNav = () => {
     if (trigger) {
       setTriggerWidth(trigger.offsetWidth);
     }
-  }, []);
-
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 50); // Change the value as needed
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -58,7 +47,7 @@ const DesktopNav = () => {
             style={{ width: `${triggerWidth}px` }}
           >
             <ul
-              className="flex flex-col w-full gap-3 p-4 "
+              className="flex flex-col w-full gap-3 "
               dir={isArabic ? 'rtl' : 'ltr'}
             >
               {deriveNavKeys.map((deriveNav, i) => (
@@ -66,7 +55,7 @@ const DesktopNav = () => {
                   key={`b_${i}`}
                   href={`/${locale}${t(`Navigation.${deriveNav}.href`)}`}
                   className={cn(
-                    'group inline-flex h-10 w-max items-center justify-center  px-4 py-2 text-xl transition-colors hover:bg-[#00b0db] hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b0db] text-[#00b0db] data-[state=open]:bg-[#00b0db] font-extrabold',
+                    'flex h-10 items-center justify-start text-xl transition-colors hover:bg-[#00b0db] hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b0db] text-[#00b0db] data-[state=open]:bg-[#00b0db] font-extrabold p-8 w-full',
                     isArabic ? 'arabic-subtitle-regular' : 'latin-title-bold'
                   )}
                 >
