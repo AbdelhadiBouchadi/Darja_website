@@ -2,10 +2,11 @@
 
 import React, { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
-import { cn, descOpacity, descSlideUp } from '../../lib/utils';
+import { cn, descOpacity } from '../../lib/utils';
 import RoundedBtn from './rounded';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const Description = () => {
   const description = useRef(null);
@@ -13,45 +14,58 @@ const Description = () => {
   const locale = useLocale();
   const isArabic = locale === 'ar';
   const t = useTranslations('HomePage');
-  const phrase = t('Hero.description');
 
   return (
-    <div className="px-16 xl:px-[200px] my-64 xl:my-[200px] flex flex-col justify-center 2xl:flex-row h-full ">
-      <div
-        ref={description}
-        className="max-w-[1400px] relative flex flex-col gap-[50px] "
-      >
-        <p
+    <div className="px-8 mt-[300px] flex flex-col justify-center xl:flex-row gap-16  relative">
+      {/* Left Section */}
+      <div className="w-[30%] hidden xl:flex flex-col justify-between items-center relative">
+        {/* Top text */}
+        <motion.div
+          variants={descOpacity}
+          animate={isInView ? 'open' : 'closed'}
           className={cn(
-            'm-0 text-lg xl:text-3xl gap-2 xl:leading-[3rem] font-bold ',
-            isArabic ? 'arabic-text-bold' : 'latin-text-semibold'
+            'font-extrabold text-center text-6xl absolute bottom-64 2xl:-left-36 transform -rotate-90  w-[600px] z-40 text-[#ee7103] ',
+            isArabic ? 'arabic-title-bold' : 'latin-title-bold'
           )}
         >
-          {phrase.split(' ').map((word, index) => {
-            return (
-              <span
-                key={index}
-                className="mr-1 relative overflow-hidden inline-flex"
-              >
-                <motion.span
-                  className="mr-1"
-                  variants={descSlideUp}
-                  custom={index}
-                  animate={isInView ? 'open' : 'closed'}
-                  key={index}
-                >
-                  {word}
-                </motion.span>
-              </span>
-            );
-          })}
-        </p>
+          Rencontres des Arts de la Scène
+        </motion.div>
+      </div>
+      {/* Bottom mini-circle image */}
+      <motion.div
+        className="absolute -bottom-32 -left-96"
+        variants={descOpacity}
+        animate={isInView ? 'open' : 'closed'}
+      >
+        <Image
+          src="/desc-circle.png"
+          width={1200}
+          height={1200}
+          alt="circle-background"
+        />
+      </motion.div>
+
+      {/* Right Section */}
+      <div
+        ref={description}
+        className="xl:w-[70%] md:mt-0 flex flex-col gap-[50px] justify-center items-center relative "
+      >
         <motion.p
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
           className={cn(
-            'text-lg w-[80%] font-light m-0 ',
-            isArabic ? 'arabic-subtitle-regular' : 'latin-text-regular'
+            'text-lg 2xl:text-2xl w-[80%] font-semibold m-0 ',
+            isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
+          )}
+        >
+          {t('Hero.description')}
+        </motion.p>
+        <motion.p
+          variants={descOpacity}
+          animate={isInView ? 'open' : 'closed'}
+          className={cn(
+            'text-lg 2xl:text-2xl w-[80%] font-semibold m-0 ',
+            isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
           )}
         >
           {t('Hero.subtitle')}
@@ -60,8 +74,8 @@ const Description = () => {
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
           className={cn(
-            'text-lg w-[80%] font-light m-0 ',
-            isArabic ? 'arabic-subtitle-regular' : 'latin-text-regular'
+            'text-lg 2xl:text-2xl w-[80%] font-semibold m-0 ',
+            isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
           )}
         >
           {t('Hero.subtitle2')}
@@ -70,17 +84,17 @@ const Description = () => {
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
           className={cn(
-            'text-lg w-[80%] font-light m-0 ',
-            isArabic ? 'arabic-subtitle-regular' : 'latin-text-regular'
+            'text-lg 2xl:text-2xl w-[80%] font-semibold m-0 ',
+            isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
           )}
         >
           {t('Hero.subtitle3')}
         </motion.p>
-        <Link href={`/${locale}/ar2d`}>
+        <Link href={`/${locale}/ar2d`} className="mt-10 hidden md:block">
           <div data-scroll data-scroll-speed={0.1}>
             <RoundedBtn
               className={cn(
-                'group absolute top-[95%]  roundedBtnSize bg-[#1C1D20] text-white rounded-full flex items-center justify-center cursor-pointer before:absolute before:left-[-10%] before:top-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[""] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[""] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear before:bg-[#00b0db] after:bg-[#00b0db]',
+                'group absolute z-40 roundedBtnSize bg-[#094142] text-white rounded-full flex items-center justify-center cursor-pointer before:absolute before:left-[-10%] before:top-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[""] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[""] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear before:bg-[#00b0db] after:bg-[#00b0db]',
                 isArabic
                   ? 'right-[calc(100%-200px)]'
                   : 'left-[calc(100%-200px)]'

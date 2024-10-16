@@ -130,7 +130,7 @@ export default function Projects() {
         moveItems(e.clientX, e.clientY);
       }}
       className={cn(
-        'flex flex-col items-center px-8 xl:px-[100px] mt-32 mb-0 md:my-32 '
+        'flex flex-col items-center px-8 xl:px-[100px] mt-[200px] mb-0 md:my-32 '
       )}
     >
       <div

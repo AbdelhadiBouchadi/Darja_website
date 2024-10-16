@@ -16,7 +16,7 @@ const Landing = () => {
       variants={landingSlideUp}
       initial="initial"
       animate="enter"
-      className="relative flex min-h-screen overflow-hidden"
+      className="relative flex min-h-screen"
     >
       <SubHeader />
       <Description />
