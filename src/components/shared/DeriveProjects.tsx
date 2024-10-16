@@ -11,7 +11,6 @@ import { useLocale, useTranslations } from 'next-intl';
 interface Project {
   title: string;
   src: string;
-  category: string;
 }
 
 const scaleAnimation = {
@@ -54,10 +53,10 @@ export default function DeriveProjects() {
   const t2 = useTranslations('Derive2024');
 
   const DeriveProjects: Project[] = [
-    { title: t('work1.title'), src: '14.png', category: t('work1.category') },
-    { title: t('work2.title'), src: '15.png', category: t('work2.category') },
-    { title: t('work3.title'), src: '31.png', category: t('work3.category') },
-    { title: t('work4.title'), src: '19.png', category: t('work4.category') },
+    { title: t('work1.title'), src: '14.png' },
+    { title: t('work2.title'), src: '15.png' },
+    { title: t('work3.title'), src: '31.png' },
+    { title: t('work4.title'), src: '19.png' },
   ];
 
   useEffect(() => {
@@ -144,7 +143,6 @@ export default function DeriveProjects() {
             index={index}
             title={project.title}
             manageModal={manageModal}
-            category={project.category}
           />
         ))}
       </div>
