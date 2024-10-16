@@ -24,8 +24,10 @@ const Description = () => {
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
           className={cn(
-            'font-extrabold text-center text-6xl absolute bottom-64 2xl:-left-36 transform -rotate-90  w-[600px] z-40 text-[#ee7103] ',
-            isArabic ? 'arabic-title-bold' : 'latin-title-bold'
+            'font-extrabold text-center text-6xl absolute bottom-64  transform -rotate-90  w-[600px] z-40 text-[#ee7103] ',
+            isArabic
+              ? 'arabic-title-bold 2xl:-right-36'
+              : 'latin-title-bold 2xl:-left-36'
           )}
         >
           Rencontres des Arts de la Scène
@@ -33,7 +35,10 @@ const Description = () => {
       </div>
       {/* Bottom mini-circle image */}
       <motion.div
-        className="absolute -bottom-32 -left-96"
+        className={cn(
+          'absolute -bottom-32 ',
+          isArabic ? '-right-96' : '-left-96'
+        )}
         variants={descOpacity}
         animate={isInView ? 'open' : 'closed'}
       >
