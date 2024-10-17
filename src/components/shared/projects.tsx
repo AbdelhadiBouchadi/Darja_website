@@ -130,23 +130,14 @@ export default function Projects() {
         moveItems(e.clientX, e.clientY);
       }}
       className={cn(
-        'flex flex-col items-center px-8 xl:px-[100px] mt-[200px] mb-0 md:my-32 '
+        'flex flex-col items-center xl:mt-[200px] mb-0 md:my-32 bg-[#094142] '
       )}
     >
-      <div
-        className={cn(
-          'max-w-[1400px] w-full flex flex-col items-center justify-center mb-16 '
-        )}
-      >
-        <div
-          style={{
-            paddingInlineStart: 'clamp(2.5em, 8vw, 8em)',
-          }}
-          className="w-full my-4 xl:my-8 "
-        >
+      <div className={cn('w-full flex flex-col items-center justify-center ')}>
+        <div className="w-full py-4 xl:py-8 text-end bg-[#E9EAEB] px-8 xl:px-[100px] ">
           <h5
             className={cn(
-              'text-lg text-[#696443]',
+              'text-2xl xl:text-4xl text-[#ee7103]',
               isArabic ? 'arabic-title-bold' : 'latin-title-bold'
             )}
           >
@@ -154,33 +145,37 @@ export default function Projects() {
           </h5>
         </div>
 
-        {posts.map((project, index) => (
-          <Link
-            href={`/${locale}/derive-2024/posts/${project._id}`}
-            key={index}
-            className="w-full"
-          >
-            <Project
-              index={index}
-              title={isArabic ? project.arabicTitle : project.frenchTitle}
-              manageModal={manageModal}
-            />
-          </Link>
-        ))}
+        <div className="w-full px-8 xl:px-[100px]">
+          {posts.map((project, index) => (
+            <Link
+              href={`/${locale}/derive-2024/posts/${project._id}`}
+              key={index}
+              className="w-full"
+            >
+              <Project
+                index={index}
+                title={isArabic ? project.arabicTitle : project.frenchTitle}
+                manageModal={manageModal}
+              />
+            </Link>
+          ))}
+        </div>
       </div>
-      <Link href={`/${locale}/derive-2024`}>
-        <RoundedBtn className='relative group inline-flex items-center justify-center overflow-hidden rounded-full font-bold ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[""] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[""] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-solid border-[#141516] hover:border-[#00b0db] before:bg-[#00b0db] after:bg-[#00b0db] px-16 py-4 text-base before:-top-1/2 hover:text-background'>
-          <p
-            className={cn(
-              'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg ',
-              isArabic ? 'arabic-title-bold text-2xl' : 'latin-title-bold'
-            )}
-          >
-            {' '}
-            {moreWork}{' '}
-          </p>
-        </RoundedBtn>
-      </Link>
+      <div className="w-full py-8 bg-[#E9EAEB] px-8 xl:px-[100px]">
+        <Link href={`/${locale}/derive-2024`}>
+          <RoundedBtn className='relative text-base group inline-flex items-center justify-center overflow-hidden rounded-full font-bold ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[""] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[""] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:border-2 hover:border-solid  hover:border-[#094142] before:bg-[#094142] after:bg-[#094142] px-16 py-4 before:-top-1/2 hover:text-background'>
+            <p
+              className={cn(
+                'relative z-[1] transition-colors duration-400 text-[#094142] group-hover:text-[#00b0db] m-0 text-2xl ',
+                isArabic ? 'arabic-title-bold text-2xl' : 'latin-title-bold'
+              )}
+            >
+              {' '}
+              {moreWork}{' '}
+            </p>
+          </RoundedBtn>
+        </Link>
+      </div>
       <>
         <motion.div
           ref={modalContainer}

@@ -8,10 +8,10 @@ const SubHeader = () => {
   const t = useTranslations('Layout.SubHeader');
 
   return (
-    <div className="w-full flex items-center justify-between px-4 py-6 absolute top-[15vh] left-0">
+    <div className="subheader w-full flex items-center justify-between py-6 absolute top-[15vh] left-0 px-4">
       <div
         className={cn(
-          'flex flex-col justify-center items-start text-[#094142] text-xl lg:text-3xl font-semibold',
+          'flex flex-col justify-center items-start text-[#094142] text-xl lg:text-3xl font-semibold ',
           isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
         )}
       >

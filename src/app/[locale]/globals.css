@@ -1254,4 +1254,15 @@
   }
 }
 
+/* Subheader */
+@media  (min-width: 1700px) {
+  .subheader {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
 
+.bg-description {
+  background: url("../../../public/desc-bg.png") center center no-repeat;
+  background-size: cover;
+}
