@@ -16,7 +16,7 @@ import LocaleSwitcher from './locale-switcher-select';
 const DesktopNav = () => {
   const t = useTranslations('Layout');
   const navKeys = ['darja', 'community', 'contact'];
-  const deriveNavKeys = ['about', 'derive', 'previous'];
+  const deriveNavKeys = ['home', 'about', 'derive', 'previous'];
   const locale = useLocale();
   const isArabic = locale === 'ar';
 

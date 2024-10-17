@@ -4,7 +4,7 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { cn, descOpacity, descSlideUp, landingSlideUp } from '../../lib/utils';
 import SubHeader from './SubHeader';
 import Description from './description';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
 const Landing = () => {
@@ -17,6 +17,17 @@ const Landing = () => {
   const isInView = useInView(imageContainerRef);
   const t = useTranslations('HomePage');
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect if the user is on a smaller screen (e.g., mobile)
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768); // Example breakpoint (768px)
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Scroll-based animation setup
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -27,7 +38,7 @@ const Landing = () => {
   const backgroundSize = useTransform(
     scrollYProgress,
     [0.4, 1],
-    ['10%', '130%']
+    isMobile ? ['cover', 'cover'] : ['10%', '130%']
   );
 
   return (
@@ -47,7 +58,7 @@ const Landing = () => {
         style={{ backgroundSize }}
       >
         <motion.div
-          className="absolute left-0 top-1/2 bottom-1/2 xl:top-32 xl:bottom-0 2xl:top-72 xl:bg-[#E9EAEB] xl:py-12 2xl:py-36 xl:max-w-[40%] flex flex-col justify-center items-center gap-4 2xl:gap8 text-[#00b0db] xl:text-black/90"
+          className="absolute left-0  h-full xl:top-32 xl:bottom-0 2xl:top-72 xl:bg-[#E9EAEB] xl:py-12 2xl:py-36 xl:max-w-[40%] flex flex-col justify-center items-center gap-4 2xl:gap8 text-[#00b0db] xl:text-black/90"
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
         >
