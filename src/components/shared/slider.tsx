@@ -54,7 +54,7 @@ const SlidingImages = () => {
 
   const x1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const x2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const height = useTransform(scrollYProgress, [0, 0.9], [150, 0]);
+  const height = useTransform(scrollYProgress, [0, 0.9], [150, -20]);
 
   const locale = useLocale();
   const isArabic = locale === 'ar';
@@ -65,10 +65,10 @@ const SlidingImages = () => {
     <div
       ref={container}
       className={cn(
-        'flex flex-col gap-[3vw] relative bg-[#E9EAEB] mt-16 md:mt-[200px] z-[1]'
+        'flex flex-col gap-[3vw] relative bg-[#E9EAEB] md:mt-16 z-[1]'
       )}
     >
-      <div className="w-full py-4 xl:py-8 text-start bg-[#E9EAEB] px-8 xl:px-[100px] ">
+      <div className="w-full hidden md:flex py-4 xl:py-8 text-start bg-[#E9EAEB] px-8 xl:px-[100px] ">
         <h5
           className={cn(
             'text-2xl xl:text-6xl text-[#ee7103]',

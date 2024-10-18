@@ -42,7 +42,9 @@ const Contact = () => {
     <motion.div
       style={{ y }}
       ref={container}
-      className={cn('flex flex-col justify-center items-center  relative')}
+      className={cn(
+        'bg-[#094142] flex flex-col justify-center items-center  relative'
+      )}
     >
       <div
         className={cn(

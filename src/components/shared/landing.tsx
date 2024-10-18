@@ -56,7 +56,7 @@ const Landing = () => {
         style={{ backgroundSize }}
       >
         <motion.div
-          className="absolute left-0  h-full xl:top-32 xl:bottom-0 2xl:top-72 xl:bg-[#E9EAEB] xl:py-12 2xl:py-36 xl:max-w-[40%] flex flex-col justify-center items-center gap-4 2xl:gap8 text-[#00b0db] xl:text-black/90"
+          className="absolute left-0  h-full xl:top-32 xl:bottom-0  xl:bg-[#E9EAEB] xl:py-12 2xl:py-36 xl:max-w-[40%] flex flex-col justify-center items-center gap-4 2xl:gap8 text-[#00b0db] xl:text-black/90"
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
         >

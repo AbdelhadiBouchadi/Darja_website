@@ -133,7 +133,7 @@ export default function Projects() {
         'flex flex-col items-center xl:mt-[200px] mb-0 md:my-32 bg-[#094142] '
       )}
     >
-      <div className={cn('w-full flex flex-col items-center justify-center ')}>
+      <div className={cn('w-full flex flex-col items-center justify-center  ')}>
         <div className="w-full py-4 xl:py-8 text-end bg-[#E9EAEB] px-8 xl:px-[100px] ">
           <h5
             className={cn(
