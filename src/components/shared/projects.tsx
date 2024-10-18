@@ -129,11 +129,13 @@ export default function Projects() {
       onMouseMove={(e: MouseEvent) => {
         moveItems(e.clientX, e.clientY);
       }}
-      className={cn(
-        'flex flex-col items-center xl:mt-[200px] mb-0 md:my-32 bg-[#094142] '
-      )}
+      className={cn('flex flex-col items-center xl:mt-[200px] mb-0 md:my-32  ')}
     >
-      <div className={cn('w-full flex flex-col items-center justify-center  ')}>
+      <div
+        className={cn(
+          'w-full flex flex-col gap-[3vw] items-center justify-center  '
+        )}
+      >
         <div className="w-full py-4 xl:py-8 text-end bg-[#E9EAEB] px-8 xl:px-[100px] ">
           <h5
             className={cn(
@@ -145,7 +147,7 @@ export default function Projects() {
           </h5>
         </div>
 
-        <div className="w-full px-8 xl:px-[100px]">
+        <div className="w-full px-8 xl:px-[100px] bg-[#094142]">
           {posts.map((project, index) => (
             <Link
               href={`/${locale}/derive-2024/posts/${project._id}`}

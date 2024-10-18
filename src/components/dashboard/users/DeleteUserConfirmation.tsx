@@ -30,7 +30,7 @@ export const DeleteConfirmation = ({
     <AlertDialog>
       <AlertDialogTrigger
         className={cn(
-          'capitalize text-red-500',
+          'capitalize text-red-500 hover:bg-red-500 hover:text-gray-100',
           buttonVariants({ variant: 'ghost' })
         )}
       >
