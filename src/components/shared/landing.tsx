@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { cn, descOpacity, descSlideUp, landingSlideUp } from '../../lib/utils';
+import { cn, descOpacity, landingSlideUp } from '../../lib/utils';
 import SubHeader from './SubHeader';
 import Description from './description';
 import { useEffect, useRef, useState } from 'react';
@@ -10,8 +10,6 @@ import { useLocale, useTranslations } from 'next-intl';
 const Landing = () => {
   const sectionRef = useRef(null);
   const imageContainerRef = useRef(null);
-  const text1Ref = useRef(null);
-  const text2Ref = useRef(null);
   const locale = useLocale();
   const isArabic = locale === 'ar';
   const isInView = useInView(imageContainerRef);

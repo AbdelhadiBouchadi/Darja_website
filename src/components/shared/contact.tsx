@@ -42,13 +42,11 @@ const Contact = () => {
     <motion.div
       style={{ y }}
       ref={container}
-      className={cn(
-        'flex flex-col justify-center items-center bg-[#141516] relative text-white '
-      )}
+      className={cn('flex flex-col justify-center items-center  relative')}
     >
       <div
         className={cn(
-          'pt-[180px] w-full max-w-[1800px] bg-[#141516] ',
+          'pt-[180px] w-full max-w-[1800px] bg-[#094142]',
           isArabic ? 'arabic-title-bold' : 'latin-title-bold'
         )}
       >

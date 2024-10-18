@@ -2,45 +2,46 @@
 
 import { cn } from '../../lib/utils';
 import { useScroll, useTransform, motion } from 'framer-motion';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useRef } from 'react';
 
 const slider1 = [
   {
-    color: '#141516',
-    src: '14.png',
+    color: 'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
+    src: 'slider3.jpg',
   },
   {
-    color: '#00b0db',
-    src: '15.png',
+    color: 'linear-gradient(90deg, #00b0db 0%, #ee7103 100%)',
+    src: 'slider5.jpg',
   },
   {
-    color: '#141516',
-    src: '17.png',
+    color: 'linear-gradient(90deg, #ee7103 0%, #00b0db 100%)',
+    src: 'slider2.jpg',
   },
   {
-    color: '#ee7103',
-    src: '18.png',
+    color: 'linear-gradient(135deg, #00b0db 0%, #094142 100%)',
+    src: 'slider7.jpg',
   },
 ];
 
 const slider2 = [
   {
-    color: '#ee7103',
-    src: '19.png',
+    color: 'linear-gradient(135deg, #00b0db 0%, #094142 100%)',
+    src: 'slider2.jpg',
   },
   {
-    color: '#141516',
-    src: '31.png',
+    color: 'linear-gradient(90deg, #ee7103 0%, #00b0db 100%)',
+    src: 'slider1.jpg',
   },
   {
-    color: '#00b0db',
-    src: '49.png',
+    color: 'linear-gradient(90deg, #00b0db 0%, #ee7103 100%)',
+    src: 'slider7.jpg',
   },
   {
-    color: '#141516',
-    src: 'about-image.png',
+    color: 'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
+    src: 'slider3.jpg',
   },
 ];
 
@@ -58,6 +59,8 @@ const SlidingImages = () => {
   const locale = useLocale();
   const isArabic = locale === 'ar';
 
+  const t = useTranslations('HomePage.Community');
+
   return (
     <div
       ref={container}
@@ -65,6 +68,16 @@ const SlidingImages = () => {
         'flex flex-col gap-[3vw] relative bg-[#E9EAEB] mt-16 md:mt-[200px] z-[1]'
       )}
     >
+      <div className="w-full py-4 xl:py-8 text-start bg-[#E9EAEB] px-8 xl:px-[100px] ">
+        <h5
+          className={cn(
+            'text-2xl xl:text-6xl text-[#ee7103]',
+            isArabic ? 'arabic-title-bold' : 'latin-title-bold'
+          )}
+        >
+          {t('heading')}
+        </h5>
+      </div>
       <motion.div
         style={{ x: x1 }}
         className={cn(
@@ -77,16 +90,23 @@ const SlidingImages = () => {
             <div
               key={index}
               className={cn('w-1/4 h-[20vw] flex justify-center items-center ')}
-              style={{ backgroundColor: project.color }}
+              style={{ backgroundImage: project.color }}
             >
-              <div className={cn('relative w-[80%] h-[80%] ')}>
-                <Image
-                  fill={true}
-                  alt={'image'}
-                  src={`/images/${project.src}`}
-                  className="object-cover"
-                />
-              </div>
+              <Link
+                href={`/${locale}`}
+                className="w-full h-full flex justify-center items-center group"
+              >
+                <div
+                  className={cn('relative w-[80%] h-[80%] overflow-hidden ')}
+                >
+                  <Image
+                    fill={true}
+                    alt={'image'}
+                    src={`/images/${project.src}`}
+                    className="object-cover transition duration-700 group-hover:scale-110"
+                  />
+                </div>
+              </Link>
             </div>
           );
         })}
@@ -103,16 +123,23 @@ const SlidingImages = () => {
             <div
               key={index}
               className={cn('w-1/4 h-[20vw] flex justify-center items-center ')}
-              style={{ backgroundColor: project.color }}
+              style={{ backgroundImage: project.color }}
             >
-              <div key={index} className={cn('relative w-[80%] h-[80%] ')}>
-                <Image
-                  fill={true}
-                  alt={'image'}
-                  src={`/images/${project.src}`}
-                  className="object-cover"
-                />
-              </div>
+              <Link
+                href={`/${locale}`}
+                className="w-full h-full flex justify-center items-center group"
+              >
+                <div
+                  className={cn('relative w-[80%] h-[80%] overflow-hidden ')}
+                >
+                  <Image
+                    fill={true}
+                    alt={'image'}
+                    src={`/images/${project.src}`}
+                    className="object-cover transition duration-700 group-hover:scale-110"
+                  />
+                </div>
+              </Link>
             </div>
           );
         })}
