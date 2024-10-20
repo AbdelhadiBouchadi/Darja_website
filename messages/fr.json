@@ -168,5 +168,17 @@
       "heading": "Langue",
       "french": "Français",
       "arabic": "Arabe"
+    },
+    "Footer": {
+      "quicklinks": "Quicklinks",
+      "programme2024": "Programme 2024",
+      "previousEditions": "Éditions précédentes",
+      "community": "Communauté",
+      "associationAR2D": "L'association AR2D",
+      "newsletterSignup": "S'inscrire à la newsletter",
+      "emailPlaceholder": "Votre email",
+      "subscribe": "S'inscrire",
+      "followUs": "Suivez-nous",
+      "contact": "Contact"
     }
   }

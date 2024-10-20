@@ -169,5 +169,17 @@
       "heading": "اللغة",
       "french": "الفرنسية",
       "arabic": "العربية"
-    }
+    },
+  "Footer": {
+    "quicklinks": "روابط سريعة",
+    "programme2024": "برنامج 2024",
+    "previousEditions": "الاصدارات السابقة",
+    "community": "مجتمع",
+    "associationAR2D": "AR2D جمعية  ",
+    "newsletterSignup": "اشتراك في النشرة الإخبارية",
+    "emailPlaceholder": "البريد الالكتروني",
+    "subscribe": "تسجيل",
+    "followUs": "تابعونا",
+    "contact": "اتصال"
+  }
 }

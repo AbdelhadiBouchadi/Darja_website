@@ -7,11 +7,14 @@ import RoundedBtn from './rounded';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { cn } from '../../lib/utils';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { Instagram } from 'lucide-react';
 
 const Contact = () => {
   const locale = useLocale();
   const isArabic = locale === 'ar';
-  const t = useTranslations('HomePage.Contact');
+  const t = useTranslations('Footer');
 
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -38,114 +41,119 @@ const Contact = () => {
     setMaxBtnWidth(maxWidth);
   }, []);
 
+  const quickLinks = [
+    {
+      link: t('programme2024'),
+      path: '/derive-2024',
+    },
+    {
+      link: t('previousEditions'),
+      path: '/previous',
+    },
+    {
+      link: t('community'),
+      path: '/community',
+    },
+    {
+      link: t('associationAR2D'),
+      path: '/ar2d',
+    },
+  ];
+
   return (
-    <motion.div
+    <motion.footer
+      className="bg-[#094142] text-white xl:pb-16 2xl:py-40 h-full"
       style={{ y }}
       ref={container}
-      className={cn(
-        'bg-[#094142] flex flex-col justify-center items-center  relative'
-      )}
     >
-      <div
-        className={cn(
-          'pt-[180px] w-full max-w-[1800px] bg-[#094142]',
-          isArabic ? 'arabic-title-bold' : 'latin-title-bold'
-        )}
-      >
-        <div
-          className={cn(
-            'border-b border-gray-500 pb-24 mx-16 xl:mx-[200px] relative'
-          )}
-        >
-          <h2 className="text-4xl md:text-[5vw] m-0 md:my-6 font-light text-[#ee7103] ">
-            {' '}
-            {t('heading')}{' '}
-          </h2>
-          <motion.div
-            style={{ x }}
-            className={cn(
-              'absolute top-[calc(100%-75px)] ',
-              isArabic ? 'right-[calc(100%-250px)]' : 'left-[calc(100%-250px)]'
-            )}
-          >
-            <Link href={`/${locale}/contact`}>
-              <RoundedBtn
-                backgroundColor={'#00b0db'}
-                className={cn(
-                  'roundedBtnSize bg-[#ee7103] text-white rounded-full absolute flex items-center justify-center'
-                )}
-              >
-                <p
-                  className={cn(
-                    'm-0 text-lg font-light z-[2] relative ',
-                    isArabic ? 'text-xl' : ''
-                  )}
-                >
-                  {t('action')}
-                </p>
-              </RoundedBtn>
+      <div className="container mx-auto px-4 pt-36">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Quicklinks */}
+          <div className="flex flex-col justify-center items-start">
+            <h2
+              className={cn(
+                'text-[#00b0db] text-2xl mb-4',
+                isArabic ? ' arabic-subtitle-bold' : 'latin-subtitle-bold'
+              )}
+            >
+              {t('quicklinks')}
+            </h2>
+            <ul className="space-y-2">
+              {quickLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={`/${locale}/${link.path}`}
+                    className="text-white text-lg hover:text-[#ee7103] "
+                  >
+                    {link.link}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter Signup */}
+          <div>
+            <h2
+              className={cn(
+                'text-[#00b0db] text-2xl mb-4',
+                isArabic ? ' arabic-subtitle-bold' : 'latin-subtitle-bold'
+              )}
+            >
+              {t('newsletterSignup')}
+            </h2>
+            <form className="flex flex-col space-y-2">
+              <Input
+                type="email"
+                placeholder={t('emailPlaceholder')}
+                className="bg-transparent border-white text-white placeholder-white"
+              />
+              <Button className="bg-[#00b0db] text-[#2C4A4B] hover:bg-[#ee7103]">
+                {t('subscribe')}
+              </Button>
+            </form>
+          </div>
+
+          {/* Follow Us */}
+          <div className="flex flex-col justify-center md:items-end">
+            <h2
+              className={cn(
+                'text-[#00b0db] text-2xl mb-4',
+                isArabic ? ' arabic-subtitle-bold' : 'latin-subtitle-bold'
+              )}
+            >
+              {t('followUs')}
+            </h2>
+            <Link
+              href="https://www.instagram.com/derivecasablancaise"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram className="h-20 w-20" color="white" />
             </Link>
-          </motion.div>
-          <motion.svg
-            style={{ rotate, scale: 2 }}
-            width="9"
-            height="9"
-            viewBox="0 0 9 9"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className={cn(
-              'absolute top-[30%] ',
-              isArabic ? 'right-[100%]  ' : 'left-[100%]'
-            )}
-          >
-            <path
-              d="M8 8.5C8.27614 8.5 8.5 8.27614 8.5 8L8.5 3.5C8.5 3.22386 8.27614 3 8 3C7.72386 3 7.5 3.22386 7.5 3.5V7.5H3.5C3.22386 7.5 3 7.72386 3 8C3 8.27614 3.22386 8.5 3.5 8.5L8 8.5ZM0.646447 1.35355L7.64645 8.35355L8.35355 7.64645L1.35355 0.646447L0.646447 1.35355Z"
-              fill="#ee7103"
-            />
-          </motion.svg>
+            {/* Contact */}
+            <div className="mt-8">
+              <Link
+                href={`/${locale}/contact`}
+                className={cn(
+                  'text-[#00b0db] text-2xl mb-4',
+                  isArabic ? 'arabic-subtitle-bold' : 'latin-subtitle-bold'
+                )}
+              >
+                {t('contact')}
+              </Link>
+            </div>
+          </div>
         </div>
-        <div
-          className={cn(
-            'flex flex-col lg:flex-row gap-[20px] mx-16  lg:mx-[200px] mt-[180px] mb-[50px] '
-          )}
-        >
-          <Link
-            href="mailto:darja.ar2d@gmail.com"
-            target="_blank"
-            ref={btn1Ref}
-          >
-            <RoundedBtn
-              className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#ee7103] before:bg-[#ee7103] after:bg-[#ee7103] px-16 py-4 text-base before:-top-1/2 hover:text-background"
-              style={{ width: maxBtnWidth || 'auto' }}
-            >
-              <p
-                className={cn(
-                  'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg latin-title-bold text-[#ee7103] '
-                )}
-                dir="ltr"
-              >
-                darja.ar2d@gmail.com
-              </p>
-            </RoundedBtn>
-          </Link>
-          <Link href="tel:+212663052322" ref={btn2Ref}>
-            <RoundedBtn
-              className="relative group inline-flex items-center justify-center overflow-hidden rounded-full ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-solid border-[#ee7103] before:bg-[#ee7103] after:bg-[#ee7103] px-16 py-4 text-base before:-top-1/2 hover:text-white"
-              style={{ width: maxBtnWidth || 'auto' }}
-            >
-              <p
-                className={cn(
-                  'relative z-[1] transition-colors duration-400 group-hover:text-white m-0 text-lg latin-title-bold text-[#ee7103] '
-                )}
-                dir="ltr"
-              >
-                +212 6 63 05 23 22
-              </p>
-            </RoundedBtn>
-          </Link>
+
+        {/* Copyright */}
+        <div className="mt-12 text-center">
+          <p className="text-[#00b0db] latin-subtitle-bold text-lg xl:text-2xl">
+            Dérive Casablancaise 2024 ©
+          </p>
         </div>
       </div>
-    </motion.div>
+    </motion.footer>
   );
 };
 
