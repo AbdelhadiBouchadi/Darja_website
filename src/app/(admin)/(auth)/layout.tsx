@@ -1,7 +1,4 @@
-import Sidebar from '@/components/shared/Sidebar';
-import { SignedIn } from '@clerk/nextjs';
-
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
+const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <div className="flex h-screen bg-gray-900 text-gray-100 overflow-hidden">
@@ -10,13 +7,13 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 opacity-80" />
           <div className="absolute inset-0 backdrop-blur-sm" />
         </div>
-        <SignedIn>
-          <Sidebar />
-        </SignedIn>
-        {children}
+
+        <div className="flex justify-center items-center w-full">
+          {children}
+        </div>
       </div>
     </>
   );
 };
 
-export default MainLayout;
+export default AuthLayout;

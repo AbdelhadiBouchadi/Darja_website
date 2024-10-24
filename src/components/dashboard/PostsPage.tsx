@@ -5,13 +5,12 @@ import { Button } from '../ui/button';
 import { motion } from 'framer-motion';
 import PostsTable from './posts/PostsTable';
 import StatCard from '../shared/StatsCard';
-import { NewspaperIcon, SwatchBook } from 'lucide-react';
+import { Calendar, NewspaperIcon } from 'lucide-react';
 import Navbar from '../shared/Navbar';
 import Link from 'next/link';
 
 interface PostStats {
   totalPosts: number | string;
-  totalPostCategories: number | string;
 }
 
 const PostsPage = ({
@@ -40,9 +39,9 @@ const PostsPage = ({
             color="#8B5CF6"
           />
           <StatCard
-            name="Nombre de Catégories"
-            icon={SwatchBook}
-            value={postStats.totalPostCategories}
+            name="Nombre de Jours"
+            icon={Calendar}
+            value={5}
             color="#6EE7B7"
           />
         </motion.div>

@@ -9,7 +9,13 @@ export interface IPost extends Document {
   arabicText: string;
   imageSource?: string;
   videoSource?: string;
-  postCategory: { _id: string; name: string };
+  postCategory:
+    | 'mercredi 04.12'
+    | 'jeudi 05.12'
+    | 'vendredi 06.12'
+    | 'samedi 07.12'
+    | 'dimanche 08.12';
+  horaire: string;
   url?: string;
   isInHomepage: boolean;
   createdAt: Date;
@@ -40,9 +46,17 @@ const PostSchema = new Schema({
     type: String,
   },
   postCategory: {
-    type: Schema.Types.ObjectId,
-    ref: 'postCategory',
+    type: String,
+    enum: [
+      'mercredi 04.12',
+      'jeudi 05.12',
+      'vendredi 06.12',
+      'samedi 07.12',
+      'dimanche 08.12',
+    ],
+    required: true,
   },
+  horaire: { type: String },
   url: { type: String },
   isInHomepage: { type: Boolean, default: false },
   createdAt: {

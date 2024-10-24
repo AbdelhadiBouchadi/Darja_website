@@ -1266,3 +1266,8 @@
   background: url("../../../public/desc-bg.png") center center no-repeat;
   background-size: cover;
 }
+
+.bg-derive {
+  background: url("../../../public/derive-bg.png") center center no-repeat;
+  background-size: cover;
+}

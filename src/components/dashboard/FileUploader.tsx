@@ -31,7 +31,9 @@ export function FileUploader({
   return (
     <div
       {...getRootProps()}
-      className="flex justify-center items-center bg-gray-800 bg-opacity-50 backdrop-blur-md  shadow-lg border h-72 cursor-pointer flex-col overflow-hidden rounded-xl "
+      className={`flex justify-center items-center bg-gray-800 bg-opacity-50 backdrop-blur-md  shadow-lg border cursor-pointer flex-col overflow-hidden rounded-xl ${
+        imageUrl ? 'h-full' : 'h-72'
+      }`}
     >
       <input {...getInputProps()} className="cursor-pointer" />
 

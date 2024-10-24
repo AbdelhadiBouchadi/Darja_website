@@ -13,12 +13,9 @@ const getPostCategoryByName = async (name: string) => {
 };
 
 // Populate post
+// Populate post (remains unchanged)
 const populatePost = async (query: any) => {
-  return query.populate({
-    path: 'postCategory',
-    model: PostCategory,
-    select: '_id name',
-  });
+  return query; // No longer populating from another model
 };
 
 // Create Post
@@ -28,7 +25,7 @@ export async function createPost(post: CreatePostParams) {
 
     const newPost = await Post.create({
       ...post,
-      postCategory: post.postCategoryId,
+      postCategory: post.postCategory,
     });
 
     return JSON.parse(JSON.stringify(newPost));
@@ -50,7 +47,7 @@ export async function updatePost({ post }: UpdatePostParams) {
 
     const updatedPost = await Post.findByIdAndUpdate(
       post._id,
-      { ...post, postCategory: post.postCategoryId },
+      { ...post, postCategory: post.postCategory },
       { new: true }
     );
 
@@ -98,22 +95,28 @@ export async function getPostById(postId: string) {
   }
 }
 
-// Get All Posts
+/// Get All Posts
 export async function getAllPosts(category: string) {
   try {
     await connectToDatabase();
 
-    const categoryCondition = category
-      ? await getPostCategoryByName(category)
-      : null;
+    // Check if the category is a valid enum value
+    const validCategories = [
+      'mercredi 04.12',
+      'jeudi 05.12',
+      'vendredi 06.12',
+      'samedi 07.12',
+      'dimanche 08.12',
+    ];
 
-    const condition = categoryCondition
-      ? { category: categoryCondition._id }
-      : {};
+    const condition =
+      category && validCategories.includes(category)
+        ? { postCategory: category } // Use the category directly
+        : {};
 
     const postsQuery = Post.find(condition).sort({ createdAt: 'desc' });
 
-    const posts = await populatePost(postsQuery);
+    const posts = await populatePost(postsQuery); // Populate if needed
 
     return JSON.parse(JSON.stringify(posts));
   } catch (error) {
@@ -124,17 +127,17 @@ export async function getAllPosts(category: string) {
 
 // Get Related Posts
 export async function getRelatedPosts({
-  postCategoryId,
+  postCategory,
   postId,
 }: {
-  postCategoryId: string;
+  postCategory: string;
   postId: string;
 }) {
   try {
     await connectToDatabase();
 
     const conditions = {
-      $and: [{ postCategory: postCategoryId }, { _id: { $ne: postId } }],
+      $and: [{ postCategory: postCategory }, { _id: { $ne: postId } }],
     };
 
     const postsQuery = Post.find(conditions).sort({ createdAt: 'desc' });
@@ -155,12 +158,10 @@ export async function getPostCounts() {
 
     // Fetch all posts and post categories
     const posts = await Post.find();
-    const postCategories = await PostCategory.find();
 
     // Return the total counts for both
     return {
       totalPosts: posts.length, // Total posts count
-      totalPostCategories: postCategories.length, // Total post categories count
     };
   } catch (error) {
     console.error('Failed to fetch post statistics:', error);

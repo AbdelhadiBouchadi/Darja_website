@@ -7,16 +7,22 @@ import { getAllPosts } from '@/lib/actions/post.actions';
 import { DeleteConfirmation } from './DeleteConfirmation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 interface Post {
   _id: string;
   frenchTitle: string;
   arabicTitle: string;
-  frenctText: string;
+  frenchText: string;
   arabicText: string;
   imageSource?: string;
   videoSource?: string;
-  postCategory: { _id: string; name: string };
+  postCategory:
+    | 'mercredi 04.12'
+    | 'jeudi 05.12'
+    | 'vendredi 06.12'
+    | 'samedi 07.12'
+    | 'dimanche 08.12';
   url?: string;
   createdAt: Date;
 }
@@ -33,6 +39,7 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
   useEffect(() => {
     async function fetchPosts() {
       const allPosts = await getAllPosts('');
+      console.log('Fetched Posts:', allPosts);
       setPosts(allPosts);
       setFilteredPosts(allPosts);
     }
@@ -51,10 +58,8 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
-    const filtered = posts.filter(
-      (post) =>
-        post.frenchTitle.toLowerCase().includes(term) || // Fixed typo from 'title' to 'frenchTitle'
-        post.postCategory.name.toLowerCase().includes(term)
+    const filtered = posts.filter((post) =>
+      post.frenchTitle.toLowerCase().includes(term)
     );
     setFilteredPosts(filtered);
   };
@@ -88,7 +93,7 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
                 Titre
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Catégorie
+                Date
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Crée le :
@@ -111,9 +116,15 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
               >
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
-                    <div className="flex-shrink-0 h-10 w-10">
-                      <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-                        {post.frenchTitle.charAt(0)}
+                    <div className="flex-shrink-0 ">
+                      <div className="relative h-10 w-12 rounded-md overflow-hidden bg-neutral-900 border border-neutral-800">
+                        <Image
+                          src={post.imageSource!}
+                          alt={post.frenchTitle}
+                          fill
+                          className="object-cover"
+                          sizes="96px"
+                        />
                       </div>
                     </div>
                     <div className="ml-4">
@@ -125,8 +136,8 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
                 </td>
 
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-300">
-                    {post.postCategory.name}
+                  <div className="text-sm text-gray-300 capitalize">
+                    {post.postCategory}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">

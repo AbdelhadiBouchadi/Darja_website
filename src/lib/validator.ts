@@ -15,7 +15,19 @@ export const postFormSchema = z.object({
     .min(3, 'Le texte doit consister de 3 caractères ou plus.'),
   imageSource: z.string(),
   videoSource: z.string(),
-  postCategoryId: z.string(),
+  postCategory: z.enum(
+    [
+      'mercredi 04.12',
+      'jeudi 05.12',
+      'vendredi 06.12',
+      'samedi 07.12',
+      'dimanche 08.12',
+    ],
+    {
+      message: 'Veuillez Choisir Une Date',
+    }
+  ),
+  horaire: z.string().min(3, "Veuillez rentrer l'horaire "),
   isInHomepage: z.boolean(),
   url: z.string().url(),
 });

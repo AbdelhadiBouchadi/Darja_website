@@ -1,42 +1,71 @@
 import createMiddleware from 'next-intl/middleware';
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import {
+  authMiddleware,
+  clerkMiddleware,
+  createRouteMatcher,
+} from '@clerk/nextjs/server';
 import { locales, localePrefix, defaultLocale } from './config';
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 
 const intlMiddleware = createMiddleware({
-  // A list of all locales that are supported
   locales: locales,
-
-  // Used when no locale matches
   defaultLocale: defaultLocale,
-
-  // localePrefix
   localePrefix: localePrefix,
 });
 
-const isProtectedRoute = createRouteMatcher(['/admin(.*)', '/darja-admin(.*)']);
+// Only protect /admin routes, not /darja-admin
+// Create a Clerk middleware that doesn't force protection
+const publicClerkMiddleware = authMiddleware({
+  publicRoutes: [
+    '/darja-admin',
+    '/sign-in(.*)',
+    '/sign-up(.*)',
+    '/api/uploadthing(.*)',
+  ],
+  ignoredRoutes: ['/api/webhook', '/api/uploadthing(.*)'],
+});
 
-export default function middleware(req: NextRequest, event: NextFetchEvent) {
-  // Apply Clerk middleware to protected routes
-  if (isProtectedRoute(req)) {
-    return clerkMiddleware((auth, req) => {
-      auth().protect(); // Protect the route
-      return NextResponse.next(); // Proceed with the request
-    })(req, event);
+export default async function middleware(
+  req: NextRequest,
+  event: NextFetchEvent
+) {
+  const pathname = req.nextUrl.pathname;
+
+  // Handle darja-admin route with Clerk but keep it public
+  if (pathname.startsWith('/darja-admin')) {
+    return publicClerkMiddleware(req, event);
+  }
+  if (pathname.startsWith('/sign-in')) {
+    return publicClerkMiddleware(req, event);
+  }
+  if (pathname.startsWith('/sign-up')) {
+    return publicClerkMiddleware(req, event);
+  }
+  if (pathname.startsWith('/api')) {
+    return publicClerkMiddleware(req, event);
   }
 
-  // Apply `next-intl` middleware to other routes
+  // Handle admin routes with protection
+  if (pathname.startsWith('/admin')) {
+    return publicClerkMiddleware(req, event);
+  }
+
+  // For all other routes, use the intl middleware
   return intlMiddleware(req);
 }
 
 export const config = {
   matcher: [
-    // Match paths for `next-intl`
+    // Match all paths that start with supported locales
     '/(fr|ar)/:path*',
-    // Match paths for Clerk (admin panel)
+    // Match admin paths
     '/admin(.*)',
     '/darja-admin(.*)',
-    // Ensure the root path and other paths are included
+    // Match root and other paths
+    '/((?!api|_next|_vercel|.*\\..*).*)',
+    // Add Clerk's matcher requirements
+    '/((?!.+\\.[\\w]+$|_next).*)',
     '/',
+    '/(api|trpc)(.*)',
   ],
 };

@@ -51,7 +51,13 @@ export type CreatePostParams = {
   arabicText: string;
   imageSource: string;
   videoSource: string;
-  postCategoryId: string;
+  postCategory:
+    | 'mercredi 04.12'
+    | 'jeudi 05.12'
+    | 'vendredi 06.12'
+    | 'samedi 07.12'
+    | 'dimanche 08.12';
+  horaire: string;
   isInHomepage: boolean;
   url: string;
 };
@@ -65,7 +71,13 @@ export type UpdatePostParams = {
     arabicText: string;
     imageSource: string;
     videoSource: string;
-    postCategoryId: string;
+    postCategory:
+      | 'mercredi 04.12'
+      | 'jeudi 05.12'
+      | 'vendredi 06.12'
+      | 'samedi 07.12'
+      | 'dimanche 08.12';
+    horaire: string;
     isInHomepage: boolean;
     url: string;
   };

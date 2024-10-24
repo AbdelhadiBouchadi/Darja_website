@@ -21,90 +21,50 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Input } from '@/components/ui/input';
-import {
-  createPostCategory,
-  getAllPostCategories,
-} from '@/lib/actions/postCategory.actions';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 
 type DropdownProps = {
   value?: string;
-  onChangeHandler?: (value: string) => void;
+  onChangeHandler: (value: string) => void;
 };
 
+const categories = [
+  { id: 'mercredi 04.12', name: 'Mercredi 04.12' },
+  { id: 'jeudi 05.12', name: 'Jeudi 05.12' },
+  { id: 'vendredi 06.12', name: 'Vendredi 06.12' },
+  { id: 'samedi 07.12', name: 'Samedi 07.12' },
+  { id: 'dimanche 08.12', name: 'Dimanche 08.12' },
+];
+
 const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
-  const [categories, setCategories] = useState<IPostCategory[]>([]);
-  const [newCategory, setNewCategory] = useState('');
-
-  const handleAddCategory = () => {
-    if (newCategory.trim() === '') return; // Avoid adding empty categories
-
-    createPostCategory({
-      postCategoryName: newCategory.trim(),
-    }).then((category) => {
-      setCategories((prevState) => [...prevState, category]);
-    });
-  };
+  const [selectedValue, setSelectedValue] = useState(value?.toString() || '');
 
   useEffect(() => {
-    const getCategories = async () => {
-      const categoryList = await getAllPostCategories();
+    setSelectedValue(value?.toString() || '');
+  }, [value]);
 
-      categoryList && setCategories(categoryList as IPostCategory[]);
-    };
-
-    getCategories();
-  }, []);
+  const handleChange = (value: string) => {
+    setSelectedValue(value);
+    onChangeHandler(value);
+  };
 
   return (
     <Select defaultValue={value} onValueChange={onChangeHandler}>
       <SelectTrigger className="select-field">
-        <SelectValue placeholder="Catégorie" />
+        <SelectValue placeholder="Date de l'événement" />
       </SelectTrigger>
       <SelectContent className=" bg-gray-800 bg-opacity-50 backdrop-blur-md  shadow-lg border ">
         {categories.length > 0 &&
           categories.map((category) => (
             <SelectItem
-              key={category._id}
-              value={category._id}
+              key={category.id}
+              value={category.id}
               className="select-item text-gray-100  focus:text-gray-900"
             >
               {category.name}
             </SelectItem>
           ))}
-
-        <AlertDialog>
-          <AlertDialogTrigger className="flex w-full rounded-sm py-3 pl-8 bg-gray-800 bg-opacity-50 backdrop-blur-md  shadow-lg text-gray-100  focus:text-gray-900">
-            Ajouter une catégorie
-          </AlertDialogTrigger>
-          <AlertDialogContent className=" bg-gray-800 bg-opacity-50 backdrop-blur-md  shadow-lg border text-gray-500 ">
-            <AlertDialogHeader>
-              <AlertDialogTitle>Nouvelle Catégorie</AlertDialogTitle>
-              <AlertDialogDescription>
-                <Input
-                  type="text"
-                  placeholder="Nom de catégorie"
-                  className="input-field mt-3"
-                  value={newCategory} // Bind value to state
-                  onChange={(e) => setNewCategory(e.target.value)}
-                />
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Annuler</AlertDialogCancel>
-              <AlertDialogAction
-                onClick={() => startTransition(handleAddCategory)}
-                className={cn(
-                  buttonVariants({ variant: 'outline' }),
-                  'bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg   border border-gray-700 '
-                )}
-              >
-                Ajouter
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
       </SelectContent>
     </Select>
   );

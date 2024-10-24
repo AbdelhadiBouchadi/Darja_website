@@ -91,7 +91,7 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
         });
 
         if (updatedPost) {
-          console.log(updatedPost.postCategoryId);
+          console.log(updatedPost.postCategory);
           form.reset();
           router.push(`/darja-admin/posts`);
         }
@@ -148,7 +148,7 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
-            name="postCategoryId"
+            name="postCategory"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
@@ -163,12 +163,12 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
           />
           <FormField
             control={form.control}
-            name="videoSource"
+            name="horaire"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    placeholder="Source de la video"
+                    placeholder="Horaire de l'événement"
                     className="input-field"
                     {...field}
                   />
@@ -213,23 +213,41 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
             )}
           />
         </div>
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="url"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Lien util à partager"
+                    className="input-field"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="url"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormControl>
-                <Input
-                  placeholder="Lien util à partager"
-                  className="input-field"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="videoSource"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Source de la video"
+                    className="input-field"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <FormField
           control={form.control}

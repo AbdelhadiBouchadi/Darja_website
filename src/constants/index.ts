@@ -36,7 +36,8 @@ export const postDefaultValues = {
   arabicText: '',
   imageSource: '',
   videoSource: '',
-  postCategoryId: '',
+  postCategory: '',
+  horaire: '',
   isInHomepage: false,
   url: '',
 };

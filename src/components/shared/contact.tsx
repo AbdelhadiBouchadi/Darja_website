@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import { useScroll, motion, useTransform } from 'framer-motion';
-import RoundedBtn from './rounded';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
+import NextLink from 'next/link';
 import { cn } from '../../lib/utils';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
@@ -44,19 +44,19 @@ const Contact = () => {
   const quickLinks = [
     {
       link: t('programme2024'),
-      path: '/derive-2024',
+      path: `/${locale}/derive-2024`,
     },
     {
       link: t('previousEditions'),
-      path: '/previous',
+      path: `/${locale}/previous`,
     },
     {
       link: t('community'),
-      path: '/community',
+      path: `/${locale}/community`,
     },
     {
       link: t('associationAR2D'),
-      path: '/ar2d',
+      path: `/${locale}/ar2d`,
     },
   ];
 
@@ -82,13 +82,21 @@ const Contact = () => {
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
-                    href={`/${locale}/${link.path}`}
-                    className="text-white text-lg hover:text-[#ee7103] "
+                    href={link.path}
+                    className="text-white text-lg hover:text-[#ee7103]"
                   >
                     {link.link}
                   </Link>
                 </li>
               ))}
+              <li>
+                <NextLink
+                  href="/darja-admin"
+                  className="text-white text-lg hover:text-[#ee7103]"
+                >
+                  {t('admin')}
+                </NextLink>
+              </li>
             </ul>
           </div>
 
