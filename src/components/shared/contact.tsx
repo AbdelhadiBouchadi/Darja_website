@@ -22,13 +22,7 @@ const Contact = () => {
     offset: ['start end', 'end end'],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const y = useTransform(scrollYProgress, [0, 1], [-200, 0]);
-  const rotate = useTransform(
-    scrollYProgress,
-    [0, 1],
-    isArabic ? [-60, 0] : [120, 90]
-  );
 
   const btn1Ref = useRef<HTMLAnchorElement>(null);
   const btn2Ref = useRef<HTMLAnchorElement>(null);
