@@ -38,7 +38,7 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
 
   useEffect(() => {
     async function fetchPosts() {
-      const allPosts = await getAllPosts('');
+      const allPosts = await getAllPosts();
       console.log('Fetched Posts:', allPosts);
       setPosts(allPosts);
       setFilteredPosts(allPosts);
