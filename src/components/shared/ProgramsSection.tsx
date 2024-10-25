@@ -132,12 +132,12 @@ const ProgramSection = () => {
                     id={date}
                     checked={selectedDates.has(date)}
                     onCheckedChange={() => handleDateToggle(date)}
-                    className="border-[#094142] border-2 data-[state=checked]:bg-[#00b0db] data-[state=checked]:text-[#094142] flex items-center justify-center "
+                    className="border-[#094142] border-2 data-[state=checked]:bg-[#00b0db] data-[state=checked]:text-[#094142] flex items-center justify-center rounded-none "
                   />
                   <Label
                     htmlFor={date}
                     className={cn(
-                      'text-lg md:text-xl',
+                      'text-lg md:text-xl cursor-pointer',
                       selectedDates.has(date)
                         ? 'text-[#00b0db] font-bold'
                         : 'text-[#094142]',
