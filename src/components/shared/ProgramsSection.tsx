@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
+import { useEffect, useRef, useState } from 'react';
+import { cn, landingSlideUp } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 import { getAllPosts } from '@/lib/actions/post.actions';
 import Image from 'next/image';
@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { Calendar } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { motion, useInView } from 'framer-motion';
 
 type Post = {
   _id: string;
@@ -38,6 +39,8 @@ const gradients = [
 ];
 
 const ProgramSection = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
   const [selectedDates, setSelectedDates] = useState<Set<Post['postCategory']>>(
     new Set()
   );
@@ -94,16 +97,27 @@ const ProgramSection = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="program_section"
       className="min-h-screen py-16 px-4 md:px-8 lg:px-16"
     >
-      <div className="mx-auto">
+      <motion.div
+        variants={landingSlideUp}
+        initial="initial"
+        animate="enter"
+        className="mx-auto"
+      >
         <div className="flex flex-col md:flex-row gap-8">
           {/* Date Selection */}
-          <div className="md:w-1/4 flex flex-col justify-center items-center md:items-start md:justify-start">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="md:w-1/4 flex flex-col justify-center items-center md:items-start md:justify-start"
+          >
             <h2
               className={cn(
-                'text-2xl xl:text-4xl text-[#FF5C00] mb-12 w-full xl:w-[50%] px-4 text-center md:text-start',
+                'text-2xl xl:text-4xl text-[#FF5C00] mb-12 w-full xl:w-[50%] text-center md:text-start',
                 isArabic ? 'arabic-title-bold' : 'latin-title-bold'
               )}
             >
@@ -113,7 +127,7 @@ const ProgramSection = () => {
             <div className="w-full xl:w-[50%] h-[0.1rem] bg-[#094142] mb-4" />
             <div className="flex flex-col gap-4">
               {dates.map((date) => (
-                <div key={date} className="flex items-center space-x-2">
+                <div key={date} className="flex items-center space-x-2 gap-2">
                   <Checkbox
                     id={date}
                     checked={selectedDates.has(date)}
@@ -128,7 +142,7 @@ const ProgramSection = () => {
                         ? 'text-[#00b0db] font-bold'
                         : 'text-[#094142]',
                       isArabic
-                        ? 'arabic-subtitle-regular text-right'
+                        ? 'arabic-subtitle-regular text-right space-x-2'
                         : 'latin-subtitle-regular capitalize'
                     )}
                   >
@@ -137,49 +151,59 @@ const ProgramSection = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Posts Grid */}
           <div className="md:w-3/4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {posts.length > 0 ? (
                 posts.map((post, index) => (
-                  <Link
-                    href={`/${locale}/derive-2024/${post._id}`}
+                  <motion.div
                     key={post._id}
-                    className="block aspect-[16/9] md:aspect-[3/4] xl:aspect-[1/1] relative group overflow-hidden p-16"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.2, // Adjust delay for staggered effect
+                    }}
+                    className="shadow-lg"
                   >
-                    <div
-                      className="absolute inset-0 transition-all duration-300"
-                      style={{
-                        backgroundImage: gradients[index % gradients.length],
-                      }}
-                    />
-                    {post.imageSource && (
-                      <div className="absolute inset-6 flex justify-center items-center">
-                        <Image
-                          src={post.imageSource}
-                          alt={isArabic ? post.arabicTitle : post.frenchTitle}
-                          layout="fill"
-                          objectFit="cover"
-                          className="transform transition-transform duration-500 ease-out group-hover:scale-110"
-                        />
+                    <Link
+                      href={`/${locale}/derive-2024/${post._id}`}
+                      className="block aspect-[16/9] md:aspect-[3/4] xl:aspect-[1/1] relative group overflow-hidden p-16"
+                    >
+                      <div
+                        className="absolute inset-0 transition-all duration-300"
+                        style={{
+                          backgroundImage: gradients[index % gradients.length],
+                        }}
+                      />
+                      {post.imageSource && (
+                        <div className="absolute inset-6 flex justify-center items-center">
+                          <Image
+                            src={post.imageSource}
+                            alt={isArabic ? post.arabicTitle : post.frenchTitle}
+                            layout="fill"
+                            objectFit="cover"
+                            className="transform transition-transform duration-500 ease-out group-hover:scale-110"
+                          />
+                        </div>
+                      )}
+                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+                        <h3
+                          className={cn(
+                            'text-white text-lg mb-1',
+                            isArabic
+                              ? 'arabic-subtitle-regular'
+                              : 'latin-subtitle-regular'
+                          )}
+                        >
+                          {isArabic ? post.arabicTitle : post.frenchTitle}
+                        </h3>
+                        <p className="text-white/90 text-sm">{post.horaire}</p>
                       </div>
-                    )}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-                      <h3
-                        className={cn(
-                          'text-white text-lg mb-1',
-                          isArabic
-                            ? 'arabic-subtitle-regular'
-                            : 'latin-subtitle-regular'
-                        )}
-                      >
-                        {isArabic ? post.arabicTitle : post.frenchTitle}
-                      </h3>
-                      <p className="text-white/90 text-sm">{post.horaire}</p>
-                    </div>
-                  </Link>
+                    </Link>
+                  </motion.div>
                 ))
               ) : (
                 <div className="col-span-full flex flex-col items-center justify-center min-h-[400px] bg-[#E9EAEB] rounded-lg">
@@ -201,7 +225,7 @@ const ProgramSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
