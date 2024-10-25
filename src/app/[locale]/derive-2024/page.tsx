@@ -7,6 +7,7 @@ import Contact from '../../../components/shared/contact';
 import ProgramLanding from '@/components/shared/ProgramLanding';
 import Projects from '@/components/shared/projects';
 import SlidingImages from '@/components/shared/slider';
+import ProgramSection from '@/components/shared/ProgramsSection';
 
 const DerivePage = () => {
   const t = useTranslations('Layout');
@@ -15,7 +16,7 @@ const DerivePage = () => {
   return (
     <Transition pageName={pageName}>
       <ProgramLanding />
-      <Projects />
+      <ProgramSection />
       <SlidingImages />
       <Contact />
     </Transition>

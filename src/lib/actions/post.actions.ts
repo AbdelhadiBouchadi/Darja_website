@@ -8,6 +8,16 @@ import { handleError } from '../utils';
 import { revalidatePath } from 'next/cache';
 import { Types } from 'mongoose';
 
+const validCategories = [
+  'mercredi 04.12',
+  'jeudi 05.12',
+  'vendredi 06.12',
+  'samedi 07.12',
+  'dimanche 08.12',
+] as const;
+
+type ValidCategory = (typeof validCategories)[number];
+
 const getPostCategoryByName = async (name: string) => {
   return PostCategory.findOne({ name: { $regex: name, $options: 'i' } });
 };
@@ -95,28 +105,16 @@ export async function getPostById(postId: string) {
   }
 }
 
-/// Get All Posts
-export async function getAllPosts(category: string) {
+// Get All Posts
+export async function getAllPosts(category?: ValidCategory) {
   try {
     await connectToDatabase();
 
-    // Check if the category is a valid enum value
-    const validCategories = [
-      'mercredi 04.12',
-      'jeudi 05.12',
-      'vendredi 06.12',
-      'samedi 07.12',
-      'dimanche 08.12',
-    ];
-
-    const condition =
-      category && validCategories.includes(category)
-        ? { postCategory: category } // Use the category directly
-        : {};
+    const condition = category ? { postCategory: category } : {};
 
     const postsQuery = Post.find(condition).sort({ createdAt: 'desc' });
 
-    const posts = await populatePost(postsQuery); // Populate if needed
+    const posts = await populatePost(postsQuery);
 
     return JSON.parse(JSON.stringify(posts));
   } catch (error) {
@@ -130,14 +128,14 @@ export async function getRelatedPosts({
   postCategory,
   postId,
 }: {
-  postCategory: string;
+  postCategory: ValidCategory;
   postId: string;
 }) {
   try {
     await connectToDatabase();
 
     const conditions = {
-      $and: [{ postCategory: postCategory }, { _id: { $ne: postId } }],
+      $and: [{ postCategory }, { _id: { $ne: postId } }],
     };
 
     const postsQuery = Post.find(conditions).sort({ createdAt: 'desc' });

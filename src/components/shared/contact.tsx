@@ -149,7 +149,7 @@ const Contact = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center pb-6">
           <p className="text-[#00b0db] latin-subtitle-bold text-lg xl:text-2xl">
             Dérive Casablancaise 2024 ©
           </p>
