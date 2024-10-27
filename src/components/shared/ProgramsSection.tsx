@@ -32,10 +32,9 @@ type Post = {
 
 // Gradient backgrounds array
 const gradients = [
-  'linear-gradient(135deg, #00b0db 0%, #094142 100%)',
-  'linear-gradient(90deg, #ee7103 0%, #00b0db 100%)',
-  'linear-gradient(90deg, #00b0db 0%, #ee7103 100%)',
   'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
+  'linear-gradient(90deg, #ee7103 0%, #00b0db 100%)',
+  'linear-gradient(135deg, #00b0db 0%, #094142 100%)',
 ];
 
 const ProgramSection = () => {
@@ -170,7 +169,7 @@ const ProgramSection = () => {
                   >
                     <Link
                       href={`/${locale}/derive-2024/${post._id}`}
-                      className="block aspect-[16/9] md:aspect-[3/4] xl:aspect-[1/1] relative group overflow-hidden p-16"
+                      className="block aspect-[16/9] md:aspect-[3/4] xl:aspect-[1/1] relative group overflow-hidden p-16 group"
                     >
                       <div
                         className="absolute inset-0 transition-all duration-300"
@@ -189,10 +188,10 @@ const ProgramSection = () => {
                           />
                         </div>
                       )}
-                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent ">
                         <h3
                           className={cn(
-                            'text-white text-lg mb-1',
+                            'text-white text-lg mb-1 font-semibold ',
                             isArabic
                               ? 'arabic-subtitle-regular'
                               : 'latin-subtitle-regular'
@@ -200,7 +199,7 @@ const ProgramSection = () => {
                         >
                           {isArabic ? post.arabicTitle : post.frenchTitle}
                         </h3>
-                        <p className="text-white/90 text-sm">{post.horaire}</p>
+                        <p className="text-white/60 text-sm">{post.horaire}</p>
                       </div>
                     </Link>
                   </motion.div>

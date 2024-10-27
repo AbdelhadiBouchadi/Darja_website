@@ -83,15 +83,15 @@ export default function Preloader({ pageName }: PreloaderProps) {
             initial="initial"
             animate="enter"
             className={cn(
-              'flex font-bold text-white text-[42px] items-center absolute z-[1] '
+              'flex font-bold text-white text-[42px] items-center absolute z-[1] ',
+              isArabic ? 'arabic-title-bold' : 'latin-title-bold'
             )}
+            dir={isArabic ? 'rtl' : 'ltr'}
           >
             <span
               className={cn(
-                'block w-[10px] h-[10px] bg-white rounded-[50%] mx-[10px] ',
-                pageName ? '' : 'latin-title-bold'
+                'block w-[10px] h-[10px] bg-white rounded-[50%] mx-[10px] '
               )}
-              dir={pageName ? '' : 'ltr'}
             ></span>
             {pageName ? pageName : words[index]}
           </motion.p>
