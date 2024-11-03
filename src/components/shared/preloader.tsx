@@ -74,7 +74,7 @@ export default function Preloader({ pageName }: PreloaderProps) {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="h-screen w-screen flex items-center justify-center fixed z-[99] bg-[#141516]"
+      className="h-screen w-screen flex items-center justify-center fixed z-[99] bg-[#094142]"
     >
       {dimension.width > 0 && (
         <>
@@ -83,14 +83,14 @@ export default function Preloader({ pageName }: PreloaderProps) {
             initial="initial"
             animate="enter"
             className={cn(
-              'flex font-bold text-white text-[42px] items-center absolute z-[1] ',
+              'flex font-bold text-[#ee7103] text-[42px] items-center absolute z-[1] ',
               isArabic ? 'arabic-title-bold' : 'latin-title-bold'
             )}
             dir={isArabic ? 'rtl' : 'ltr'}
           >
             <span
               className={cn(
-                'block w-[10px] h-[10px] bg-white rounded-[50%] mx-[10px] '
+                'block w-[10px] h-[10px] bg-[#ee7103] rounded-[50%] mx-[10px] '
               )}
             ></span>
             {pageName ? pageName : words[index]}
@@ -100,7 +100,7 @@ export default function Preloader({ pageName }: PreloaderProps) {
               variants={curve}
               initial="initial"
               exit="exit"
-              className="fill-[#141516]"
+              className="fill-[#094142]"
             ></motion.path>
           </svg>
         </>
