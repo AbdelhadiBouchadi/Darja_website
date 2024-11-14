@@ -5,6 +5,7 @@ import Projects from '../../components/shared/projects';
 import SlidingImages from '../../components/shared/slider';
 import Contact from '../../components/shared/contact';
 import { useLocale } from 'next-intl';
+import ProgramLanding from '@/components/shared/ProgramLanding';
 
 const Home = () => {
   const locale = useLocale();
@@ -18,7 +19,7 @@ const Home = () => {
           : 'Bienvenue à Dérive Casablancaise'
       }
     >
-      <Landing />
+      <ProgramLanding />
       <Projects />
       <SlidingImages />
       <Contact />

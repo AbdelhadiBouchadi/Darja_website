@@ -10,6 +10,7 @@ import { Calendar } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { motion, useInView } from 'framer-motion';
+import SubHeader from './SubHeader';
 
 type Post = {
   _id: string;
@@ -95,16 +96,20 @@ const ProgramSection = () => {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="program_section"
-      className="min-h-screen py-16 px-4 md:px-8 lg:px-16"
-    >
+    <section ref={sectionRef} id="program_section" className="min-h-screen ">
+      <motion.main
+        variants={landingSlideUp}
+        initial="initial"
+        animate="enter"
+        className="relative flex h-full w-full mb-8 lg:mb-16 2xl:mb-64"
+      >
+        <SubHeader />
+      </motion.main>
       <motion.div
         variants={landingSlideUp}
         initial="initial"
         animate="enter"
-        className="mx-auto"
+        className="mx-auto mt-8 md:mt-64 xl:mt-80 py-16 px-4 md:px-8 lg:px-16 "
       >
         <div className="flex flex-col md:flex-row gap-8">
           {/* Date Selection */}

@@ -47,11 +47,7 @@ const ProgramLanding = () => {
   );
 
   return (
-    <section
-      ref={sectionRef}
-      data-scroll-section=""
-      className="border-[#094142] border-b-2"
-    >
+    <section ref={sectionRef} data-scroll-section="" className="">
       <motion.main
         variants={landingSlideUp}
         initial="initial"
@@ -66,7 +62,7 @@ const ProgramLanding = () => {
         style={{ backgroundSize }}
       >
         <motion.div
-          className="lg:absolute lg:right-0 lg:top-0 lg:bg-[#E9EAEB] lg:w-[30%] 2xl:w-[20%] flex flex-col justify-center items-center bg-white/50 h-fit gap-4 py-4 my-16 px-4 lg:px-6"
+          className="lg:absolute lg:right-0 lg:top-0 lg:bg-[#E9EAEB] lg:w-[30%] 2xl:w-[20%] flex flex-col justify-center items-center bg-white/70 h-fit gap-4 py-4 my-16 px-4 lg:px-6"
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
         >
@@ -116,7 +112,10 @@ const ProgramLanding = () => {
           >
             {t2('Hero.subtitle3')}
           </motion.p>
-          <Link href="#program_section" className="hidden lg:flex w-full mt-4">
+          <Link
+            href={`/${locale}/derive-2024`}
+            className="hidden lg:flex w-full mt-4"
+          >
             <RoundedBtn className="relative text-base group inline-flex items-center justify-center overflow-hidden rounded-full font-bold ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:border-2 hover:border-solid hover:border-[#094142] before:bg-[#094142] after:bg-[#094142] px-8 py-3 before:-top-1/2 hover:text-background">
               <p
                 className={cn(
@@ -129,7 +128,10 @@ const ProgramLanding = () => {
             </RoundedBtn>
           </Link>
         </motion.div>
-        <Link href="#program_section" className="lg:hidden mt-8 self-center">
+        <Link
+          href={`/${locale}/derive-2024`}
+          className="lg:hidden mt-8 self-center"
+        >
           <RoundedBtn className="relative text-base group inline-flex items-center justify-center overflow-hidden rounded-full font-bold ring-offset-background transition-colors before:absolute before:left-[-10%] before:h-0 before:w-[120%] before:translate-y-3/4 before:scale-0 before:rounded-full before:pb-[120%] before:content-[''] after:absolute after:inset-0 after:h-full after:w-full after:-translate-y-full after:rounded-full after:transition-transform after:duration-300 after:ease-in-expo after:content-[''] hover:before:translate-y-0 hover:before:scale-100 hover:before:transition-transform hover:before:duration-300 hover:before:ease-in-expo hover:after:translate-y-0 hover:after:transition-transform hover:after:delay-300 hover:after:duration-75 hover:after:ease-linear focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:border-2 hover:border-solid hover:border-[#094142] before:bg-[#094142] after:bg-[#094142] px-8 py-3 before:-top-1/2 hover:text-background">
             <p
               className={cn(
