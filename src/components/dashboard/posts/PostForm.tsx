@@ -27,6 +27,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { FileUploader } from '../FileUploader';
 import SubmitButton from '../SubmitButton';
 import { Checkbox } from '@/components/ui/checkbox';
+import TiptapEditor from '../TiptapEditor';
 
 type PostFormProps = {
   type: 'Create' | 'Update';
@@ -185,10 +186,10 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl className="h-72">
-                  <Textarea
-                    placeholder="Texte en français"
-                    {...field}
-                    className="textarea rounded-2xl"
+                  <TiptapEditor
+                    content={field.value}
+                    onChange={field.onChange}
+                    dir="ltr"
                   />
                 </FormControl>
                 <FormMessage />
@@ -201,10 +202,9 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl className="h-72">
-                  <Textarea
-                    placeholder="المحتوى باللغة العربية"
-                    {...field}
-                    className="textarea rounded-2xl"
+                  <TiptapEditor
+                    content={field.value}
+                    onChange={field.onChange}
                     dir="rtl"
                   />
                 </FormControl>

@@ -29,26 +29,26 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --color-dark: #1C1D20;
+    --color-dark: #1c1d20;
     --color-dark-dark: #141517;
-    --color-light: #FFFFFF;
-    --color-blue: #455CE9;
-    --color-blue-dark: #334BD3;
-    --color-gray: #999D9E;
-    --color-lightgray: #E9EAEB;
-    --color-white: #FFFFFF;
+    --color-light: #ffffff;
+    --color-blue: #455ce9;
+    --color-blue-dark: #334bd3;
+    --color-gray: #999d9e;
+    --color-lightgray: #e9eaeb;
+    --color-white: #ffffff;
     --color-border: rgba(28, 29, 32, 0.175);
-    --color-border-solid: #D2D2D2;
+    --color-border-solid: #d2d2d2;
     --color-border-light: rgba(255, 255, 255, 0.2);
     --color-border-solid-light: #545557;
-    --color-text: #1C1D20;
-    --color-text-light: #FFF;
+    --color-text: #1c1d20;
+    --color-text-light: #fff;
     --alert-error: #ff4444;
-    --alert-success: #24C958;
-    --animation-primary: all .5s cubic-bezier(.7, 0, .3, 1);
-    --animation-fast: all .3s cubic-bezier(.7, 0, .3, 1);
-    --animation-smooth: all .7s cubic-bezier(.7, 0, .3, 1);
-    --animation-slow: all .9s cubic-bezier(.7, 0, .3, 1);
+    --alert-success: #24c958;
+    --animation-primary: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    --animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
+    --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
     --section-padding: clamp(5em, 21vh, 12em);
     --container-padding: clamp(2.5em, 8vw, 8em);
     --gap-padding: clamp(1.5em, 4vw, 2.5em);
@@ -106,7 +106,7 @@
   }
 
   .button {
-    @apply rounded-xl h-[54px] ;
+    @apply rounded-xl h-[54px];
   }
 
   .select-item {
@@ -118,3 +118,37 @@
   }
 }
 
+/* Tiptap Styles */
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #0b4885;
+  background-color: #0b4885;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.ProseMirror {
+  > * + * {
+    margin-top: 0.75em;
+  }
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  padding: 0 1rem;
+}
+
+.ProseMirror blockquote {
+  border-left: 2px solid #ffffff;
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+.ProseMirror p {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  width: 100%;
+}
