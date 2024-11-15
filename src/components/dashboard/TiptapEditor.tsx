@@ -50,7 +50,7 @@ const TiptapEditor = ({
 
   return (
     <div className="w-full border border-gray-700 rounded-xl">
-      <div className="  p-2 flex gap-1 flex-wrap">
+      <div className="p-2 flex gap-1 flex-wrap">
         <Button
           type="button"
           variant="ghost"

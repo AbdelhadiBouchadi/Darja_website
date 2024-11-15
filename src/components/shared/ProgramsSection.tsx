@@ -109,7 +109,7 @@ const ProgramSection = () => {
         variants={landingSlideUp}
         initial="initial"
         animate="enter"
-        className="mx-auto mt-8 md:mt-64 xl:mt-80 py-16 px-4 md:px-8 lg:px-16 "
+        className="mx-auto mt-64 xl:mt-80 py-16 px-4 md:px-8 lg:px-16 "
       >
         <div className="flex flex-col md:flex-row gap-8">
           {/* Date Selection */}
@@ -183,13 +183,13 @@ const ProgramSection = () => {
                         }}
                       />
                       {post.imageSource && (
-                        <div className="absolute inset-6 flex justify-center items-center">
+                        <div className="absolute inset-6 flex justify-center items-center overflow-hidden">
                           <Image
                             src={post.imageSource}
                             alt={isArabic ? post.arabicTitle : post.frenchTitle}
                             layout="fill"
                             objectFit="cover"
-                            className="transform transition-transform duration-500 ease-out group-hover:scale-110"
+                            className="transform transition-transform duration-700 ease-out group-hover:scale-110"
                           />
                         </div>
                       )}

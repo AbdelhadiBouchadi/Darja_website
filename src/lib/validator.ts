@@ -14,7 +14,7 @@ export const postFormSchema = z.object({
     .string()
     .min(3, 'Le texte doit consister de 3 caractères ou plus.'),
   imageSource: z.string(),
-  videoSource: z.string(),
+  videoSource: z.string().optional(),
   postCategory: z.enum(
     [
       'mercredi 04.12',
@@ -29,7 +29,7 @@ export const postFormSchema = z.object({
   ),
   horaire: z.string().min(3, "Veuillez rentrer l'horaire "),
   isInHomepage: z.boolean(),
-  url: z.string().url(),
+  url: z.string().optional(),
 });
 
 export const artistFormSchema = z.object({
@@ -46,8 +46,8 @@ export const artistFormSchema = z.object({
     .string()
     .min(3, 'Le texte doit consister de 3 caractères ou plus.'),
   imageSource: z.string(),
-  videoSource: z.string(),
+  videoSource: z.string().optional(),
   artistCategoryId: z.string(),
   isInHomepage: z.boolean(),
-  url: z.string().url(),
+  url: z.string().optional(),
 });
