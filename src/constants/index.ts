@@ -34,7 +34,7 @@ export const postDefaultValues = {
   arabicTitle: '',
   frenchText: '',
   arabicText: '',
-  imageSource: '',
+  images: [],
   videoSource: '',
   postCategory: '',
   horaire: '',

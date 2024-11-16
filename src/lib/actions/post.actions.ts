@@ -1,7 +1,6 @@
 'use server';
 
 import { CreatePostParams, UpdatePostParams } from '@/types';
-import PostCategory from '../database/models/postCategory.model';
 import { connectToDatabase } from '../database';
 import Post from '../database/models/post.model';
 import { handleError } from '../utils';
@@ -18,10 +17,6 @@ const validCategories = [
 
 type ValidCategory = (typeof validCategories)[number];
 
-const getPostCategoryByName = async (name: string) => {
-  return PostCategory.findOne({ name: { $regex: name, $options: 'i' } });
-};
-
 // Populate post
 // Populate post (remains unchanged)
 const populatePost = async (query: any) => {
@@ -36,6 +31,7 @@ export async function createPost(post: CreatePostParams) {
     const newPost = await Post.create({
       ...post,
       postCategory: post.postCategory,
+      images: post.images, // Explicitly set the images array
     });
 
     return JSON.parse(JSON.stringify(newPost));
@@ -57,7 +53,11 @@ export async function updatePost({ post }: UpdatePostParams) {
 
     const updatedPost = await Post.findByIdAndUpdate(
       post._id,
-      { ...post, postCategory: post.postCategory },
+      {
+        ...post,
+        postCategory: post.postCategory,
+        images: post.images, // Explicitly update the images array
+      },
       { new: true }
     );
 

@@ -2,14 +2,11 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -23,7 +20,6 @@ import { postFormSchema } from '@/lib/validator';
 import { createPost, updatePost } from '@/lib/actions/post.actions';
 import { handleError } from '@/lib/utils';
 import Dropdown from './DropDown';
-import { Textarea } from '@/components/ui/textarea';
 import { FileUploader } from '../FileUploader';
 import SubmitButton from '../SubmitButton';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -52,7 +48,7 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
   async function onSubmit(values: z.infer<typeof postFormSchema>) {
     setIsLoading(true);
 
-    let uploadedImageUrl = values.imageSource;
+    let uploadedImageUrls = values.images;
 
     if (files.length > 0) {
       const uploadedImages = await startUpload(files);
@@ -61,17 +57,18 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
         return;
       }
 
-      uploadedImageUrl = uploadedImages[0].url;
+      uploadedImageUrls = uploadedImages.map((img) => img.url);
     }
 
     if (type === 'Create') {
       try {
         const newPost = await createPost({
           ...values,
-          imageSource: uploadedImageUrl,
+          images: uploadedImageUrls,
         });
 
         if (newPost) {
+          console.log(newPost.images);
           form.reset();
           router.push(`/darja-admin/posts`);
         }
@@ -88,7 +85,7 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
 
       try {
         const updatedPost = await updatePost({
-          post: { ...values, imageSource: uploadedImageUrl, _id: postId },
+          post: { ...values, images: uploadedImageUrls, _id: postId },
         });
 
         if (updatedPost) {
@@ -251,13 +248,13 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
 
         <FormField
           control={form.control}
-          name="imageSource"
+          name="images"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl className="h-72">
                 <FileUploader
                   onFieldChange={field.onChange}
-                  imageUrl={field.value}
+                  imageUrls={field.value}
                   setFiles={setFiles}
                 />
               </FormControl>

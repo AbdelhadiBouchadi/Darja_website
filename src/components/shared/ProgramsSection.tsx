@@ -18,7 +18,7 @@ type Post = {
   arabicTitle: string;
   frenchText: string;
   arabicText: string;
-  imageSource: string;
+  images: string[];
   videoSource: string;
   postCategory:
     | 'mercredi 04.12'
@@ -182,10 +182,10 @@ const ProgramSection = () => {
                           backgroundImage: gradients[index % gradients.length],
                         }}
                       />
-                      {post.imageSource && (
+                      {post.images && (
                         <div className="absolute inset-6 flex justify-center items-center overflow-hidden">
                           <Image
-                            src={post.imageSource}
+                            src={post.images[0]}
                             alt={isArabic ? post.arabicTitle : post.frenchTitle}
                             layout="fill"
                             objectFit="cover"

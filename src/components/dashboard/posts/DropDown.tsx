@@ -7,25 +7,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { IPostCategory } from '@/lib/database/models/postCategory.model';
-import { startTransition, useEffect, useState } from 'react';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
+import { useEffect, useState } from 'react';
 
 type DropdownProps = {
-  value?: string;
+  value?: string | null;
   onChangeHandler: (value: string) => void;
 };
 
@@ -50,7 +35,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
   };
 
   return (
-    <Select defaultValue={value} onValueChange={onChangeHandler}>
+    <Select value={value || undefined} onValueChange={onChangeHandler}>
       <SelectTrigger className="select-field">
         <SelectValue placeholder="Date de l'événement" />
       </SelectTrigger>

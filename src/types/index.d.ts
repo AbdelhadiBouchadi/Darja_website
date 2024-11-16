@@ -49,17 +49,18 @@ export type CreatePostParams = {
   arabicTitle: string;
   frenchText: string;
   arabicText: string;
-  imageSource: string;
-  videoSource: string;
-  postCategory:
+  images: string[];
+  videoSource?: string;
+  postCategory?:
     | 'mercredi 04.12'
     | 'jeudi 05.12'
     | 'vendredi 06.12'
     | 'samedi 07.12'
-    | 'dimanche 08.12';
+    | 'dimanche 08.12'
+    | null;
   horaire: string;
   isInHomepage: boolean;
-  url: string;
+  url?: string;
 };
 
 export type UpdatePostParams = {
@@ -69,17 +70,18 @@ export type UpdatePostParams = {
     arabicTitle: string;
     frenchText: string;
     arabicText: string;
-    imageSource: string;
-    videoSource: string;
-    postCategory:
+    images: string[];
+    videoSource?: string;
+    postCategory?:
       | 'mercredi 04.12'
       | 'jeudi 05.12'
       | 'vendredi 06.12'
       | 'samedi 07.12'
-      | 'dimanche 08.12';
+      | 'dimanche 08.12'
+      | null;
     horaire: string;
     isInHomepage: boolean;
-    url: string;
+    url?: string;
   };
 };
 
@@ -93,11 +95,11 @@ export type CreateArtistParams = {
   arabicName: string;
   frenchText: string;
   arabicText: string;
-  imageSource: string;
-  videoSource: string;
+  imageSource?: string;
+  videoSource?: string;
   artistCategoryId: string;
   isInHomepage: boolean;
-  url: string;
+  url?: string;
 };
 
 export type UpdateArtistParams = {
@@ -107,11 +109,11 @@ export type UpdateArtistParams = {
     arabicName: string;
     frenchText: string;
     arabicText: string;
-    imageSource: string;
-    videoSource: string;
+    imageSource?: string;
+    videoSource?: string;
     artistCategoryId: string;
     isInHomepage: boolean;
-    url: string;
+    url?: string;
   };
 };
 

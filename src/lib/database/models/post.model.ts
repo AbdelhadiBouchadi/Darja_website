@@ -7,14 +7,15 @@ export interface IPost extends Document {
   arabicTitle: string;
   frenctText: string;
   arabicText: string;
-  imageSource?: string;
+  images: string[];
   videoSource?: string;
   postCategory:
     | 'mercredi 04.12'
     | 'jeudi 05.12'
     | 'vendredi 06.12'
     | 'samedi 07.12'
-    | 'dimanche 08.12';
+    | 'dimanche 08.12'
+    | null;
   horaire: string;
   url?: string;
   isInHomepage: boolean;
@@ -39,11 +40,13 @@ const PostSchema = new Schema({
     type: String,
     required: true,
   },
-  imageSource: {
-    type: String,
+  images: {
+    type: [String],
+    default: [],
   },
   videoSource: {
     type: String,
+    required: false,
   },
   postCategory: {
     type: String,
@@ -54,10 +57,11 @@ const PostSchema = new Schema({
       'samedi 07.12',
       'dimanche 08.12',
     ],
-    required: true,
+    required: false,
+    default: null,
   },
   horaire: { type: String },
-  url: { type: String },
+  url: { type: String, required: false },
   isInHomepage: { type: Boolean, default: false },
   createdAt: {
     type: Date,

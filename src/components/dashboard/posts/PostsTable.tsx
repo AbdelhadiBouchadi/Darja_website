@@ -15,7 +15,7 @@ interface Post {
   arabicTitle: string;
   frenchText: string;
   arabicText: string;
-  imageSource?: string;
+  images: string[];
   videoSource?: string;
   postCategory:
     | 'mercredi 04.12'
@@ -118,13 +118,19 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
                   <div className="flex items-center">
                     <div className="flex-shrink-0 ">
                       <div className="relative h-10 w-12 rounded-md overflow-hidden bg-neutral-900 border border-neutral-800">
-                        <Image
-                          src={post.imageSource!}
-                          alt={post.frenchTitle}
-                          fill
-                          className="object-cover"
-                          sizes="96px"
-                        />
+                        {post.images.length > 0 ? (
+                          <Image
+                            src={post.images[0]}
+                            alt={post.frenchTitle}
+                            fill
+                            className="object-cover"
+                            sizes="96px"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-gray-500 text-xs">
+                            No image
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="ml-4">

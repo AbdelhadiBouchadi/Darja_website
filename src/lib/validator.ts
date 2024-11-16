@@ -13,7 +13,7 @@ export const postFormSchema = z.object({
   arabicText: z
     .string()
     .min(3, 'Le texte doit consister de 3 caractères ou plus.'),
-  imageSource: z.string(),
+  images: z.array(z.string()).default([]),
   videoSource: z.string().optional(),
   postCategory: z.enum(
     [
