@@ -29,6 +29,7 @@ export async function createArtist(artist: CreateArtistParams) {
     const newArtist = await Artist.create({
       ...artist,
       artistCategory: artist.artistCategoryId,
+      images: artist.images,
     });
 
     return JSON.parse(JSON.stringify(newArtist));
@@ -50,7 +51,11 @@ export async function updateArtist({ artist }: UpdateArtistParams) {
 
     const updatedArtist = await Artist.findByIdAndUpdate(
       artist._id,
-      { ...artist, artistCategory: artist.artistCategoryId },
+      {
+        ...artist,
+        artistCategory: artist.artistCategoryId,
+        images: artist.images,
+      },
       { new: true }
     );
 

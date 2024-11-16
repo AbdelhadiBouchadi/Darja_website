@@ -49,7 +49,7 @@ const ArtistForm = ({ type, artist, artistId }: ArtistFormProps) => {
   async function onSubmit(values: z.infer<typeof artistFormSchema>) {
     setIsLoading(true);
 
-    let uploadedImageUrl = values.imageSource;
+    let uploadedImageUrls = values.images;
 
     if (files.length > 0) {
       const uploadedImages = await startUpload(files);
@@ -58,14 +58,14 @@ const ArtistForm = ({ type, artist, artistId }: ArtistFormProps) => {
         return;
       }
 
-      uploadedImageUrl = uploadedImages[0].url;
+      uploadedImageUrls = uploadedImages.map((img) => img.url);
     }
 
     if (type === 'Create') {
       try {
         const newArtist = await createArtist({
           ...values,
-          imageSource: uploadedImageUrl,
+          images: uploadedImageUrls,
         });
 
         if (newArtist) {
@@ -85,7 +85,7 @@ const ArtistForm = ({ type, artist, artistId }: ArtistFormProps) => {
 
       try {
         const updatedArtist = await updateArtist({
-          artist: { ...values, imageSource: uploadedImageUrl, _id: artistId },
+          artist: { ...values, images: uploadedImageUrls, _id: artistId },
         });
 
         if (updatedArtist) {
@@ -231,13 +231,13 @@ const ArtistForm = ({ type, artist, artistId }: ArtistFormProps) => {
 
         <FormField
           control={form.control}
-          name="imageSource"
+          name="images"
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl className="h-72">
                 <FileUploader
                   onFieldChange={field.onChange}
-                  imageUrl={field.value}
+                  imageUrls={field.value}
                   setFiles={setFiles}
                 />
               </FormControl>

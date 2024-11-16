@@ -95,7 +95,7 @@ export type CreateArtistParams = {
   arabicName: string;
   frenchText: string;
   arabicText: string;
-  imageSource?: string;
+  images: string[];
   videoSource?: string;
   artistCategoryId: string;
   isInHomepage: boolean;
@@ -109,7 +109,7 @@ export type UpdateArtistParams = {
     arabicName: string;
     frenchText: string;
     arabicText: string;
-    imageSource?: string;
+    images: string[];
     videoSource?: string;
     artistCategoryId: string;
     isInHomepage: boolean;

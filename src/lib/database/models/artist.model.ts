@@ -7,7 +7,7 @@ export interface IArtist extends Document {
   arabicName: string;
   frenctText: string;
   arabicText: string;
-  imageSource?: string;
+  images: string[];
   videoSource?: string;
   artistCategory: { _id: string; name: string };
   url?: string;
@@ -33,8 +33,9 @@ const ArtistSchema = new Schema({
     type: String,
     required: true,
   },
-  imageSource: {
-    type: String,
+  images: {
+    type: [String],
+    default: [],
   },
   videoSource: {
     type: String,

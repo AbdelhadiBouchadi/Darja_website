@@ -47,7 +47,7 @@ export const artistDefaultValues = {
   arabicName: '',
   frenchText: '',
   arabicText: '',
-  imageSource: '',
+  images: [],
   videoSource: '',
   artistCategoryId: '',
   isInHomepage: false,
