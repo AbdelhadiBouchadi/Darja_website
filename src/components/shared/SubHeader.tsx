@@ -1,41 +1,60 @@
 import { cn } from '@/lib/utils';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 const SubHeader = () => {
   const locale = useLocale();
   const isArabic = locale === 'ar';
-  const t = useTranslations('Layout.SubHeader');
 
   return (
-    <>
-      <div className="subheader w-full flex flex-col items-center justify-between py-6 absolute top-[15vh] left-0 px-4">
-        <div className="w-full flex justify-between items-center">
-          <div
-            className={cn(
-              'flex flex-col justify-center items-start text-[#094142] text-xl lg:text-3xl font-semibold ',
-              isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
-            )}
-          >
-            <span> {t('derive')} </span>
-            <span> {t('casa')} </span>
-          </div>
-          <div
-            className={cn(
-              'flex flex-col justify-center  text-[#ee7103] text-xl lg:text-3xl font-semibold',
-              isArabic
-                ? 'arabic-subtitle-regular items-start'
-                : 'latin-subtitle-regular items-end'
-            )}
-            dir="ltr"
-          >
-            <span> {t('date')} </span>
-            <span> {t('lieu')} </span>
-          </div>
-        </div>
-        <div className="w-screen h-[0.125rem] my-10 bg-[#094142] " />
+    <div className="subheader w-full flex flex-col items-center justify-center py-6 absolute top-[15vh] left-0 px-4">
+      {/* First Line */}
+      <div
+        className={cn(
+          'flex flex-col  justify-center items-center text-center font-semibold text-xl lg:text-3xl'
+        )}
+      >
+        <span className="text-[#094142] latin-title-bold">
+          Dérive casablancaise | Rencontres des arts et de la scène
+        </span>
+        <span className="text-[#ee7103] mt-2 lg:mt-0 lg:ml-4 arabic-title-bold">
+          منعطف بيضاوي | ملتقى فنون الأداء
+        </span>
       </div>
-    </>
+
+      {/* Moving Text Animation */}
+      <motion.div
+        className={cn(
+          'mt-6 flex flex-col  justify-center items-center text-center font-semibold text-lg lg:text-2xl'
+        )}
+        whileHover={{ animationPlayState: 'paused' }}
+        style={{
+          display: 'flex',
+          animation: 'scroll 15s linear infinite',
+        }}
+      >
+        <span className="text-[#094142] latin-title-bold">
+          Rendez-vous du 04 au 08 décembre 2024 à Casablanca
+        </span>
+        <span className="text-[#ee7103] mt-2 lg:mt-0 lg:ml-4 arabic-title-bold">
+          موعدنا من 4 إلى 8 دجنبر 2024 في الدار البيضاء
+        </span>
+      </motion.div>
+
+      <style jsx>
+        {`
+          @keyframes scroll {
+            from {
+              transform: translateX(100%);
+            }
+            to {
+              transform: translateX(-100%);
+            }
+          }
+        `}
+      </style>
+    </div>
   );
 };
 
