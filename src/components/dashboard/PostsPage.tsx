@@ -22,7 +22,7 @@ const PostsPage = ({
 }) => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
-      <Navbar title="Gérer les postes" />
+      <Navbar title="Gérer les événements" />
 
       <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
         {/* STATS */}
@@ -33,7 +33,7 @@ const PostsPage = ({
           transition={{ duration: 1 }}
         >
           <StatCard
-            name="Nombre de postes"
+            name="Nombre d'évenements"
             icon={NewspaperIcon}
             value={postStats.totalPosts}
             color="#8B5CF6"
@@ -54,7 +54,9 @@ const PostsPage = ({
             className="w-full p-4 bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl  border border-gray-700 my-4"
             variant="outline"
           >
-            <Link href="/darja-admin/posts/create">Créer un nouveau poste</Link>
+            <Link href="/darja-admin/posts/create">
+              Créer un nouvel événement
+            </Link>
           </Button>
         )}
       </main>

@@ -20,7 +20,7 @@ type Post = {
   arabicText: string;
   images: string[];
   videoSource: string;
-  postCategory:
+  eventDates:
     | 'mercredi 04.12'
     | 'jeudi 05.12'
     | 'vendredi 06.12'
@@ -31,17 +31,10 @@ type Post = {
   url: string;
 };
 
-// Gradient backgrounds array
-const gradients = [
-  'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
-  'linear-gradient(90deg, #ee7103 0%, #00b0db 100%)',
-  'linear-gradient(135deg, #00b0db 0%, #094142 100%)',
-];
-
 const ProgramSection = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
-  const [selectedDates, setSelectedDates] = useState<Set<Post['postCategory']>>(
+  const [selectedDates, setSelectedDates] = useState<Set<Post['eventDates']>>(
     new Set()
   );
   const [posts, setPosts] = useState<Post[]>([]);
@@ -49,7 +42,7 @@ const ProgramSection = () => {
   const isArabic = locale === 'ar';
   const t = useTranslations('Derive2024');
 
-  const dates: Post['postCategory'][] = [
+  const dates: Post['eventDates'][] = [
     'mercredi 04.12',
     'jeudi 05.12',
     'vendredi 06.12',
@@ -58,7 +51,7 @@ const ProgramSection = () => {
   ];
 
   // Arabic translations for days
-  const arabicDates: Record<Post['postCategory'], string> = {
+  const arabicDates: Record<Post['eventDates'], string> = {
     'mercredi 04.12': 'الأربعاء 04.12',
     'jeudi 05.12': 'الخميس 05.12',
     'vendredi 06.12': 'الجمعة 06.12',
@@ -74,7 +67,7 @@ const ProgramSection = () => {
           setPosts(allPosts);
         } else {
           const filteredPosts = allPosts.filter((post: Post) =>
-            selectedDates.has(post.postCategory)
+            selectedDates.has(post.eventDates)
           );
           setPosts(filteredPosts);
         }
@@ -83,7 +76,7 @@ const ProgramSection = () => {
     fetchPosts();
   }, [selectedDates]);
 
-  const handleDateToggle = (date: Post['postCategory']) => {
+  const handleDateToggle = (date: Post['eventDates']) => {
     setSelectedDates((prevDates) => {
       const newDates = new Set(prevDates);
       if (newDates.has(date)) {
@@ -179,7 +172,8 @@ const ProgramSection = () => {
                       <div
                         className="absolute inset-0 transition-all duration-300"
                         style={{
-                          backgroundImage: gradients[index % gradients.length],
+                          backgroundImage:
+                            'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
                         }}
                       />
                       {post.images && (

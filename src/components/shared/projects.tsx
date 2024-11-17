@@ -136,17 +136,6 @@ export default function Projects() {
           'w-full flex flex-col gap-[3vw] items-center justify-center  '
         )}
       >
-        <div className="w-full py-4 xl:py-8 text-end bg-[#E9EAEB] px-8 xl:px-[100px] ">
-          <h5
-            className={cn(
-              'text-2xl xl:text-6xl text-[#ee7103]',
-              isArabic ? 'arabic-title-bold' : 'latin-title-bold'
-            )}
-          >
-            {t('heading')}
-          </h5>
-        </div>
-
         <div className="w-full px-8 xl:px-[100px] bg-[#094142]">
           {posts.map((project, index) => (
             <Link
@@ -178,66 +167,6 @@ export default function Projects() {
           </RoundedBtn>
         </Link>
       </div>
-      <>
-        <motion.div
-          ref={modalContainer}
-          variants={scaleAnimation}
-          initial="initial"
-          animate={active ? 'enter' : 'closed'}
-          className={cn(
-            'w-[400px] h-[350px] fixed top-1/2 left-1/2 bg-white pointer-events-none overflow-hidden z-[3] '
-          )}
-        >
-          <div
-            style={{ top: index * -100 + '%' }}
-            className={cn(
-              'w-full h-full relative transition-[top] duration-500 ease-[cubic-bezier(0.76, 0, 0.24, 1)]'
-            )}
-          >
-            {posts.map((project, idx) => {
-              const { imageSource, _id } = project;
-              return (
-                <div
-                  className={cn(
-                    'w-full h-full flex items-center justify-center'
-                  )}
-                  style={{ backgroundColor: '#00b0db' }}
-                  key={`modal_${idx}`}
-                >
-                  <Image
-                    src={imageSource}
-                    width={300}
-                    height={0}
-                    alt="image"
-                    className="h-auto"
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
-        <motion.div
-          ref={cursor}
-          className={cn(
-            'w-[80px] h-[80px] rounded-full bg-[#00b0db] text-white fixed z-[3] flex items-center justify-center text-lg font-light pointer-events-none '
-          )}
-          variants={scaleAnimation}
-          initial="initial"
-          animate={active ? 'enter' : 'closed'}
-        ></motion.div>
-        <motion.div
-          ref={cursorLabel}
-          className={cn(
-            'w-[80px] h-[80px] rounded-full bg-[#00b0db] text-white fixed z-[3] flex items-center justify-center text-lg font-light pointer-events-none bg-transparent ',
-            isArabic ? 'arabic-title-bold text-2xl' : 'latin-title-bold'
-          )}
-          variants={scaleAnimation}
-          initial="initial"
-          animate={active ? 'enter' : 'closed'}
-        >
-          {t('view')}
-        </motion.div>
-      </>
     </main>
   );
 }

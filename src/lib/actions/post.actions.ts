@@ -30,8 +30,8 @@ export async function createPost(post: CreatePostParams) {
 
     const newPost = await Post.create({
       ...post,
-      postCategory: post.postCategory,
       images: post.images, // Explicitly set the images array
+      postCategory: post.postCategory,
     });
 
     return JSON.parse(JSON.stringify(newPost));
@@ -55,8 +55,8 @@ export async function updatePost({ post }: UpdatePostParams) {
       post._id,
       {
         ...post,
-        postCategory: post.postCategory,
         images: post.images, // Explicitly update the images array
+        postCategory: post.postCategory,
       },
       { new: true }
     );

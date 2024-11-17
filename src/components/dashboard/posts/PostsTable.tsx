@@ -18,11 +18,12 @@ interface Post {
   images: string[];
   videoSource?: string;
   postCategory:
-    | 'mercredi 04.12'
-    | 'jeudi 05.12'
-    | 'vendredi 06.12'
-    | 'samedi 07.12'
-    | 'dimanche 08.12';
+    | 'danse'
+    | 'concert'
+    | 'théâtre'
+    | 'lectures'
+    | 'cinéma'
+    | 'ateliers';
   url?: string;
   createdAt: Date;
 }
@@ -93,7 +94,7 @@ const PostsTable = ({ currentUserIsAdmin }: PostsTableProps) => {
                 Titre
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Date
+                Catégorie
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Crée le :

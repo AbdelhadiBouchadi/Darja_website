@@ -9,14 +9,16 @@ export interface IPost extends Document {
   arabicText: string;
   images: string[];
   videoSource?: string;
+  startDateTime: Date;
+  endDateTime: Date;
   postCategory:
-    | 'mercredi 04.12'
-    | 'jeudi 05.12'
-    | 'vendredi 06.12'
-    | 'samedi 07.12'
-    | 'dimanche 08.12'
-    | null;
-  horaire: string;
+    | 'danse'
+    | 'concert'
+    | 'théâtre'
+    | 'lectures'
+    | 'cinéma'
+    | 'ateliers';
+  location: string;
   url?: string;
   isInHomepage: boolean;
   createdAt: Date;
@@ -48,19 +50,15 @@ const PostSchema = new Schema({
     type: String,
     required: false,
   },
+  startDateTime: { type: Date, default: Date.now },
+  endDateTime: { type: Date, default: Date.now },
   postCategory: {
     type: String,
-    enum: [
-      'mercredi 04.12',
-      'jeudi 05.12',
-      'vendredi 06.12',
-      'samedi 07.12',
-      'dimanche 08.12',
-    ],
-    required: false,
+    enum: ['danse', 'concert', 'théâtre', 'lectures', 'cinéma', 'ateliers'],
+    required: true,
     default: null,
   },
-  horaire: { type: String },
+  location: { type: String },
   url: { type: String, required: false },
   isInHomepage: { type: Boolean, default: false },
   createdAt: {

@@ -36,8 +36,10 @@ export const postDefaultValues = {
   arabicText: '',
   images: [],
   videoSource: '',
+  startDateTime: new Date(),
+  endDateTime: new Date(),
   postCategory: '',
-  horaire: '',
+  location: '',
   isInHomepage: false,
   url: '',
 };

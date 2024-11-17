@@ -19,11 +19,15 @@ import { useUploadThing } from '@/lib/uploadthing';
 import { postFormSchema } from '@/lib/validator';
 import { createPost, updatePost } from '@/lib/actions/post.actions';
 import { handleError } from '@/lib/utils';
-import Dropdown from './DropDown';
 import { FileUploader } from '../FileUploader';
 import SubmitButton from '../SubmitButton';
 import { Checkbox } from '@/components/ui/checkbox';
 import TiptapEditor from '../TiptapEditor';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { fr } from 'date-fns/locale';
+import Image from 'next/image';
+import Dropdown from './DropDown';
 
 type PostFormProps = {
   type: 'Create' | 'Update';
@@ -35,7 +39,14 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const initialValues = post && type === 'Update' ? post : postDefaultValues;
+  const initialValues =
+    post && type === 'Update'
+      ? {
+          ...post,
+          startDateTime: new Date(post.startDateTime),
+          endDateTime: new Date(post.endDateTime),
+        }
+      : postDefaultValues;
   const router = useRouter();
 
   const { startUpload } = useUploadThing('imageUploader');
@@ -146,6 +157,73 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
+            name="startDateTime"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="input-field flex justify-center items-center">
+                    <Image
+                      src="/assets/icons/calendar.svg"
+                      alt="calendar"
+                      width={24}
+                      height={24}
+                      className="filter-grey"
+                    />
+                    <p className="ml-3 whitespace-nowrap text-grey-600">
+                      Date de début:
+                    </p>
+                    <DatePicker
+                      locale={fr}
+                      selected={field.value}
+                      onChange={(date: Date | null) => field.onChange(date)}
+                      showTimeSelect
+                      timeInputLabel="Time:"
+                      dateFormat="dd/MM/yyyy h:mm aa"
+                      wrapperClassName="datePicker"
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="endDateTime"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="input-field flex justify-center items-center">
+                    <Image
+                      src="/assets/icons/calendar.svg"
+                      alt="calendar"
+                      width={24}
+                      height={24}
+                      className="filter-grey"
+                    />
+                    <p className="ml-3 whitespace-nowrap text-grey-600">
+                      Date de fin:
+                    </p>
+                    <DatePicker
+                      locale={fr}
+                      selected={field.value}
+                      onChange={(date: Date | null) => field.onChange(date)}
+                      showTimeSelect
+                      timeInputLabel="Time:"
+                      dateFormat="dd/MM/yyyy h:mm aa"
+                      wrapperClassName="datePicker"
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
             name="postCategory"
             render={({ field }) => (
               <FormItem className="w-full">
@@ -161,12 +239,12 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
           />
           <FormField
             control={form.control}
-            name="horaire"
+            name="location"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    placeholder="Horaire de l'événement"
+                    placeholder="Lieu de l'événement"
                     className="input-field"
                     {...field}
                   />
@@ -176,6 +254,7 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
             )}
           />
         </div>
+
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}

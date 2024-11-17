@@ -16,18 +16,14 @@ export const postFormSchema = z.object({
   images: z.array(z.string()).default([]),
   videoSource: z.string().optional(),
   postCategory: z.enum(
-    [
-      'mercredi 04.12',
-      'jeudi 05.12',
-      'vendredi 06.12',
-      'samedi 07.12',
-      'dimanche 08.12',
-    ],
+    ['danse', 'concert', 'théâtre', 'lectures', 'cinéma', 'ateliers'],
     {
       message: 'Veuillez Choisir Une Date',
     }
   ),
-  horaire: z.string().min(3, "Veuillez rentrer l'horaire "),
+  startDateTime: z.date(),
+  endDateTime: z.date(),
+  location: z.string().min(3, "Veuillez rentrer le lieu de l'événement. "),
   isInHomepage: z.boolean(),
   url: z.string().optional(),
 });

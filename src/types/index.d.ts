@@ -51,14 +51,16 @@ export type CreatePostParams = {
   arabicText: string;
   images: string[];
   videoSource?: string;
-  postCategory?:
-    | 'mercredi 04.12'
-    | 'jeudi 05.12'
-    | 'vendredi 06.12'
-    | 'samedi 07.12'
-    | 'dimanche 08.12'
-    | null;
-  horaire: string;
+  startDateTime: Date;
+  endDateTime: Date;
+  postCategory:
+    | 'danse'
+    | 'concert'
+    | 'théâtre'
+    | 'lectures'
+    | 'cinéma'
+    | 'ateliers';
+  location: string;
   isInHomepage: boolean;
   url?: string;
 };
@@ -72,14 +74,16 @@ export type UpdatePostParams = {
     arabicText: string;
     images: string[];
     videoSource?: string;
-    postCategory?:
-      | 'mercredi 04.12'
-      | 'jeudi 05.12'
-      | 'vendredi 06.12'
-      | 'samedi 07.12'
-      | 'dimanche 08.12'
-      | null;
-    horaire: string;
+    startDateTime: Date;
+    endDateTime: Date;
+    postCategory:
+      | 'danse'
+      | 'concert'
+      | 'théâtre'
+      | 'lectures'
+      | 'cinéma'
+      | 'ateliers';
+    location: string;
     isInHomepage: boolean;
     url?: string;
   };

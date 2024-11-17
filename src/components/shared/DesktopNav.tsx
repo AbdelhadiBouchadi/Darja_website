@@ -12,11 +12,12 @@ import { cn } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import LocaleSwitcher from './locale-switcher-select';
+import Link from 'next/link';
 
 const DesktopNav = () => {
   const t = useTranslations('Layout');
   const navKeys = ['darja', 'community', 'contact'];
-  const deriveNavKeys = ['home', 'about', 'derive', 'previous'];
+  const deriveNavKeys = ['derive', 'previous'];
   const locale = useLocale();
   const isArabic = locale === 'ar';
 
@@ -33,15 +34,17 @@ const DesktopNav = () => {
     <NavigationMenu className="h-full w-screen justify-between">
       <NavigationMenuList className="h-[15vh] w-screen justify-between">
         <NavigationMenuItem className="group w-full h-full flex justify-center items-center hover:bg-[#00b0db] hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b0db] text-[#00b0db]  nav-trigger">
-          <NavigationMenuTrigger
-            className={cn(
-              ' text-xl bg-transparent font-extrabold ',
+          <Link href={`/${locale}`}>
+            <NavigationMenuTrigger
+              className={cn(
+                ' text-xl bg-transparent font-extrabold ',
 
-              isArabic ? 'arabic-subtitle-regular' : 'latin-title-bold'
-            )}
-          >
-            {t('Navigation.derivecasa')}
-          </NavigationMenuTrigger>
+                isArabic ? 'arabic-subtitle-regular' : 'latin-title-bold'
+              )}
+            >
+              {t('Navigation.derivecasa')}
+            </NavigationMenuTrigger>
+          </Link>
           <NavigationMenuContent
             className="bg-[#094142] w-full"
             style={{ width: `${triggerWidth}px` }}

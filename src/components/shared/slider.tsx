@@ -5,7 +5,9 @@ import { useScroll, useTransform, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { Button } from '../ui/button';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const slider1 = [
   {
@@ -52,6 +54,9 @@ const SlidingImages = () => {
     offset: ['start end', 'end start'],
   });
 
+  const [x1Offset, setX1Offset] = useState(0);
+  const [x2Offset, setX2Offset] = useState(0);
+
   const x1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const x2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const height = useTransform(scrollYProgress, [0, 0.9], [150, -20]);
@@ -60,6 +65,17 @@ const SlidingImages = () => {
   const isArabic = locale === 'ar';
 
   const t = useTranslations('HomePage.Community');
+
+  const handleScrollRight = (slider: 'slider1' | 'slider2') => {
+    if (slider === 'slider1')
+      setX1Offset((prev) => prev - 150); // Adjust the value as needed
+    else setX2Offset((prev) => prev - 150);
+  };
+
+  const handleScrollLeft = (slider: 'slider1' | 'slider2') => {
+    if (slider === 'slider1') setX1Offset((prev) => prev + 150);
+    else setX2Offset((prev) => prev + 150);
+  };
 
   return (
     <div
@@ -78,27 +94,38 @@ const SlidingImages = () => {
           {t('heading')}
         </h5>
       </div>
-      <motion.div
-        style={{ x: x1 }}
-        className={cn(
-          'hidden md:flex relative gap-[3vw] w-[120vw]  ',
-          isArabic ? 'right-[-10vw]' : 'left-[-10vw]'
-        )}
-      >
-        {slider1.map((project, index) => {
-          return (
+      {/* Slider 1 */}
+      <div className="relative  items-center w-[120vw] hidden md:flex">
+        <Button
+          onClick={() => handleScrollLeft('slider1')}
+          className={cn(
+            'absolute  z-10 bg-[#00b0db] hover:bg-opacity-80 text-white px-4 py-2 rounded-md mx-4',
+            isArabic ? 'right-0' : 'left-0'
+          )}
+        >
+          <ChevronLeft className={cn('size-4', isArabic ? 'rotate-180' : '')} />
+        </Button>
+        <motion.div
+          style={{ x: x1, translateX: x1Offset }}
+          className={cn(
+            'hidden md:flex relative gap-[3vw] w-[120vw]',
+            isArabic ? 'right-[-10vw]' : 'left-[-10vw]'
+          )}
+        >
+          {slider1.map((project, index) => (
             <div
               key={index}
-              className={cn('w-1/4 h-[20vw] flex justify-center items-center ')}
-              style={{ backgroundImage: project.color }}
+              className={cn('w-1/4 h-[20vw] flex justify-center items-center')}
+              style={{
+                backgroundImage:
+                  'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
+              }}
             >
               <Link
                 href={`/${locale}`}
                 className="w-full h-full flex justify-center items-center group"
               >
-                <div
-                  className={cn('relative w-[80%] h-[80%] overflow-hidden ')}
-                >
+                <div className={cn('relative w-[80%] h-[80%] overflow-hidden')}>
                   <Image
                     fill={true}
                     alt={'image'}
@@ -108,30 +135,52 @@ const SlidingImages = () => {
                 </div>
               </Link>
             </div>
-          );
-        })}
-      </motion.div>
-      <motion.div
-        style={{ x: x2 }}
-        className={cn(
-          'hidden md:flex relative gap-[3vw] w-[120vw]  ',
-          isArabic ? 'right-[-10vw]' : 'left-[-10vw]'
-        )}
-      >
-        {slider2.map((project, index) => {
-          return (
+          ))}
+        </motion.div>
+        <Button
+          onClick={() => handleScrollRight('slider1')}
+          className={cn(
+            'absolute  z-10 bg-[#00b0db] hover:bg-opacity-80 text-white px-4 py-2 rounded-md mx-4',
+            isArabic ? 'left-[20vw]' : 'right-[20vw]'
+          )}
+        >
+          <ChevronRight
+            className={cn('size-4', isArabic ? 'rotate-180' : '')}
+          />
+        </Button>
+      </div>
+      {/* Slider 2 */}
+      <div className="relative hidden md:flex items-center mt-8 w-[120vw]">
+        <Button
+          onClick={() => handleScrollLeft('slider2')}
+          className={cn(
+            'absolute  z-10 bg-[#00b0db] hover:bg-opacity-80 text-white px-4 py-2 rounded-md mx-4',
+            isArabic ? 'right-0' : 'left-0'
+          )}
+        >
+          <ChevronLeft className={cn('size-4', isArabic ? 'rotate-180' : '')} />
+        </Button>
+        <motion.div
+          style={{ x: x2, translateX: x2Offset }}
+          className={cn(
+            'hidden md:flex relative gap-[3vw] w-[120vw]',
+            isArabic ? 'right-[-10vw]' : 'left-[-10vw]'
+          )}
+        >
+          {slider2.map((project, index) => (
             <div
               key={index}
-              className={cn('w-1/4 h-[20vw] flex justify-center items-center ')}
-              style={{ backgroundImage: project.color }}
+              className={cn('w-1/4 h-[20vw] flex justify-center items-center')}
+              style={{
+                backgroundImage:
+                  'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
+              }}
             >
               <Link
                 href={`/${locale}`}
                 className="w-full h-full flex justify-center items-center group"
               >
-                <div
-                  className={cn('relative w-[80%] h-[80%] overflow-hidden ')}
-                >
+                <div className={cn('relative w-[80%] h-[80%] overflow-hidden')}>
                   <Image
                     fill={true}
                     alt={'image'}
@@ -141,9 +190,20 @@ const SlidingImages = () => {
                 </div>
               </Link>
             </div>
-          );
-        })}
-      </motion.div>
+          ))}
+        </motion.div>
+        <Button
+          onClick={() => handleScrollRight('slider2')}
+          className={cn(
+            'absolute  z-10 bg-[#00b0db] hover:bg-opacity-80 text-white px-4 py-2 rounded-md mx-4',
+            isArabic ? 'left-[20vw]' : 'right-[20vw]'
+          )}
+        >
+          <ChevronRight
+            className={cn('size-4', isArabic ? 'rotate-180' : '')}
+          />
+        </Button>
+      </div>
       <motion.div
         style={{ height }}
         className={cn('relative mt-24 bg-[#141516]')}
