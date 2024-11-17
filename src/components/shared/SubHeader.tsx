@@ -1,12 +1,8 @@
 import { cn } from '@/lib/utils';
-import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import React from 'react';
 
 const SubHeader = () => {
-  const locale = useLocale();
-  const isArabic = locale === 'ar';
-
   return (
     <div className="subheader w-full flex flex-col items-center justify-center py-6 absolute top-[15vh] left-0 px-4">
       {/* First Line */}

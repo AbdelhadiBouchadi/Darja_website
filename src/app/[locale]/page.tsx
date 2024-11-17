@@ -1,4 +1,3 @@
-import Landing from '../../components/shared/landing';
 import { Transition } from '../../components/shared/preloader';
 import React from 'react';
 import Projects from '../../components/shared/projects';
