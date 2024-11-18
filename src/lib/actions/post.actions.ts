@@ -2,7 +2,7 @@
 
 import { CreatePostParams, UpdatePostParams } from '@/types';
 import { connectToDatabase } from '../database';
-import Post from '../database/models/post.model';
+import Post, { IPost } from '../database/models/post.model';
 import { handleError } from '../utils';
 import { revalidatePath } from 'next/cache';
 import { Types } from 'mongoose';
@@ -124,28 +124,31 @@ export async function getAllPosts(category?: ValidCategory) {
 }
 
 // Get Related Posts
+// Get Related Posts
 export async function getRelatedPosts({
   postCategory,
   postId,
 }: {
-  postCategory: ValidCategory;
+  postCategory: string;
   postId: string;
-}) {
+}): Promise<IPost[]> {
   try {
     await connectToDatabase();
 
     const conditions = {
-      $and: [{ postCategory }, { _id: { $ne: postId } }],
+      $and: [{ postCategory }, { _id: { $ne: new Types.ObjectId(postId) } }],
     };
 
-    const postsQuery = Post.find(conditions).sort({ createdAt: 'desc' });
+    const relatedPosts = await Post.find(conditions)
+      .sort({ startDateTime: 'desc' })
+      .limit(3)
+      .lean();
 
-    const posts = await populatePost(postsQuery);
-
-    return JSON.parse(JSON.stringify(posts));
+    return JSON.parse(JSON.stringify(relatedPosts));
   } catch (error) {
     console.error('Error Getting Related Posts', error);
     handleError(error);
+    return [];
   }
 }
 
