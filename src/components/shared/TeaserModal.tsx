@@ -48,7 +48,7 @@ const TeaserModal: React.FC<VideoModalProps> = ({ isOpen, onClose }) => {
         className="w-full h-[400px] 2xl:h-[600px] "
       >
         <iframe
-          src={`https://player.vimeo.com/video/549289388`}
+          src={`https://www.youtube.com/embed/LVQcsR6o7Rc`}
           width="100%"
           height="100%"
           frameBorder={0}

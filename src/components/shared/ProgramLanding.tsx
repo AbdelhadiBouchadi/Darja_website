@@ -142,11 +142,11 @@ const ProgramLanding = () => {
           onClick={() => openModal()}
         >
           <Image
-            src="/images/image-slider4.png"
-            width={600}
-            height={600}
+            src="/images/teaser-thumb.png"
+            width={1000}
+            height={1000}
             alt="tease_thumbnail"
-            className="w-full h-full object-cover 2xl:w-[900px]"
+            className="md:w-[400px] xl:w-[800px] h-full object-cover"
           />
           <PlayCircleIcon className="size-12 absolute top-1/2 left-1/2 text-[#094142] transition-all group-hover:scale-110 duration-700 transform -translate-x-1/2 -translate-y-1/2 animate-pulse" />
         </motion.div>
