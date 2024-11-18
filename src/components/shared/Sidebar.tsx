@@ -12,7 +12,6 @@ import {
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
-import { UserButton } from '@clerk/nextjs';
 import { cn } from '@/lib/utils';
 
 const SIDEBAR_ITEMS = [
@@ -66,7 +65,7 @@ const Sidebar = () => {
     >
       <div
         className={cn(
-          'h-full bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 flex flex-col items-center border-r border-gray-700 transition-all duration-300 ease-in-out',
+          'h-full bg-gray-800 bg-opacity-50 backdrop-blur-md p-4  border-r border-gray-700 transition-all duration-300 ease-in-out',
           isSidebarOpen ? 'items-start' : 'items-center'
         )}
       >
@@ -82,7 +81,11 @@ const Sidebar = () => {
         <nav className="mt-8 flex-grow">
           {SIDEBAR_ITEMS.map((item) => (
             <Link key={item.href} href={item.href}>
-              <motion.div className="flex items-center p-4 text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors mb-2">
+              <motion.div
+                className={cn(
+                  'flex items-center  p-4 text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors mb-2'
+                )}
+              >
                 <item.icon
                   size={20}
                   style={{ color: item.color, minWidth: '20px' }}
@@ -104,11 +107,6 @@ const Sidebar = () => {
             </Link>
           ))}
         </nav>
-
-        <div className="flex items-center cursor-pointer gap-2 p-4">
-          <UserButton />
-          {isSidebarOpen && <p className="ml-4 whitespace-nowrap">Profile</p>}
-        </div>
       </div>
     </motion.div>
   );

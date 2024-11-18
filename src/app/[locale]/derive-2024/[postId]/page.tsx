@@ -193,7 +193,8 @@ const page = async ({ params: { postId } }: PostProps) => {
                   <Link
                     href={post.url}
                     target="_blank"
-                    className="text-primary hover:underline"
+                    className="text-[#ee7103] underline italic hover:text-[#00b0db] transition-all duration-300 "
+                    dir="ltr"
                   >
                     {post.url}
                   </Link>
@@ -216,9 +217,9 @@ const page = async ({ params: { postId } }: PostProps) => {
 
         {/* Video Section */}
         {post.videoSource && (
-          <div className="my-8 px-4">
+          <div className="my-8 px-4 w-full flex justify-center md:justify-end items-center">
             <VideoThumbnail
-              thumbnailSrc="/images/image-slider4.png"
+              thumbnailSrc={post.images[0]}
               videoUrl={post.videoSource}
             />
           </div>

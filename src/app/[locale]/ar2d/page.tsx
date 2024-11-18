@@ -8,6 +8,7 @@ import Residence from '../../../components/shared/Residence';
 import Creation from '../../../components/shared/Creation';
 import Transmission from '../../../components/shared/Transmission';
 import Contact from '../../../components/shared/contact';
+import ComingSoon from '@/components/shared/ComingSoon';
 
 const EspaceDarja = () => {
   const t = useTranslations('Layout');
@@ -16,13 +17,14 @@ const EspaceDarja = () => {
 
   return (
     <Transition pageName={pageName}>
-      <AboutDarja />
+      {/* <AboutDarja />
       <AboutSection />
       <Apropos />
       <Residence />
       <Creation />
       <Transmission />
-      <Contact />
+      <Contact /> */}
+      <ComingSoon />
     </Transition>
   );
 };

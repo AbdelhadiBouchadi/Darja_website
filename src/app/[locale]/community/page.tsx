@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import { Transition } from '../../../components/shared/preloader';
+import ComingSoon from '@/components/shared/ComingSoon';
 
 const Community = () => {
   const t = useTranslations('Layout');
@@ -9,7 +10,7 @@ const Community = () => {
 
   return (
     <Transition pageName={pageName}>
-      <div>Community</div>
+      <ComingSoon />
     </Transition>
   );
 };

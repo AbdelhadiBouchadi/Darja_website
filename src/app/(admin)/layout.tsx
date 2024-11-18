@@ -8,7 +8,7 @@ import { frFR } from '@clerk/localizations';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Derive Casablancaise Admin',
+  title: 'Dérive Casablancaise Admin',
   description: 'Admin dashboard',
 };
 

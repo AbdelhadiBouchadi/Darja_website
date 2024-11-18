@@ -25,12 +25,12 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative flex justify-center items-center shadow-md cursor-pointer group"
+        className="relative flex justify-center items-center shadow-md cursor-pointer group md:w-[400px] xl:w-[800px] aspect-video"
         onClick={openModal}
       >
         <Image
           src={thumbnailSrc}
-          width={900}
+          width={600}
           height={600}
           alt="Video thumbnail"
           className="w-full h-full object-cover"
