@@ -4,7 +4,7 @@ import React from 'react';
 
 const SubHeader = () => {
   return (
-    <div className="subheader w-full flex flex-col items-center justify-center py-6 absolute top-[15vh] left-0 px-4">
+    <div className="subheader w-full flex flex-col items-center justify-center py-6 absolute top-0 mt-20 lg:mt-0 lg:top-[15vh] left-0 px-4">
       {/* First Line */}
       <div
         className={cn(
