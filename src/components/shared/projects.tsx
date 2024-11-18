@@ -1,15 +1,11 @@
 'use client';
 
-import { useState, useEffect, useRef, MouseEvent } from 'react';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import Image from 'next/image';
 import RoundedBtn from './rounded';
 import { cn } from '../../lib/utils';
-import Project from './project';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { getHomepagePosts } from '@/lib/actions/post.actions';
+import { CircleChevronRight } from 'lucide-react';
 
 const Categories = {
   danse: { fr: 'Danse', ar: 'رقص' },
@@ -40,7 +36,7 @@ export default function Projects() {
               <Link
                 href={`/${locale}/derive-2024?category=${category}`}
                 key={category}
-                className="group relative overflow-hidden rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300"
+                className="group relative overflow-hidden bg-white/10 hover:bg-white/20 transition-all duration-700 group"
               >
                 <div className="p-8 flex flex-col items-center justify-center text-center">
                   <h3
@@ -53,11 +49,8 @@ export default function Projects() {
                       ? Categories[category].ar
                       : Categories[category].fr}
                   </h3>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="w-16 h-16 rounded-full bg-[#00b0db] flex items-center justify-center"
-                  >
-                    <span className="text-white text-2xl">→</span>
+                  <motion.div className="w-16 h-16 rounded-full bg-[#00b0db] flex items-center justify-center group-hover:scale-110 transition-all duration-700">
+                    <CircleChevronRight className="text-white text-2xl size-10" />
                   </motion.div>
                 </div>
               </Link>
