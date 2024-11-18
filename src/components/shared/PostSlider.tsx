@@ -66,17 +66,17 @@ const ImageSliderModal: React.FC<ImageSliderModalProps> = ({
         />
         <button
           onClick={prevImage}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#094142] bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all"
           aria-label="Previous image"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={24} className="text-[#00b0db]" />
         </button>
         <button
           onClick={nextImage}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#094142] bg-opacity-50 p-2 rounded-full hover:bg-opacity-100 transition-all"
           aria-label="Next image"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={24} className="text-[#00b0db]" />
         </button>
       </motion.div>
 
@@ -86,7 +86,7 @@ const ImageSliderModal: React.FC<ImageSliderModalProps> = ({
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-3 h-3 rounded-full ${
-              currentIndex === index ? 'bg-white' : 'bg-gray-500'
+              currentIndex === index ? 'bg-[#00b0db]' : 'bg-[#00b0db]/50'
             }`}
             aria-label={`Go to image ${index + 1}`}
           />

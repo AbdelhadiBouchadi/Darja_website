@@ -56,9 +56,9 @@ export type CreatePostParams = {
   postCategory:
     | 'danse'
     | 'concert'
-    | 'théâtre'
+    | 'theatre'
     | 'lectures'
-    | 'cinéma'
+    | 'cinema'
     | 'ateliers';
   location: string;
   isInHomepage: boolean;
@@ -79,9 +79,9 @@ export type UpdatePostParams = {
     postCategory:
       | 'danse'
       | 'concert'
-      | 'théâtre'
+      | 'theatre'
       | 'lectures'
-      | 'cinéma'
+      | 'cinema'
       | 'ateliers';
     location: string;
     isInHomepage: boolean;

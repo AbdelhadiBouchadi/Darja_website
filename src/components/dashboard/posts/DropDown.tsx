@@ -16,9 +16,9 @@ type DropdownProps = {
 const categories = [
   { id: 'danse', name: 'Danse' },
   { id: 'concert', name: 'Concert' },
-  { id: 'théâtre', name: 'Théâtre' },
+  { id: 'theatre', name: 'Théâtre' },
   { id: 'lectures', name: 'Lectures' },
-  { id: 'cinéma', name: 'Cinéma' },
+  { id: 'cinema', name: 'Cinéma' },
   { id: 'ateliers', name: 'Ateliers' },
 ];
 

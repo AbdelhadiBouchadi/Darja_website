@@ -14,9 +14,9 @@ export interface IPost extends Document {
   postCategory:
     | 'danse'
     | 'concert'
-    | 'théâtre'
+    | 'theatre'
     | 'lectures'
-    | 'cinéma'
+    | 'cinema'
     | 'ateliers';
   location: string;
   url?: string;
@@ -54,7 +54,7 @@ const PostSchema = new Schema({
   endDateTime: { type: Date, default: Date.now },
   postCategory: {
     type: String,
-    enum: ['danse', 'concert', 'théâtre', 'lectures', 'cinéma', 'ateliers'],
+    enum: ['danse', 'concert', 'theatre', 'lectures', 'cinema', 'ateliers'],
     required: true,
     default: null,
   },
