@@ -184,7 +184,7 @@ const ProgramSection = () => {
         animate="enter"
         className="mx-auto mt-64 xl:mt-80 py-16 px-4 md:px-8 lg:px-16 "
       >
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row gap-8 mt-16">
           {/* Date Selection */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
