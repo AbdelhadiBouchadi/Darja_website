@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { cn, landingSlideUp } from '@/lib/utils';
+import { cn, formatDateTime, landingSlideUp } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 import { getAllPosts } from '@/lib/actions/post.actions';
 import Image from 'next/image';
@@ -11,72 +11,139 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { motion, useInView } from 'framer-motion';
 import SubHeader from './SubHeader';
+import { IPost } from '@/lib/database/models/post.model';
+import {
+  endOfDay,
+  format,
+  isWithinInterval,
+  parseISO,
+  setHours,
+  startOfDay,
+} from 'date-fns';
+import { fr, arMA } from 'date-fns/locale';
+import { useSearchParams, useRouter } from 'next/navigation';
 
-type Post = {
-  _id: string;
-  frenchTitle: string;
-  arabicTitle: string;
-  frenchText: string;
-  arabicText: string;
-  images: string[];
-  videoSource: string;
-  eventDates:
-    | 'mercredi 04.12'
-    | 'jeudi 05.12'
-    | 'vendredi 06.12'
-    | 'samedi 07.12'
-    | 'dimanche 08.12';
-  horaire: string;
-  isInHomepage: boolean;
-  url: string;
-};
+const Categories = {
+  danse: { fr: 'Danse', ar: 'رقص' },
+  concert: { fr: 'Concert', ar: 'حفلة موسيقية' },
+  theatre: { fr: 'Théâtre', ar: 'مسرح' },
+  lectures: { fr: 'Lectures', ar: 'قراءات' },
+  cinema: { fr: 'Cinéma', ar: 'سينما' },
+  ateliers: { fr: 'Ateliers', ar: 'ورش عمل' },
+} as const;
+
+type CategoryKey = keyof typeof Categories;
 
 const ProgramSection = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
-  const [selectedDates, setSelectedDates] = useState<Set<Post['eventDates']>>(
-    new Set()
-  );
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [selectedDates, setSelectedDates] = useState<Set<string>>(new Set());
+  const [posts, setPosts] = useState<IPost[]>([]);
   const locale = useLocale();
   const isArabic = locale === 'ar';
   const t = useTranslations('Derive2024');
+  const [selectedCategories, setSelectedCategories] = useState<
+    Set<CategoryKey>
+  >(new Set());
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  const dates: Post['eventDates'][] = [
-    'mercredi 04.12',
-    'jeudi 05.12',
-    'vendredi 06.12',
-    'samedi 07.12',
-    'dimanche 08.12',
+  // Define the festival dates
+  const festivalDates = [
+    '2024-12-04', // Wednesday
+    '2024-12-05', // Thursday
+    '2024-12-06', // Friday
+    '2024-12-07', // Saturday
+    '2024-12-08', // Sunday
   ];
 
-  // Arabic translations for days
-  const arabicDates: Record<Post['eventDates'], string> = {
-    'mercredi 04.12': 'الأربعاء 04.12',
-    'jeudi 05.12': 'الخميس 05.12',
-    'vendredi 06.12': 'الجمعة 06.12',
-    'samedi 07.12': 'السبت 07.12',
-    'dimanche 08.12': 'الأحد 08.12',
+  useEffect(() => {
+    // Get category from URL parameters
+    const categoryParam = searchParams.get('category') as CategoryKey | null;
+    if (categoryParam && Object.keys(Categories).includes(categoryParam)) {
+      setSelectedCategories(new Set([categoryParam]));
+    }
+  }, [searchParams]);
+
+  const formatDateLabel = (dateStr: string) => {
+    const date = parseISO(dateStr);
+    if (isArabic) {
+      return format(date, 'EEEE dd.MM', { locale: arMA });
+    }
+    return format(date, 'EEEE dd.MM', { locale: fr });
+  };
+
+  const isEventVisible = (post: IPost, selectedDate: string) => {
+    const selectedDateTime = parseISO(selectedDate);
+    const dayStart = startOfDay(selectedDateTime);
+    const dayEnd = endOfDay(selectedDateTime);
+    const eventStart = new Date(post.startDateTime);
+    const eventEnd = new Date(post.endDateTime);
+
+    // Check if the selected date falls within the event's duration
+    return (
+      // Case 1: Selected date is between start and end dates
+      (eventStart <= dayEnd && eventEnd >= dayStart) ||
+      // Case 2: Event starts on selected date
+      isWithinInterval(eventStart, { start: dayStart, end: dayEnd }) ||
+      // Case 3: Event ends on selected date
+      isWithinInterval(eventEnd, { start: dayStart, end: dayEnd }) ||
+      // Case 4: Event spans over selected date
+      (eventStart <= dayStart && eventEnd >= dayEnd)
+    );
   };
 
   useEffect(() => {
     const fetchPosts = async () => {
       const allPosts = await getAllPosts();
       if (allPosts) {
-        if (selectedDates.size === 0) {
-          setPosts(allPosts);
-        } else {
-          const filteredPosts = allPosts.filter((post: Post) =>
-            selectedDates.has(post.eventDates)
+        let filteredPosts = allPosts;
+
+        // Filter by categories if selected
+        if (selectedCategories.size > 0) {
+          filteredPosts = filteredPosts.filter((post: IPost) =>
+            selectedCategories.has(post.postCategory as CategoryKey)
           );
-          setPosts(filteredPosts);
         }
+
+        // Filter by dates if selected
+        if (selectedDates.size > 0) {
+          filteredPosts = filteredPosts.filter((post: IPost) =>
+            Array.from(selectedDates).some((selectedDate) =>
+              isEventVisible(post, selectedDate)
+            )
+          );
+        }
+
+        setPosts(filteredPosts);
       }
     };
     fetchPosts();
-  }, [selectedDates]);
+  }, [selectedDates, selectedCategories]);
 
-  const handleDateToggle = (date: Post['eventDates']) => {
+  const handleCategoryToggle = (category: CategoryKey) => {
+    setSelectedCategories((prevCategories) => {
+      const newCategories = new Set(prevCategories);
+      if (newCategories.has(category)) {
+        newCategories.delete(category);
+      } else {
+        newCategories.add(category);
+      }
+
+      // Update URL with categories parameter
+      const params = new URLSearchParams(searchParams);
+      if (newCategories.size > 0) {
+        params.set('category', Array.from(newCategories).join(','));
+      } else {
+        params.delete('category');
+      }
+      router.push(`?${params.toString()}`);
+
+      return newCategories;
+    });
+  };
+
+  const handleDateToggle = (date: string) => {
     setSelectedDates((prevDates) => {
       const newDates = new Set(prevDates);
       if (newDates.has(date)) {
@@ -86,6 +153,19 @@ const ProgramSection = () => {
       }
       return newDates;
     });
+  };
+
+  const formatEventTime = (startDate: Date, endDate: Date) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    // If the event spans multiple days, show the full date range
+    if (format(start, 'yyyy-MM-dd') !== format(end, 'yyyy-MM-dd')) {
+      return `${format(start, 'dd/MM')} - ${format(end, 'dd/MM')}`;
+    }
+
+    // For same-day events, show only the time range
+    return `${format(start, 'HH:mm')} - ${format(end, 'HH:mm')}`;
   };
 
   return (
@@ -121,15 +201,58 @@ const ProgramSection = () => {
               {t('heading')}
             </h2>
 
+            {/* Categories Filter */}
+            <div className="flex flex-col mb-8">
+              <h3
+                className={cn(
+                  'text-xl mb-4 text-[#094142]',
+                  isArabic ? 'arabic-subtitle-bold' : 'latin-subtitle-bold'
+                )}
+              >
+                {isArabic ? 'الفئات' : 'Catégories'}
+              </h3>
+              <div className="flex flex-col  gap-4">
+                {(Object.keys(Categories) as CategoryKey[]).map((category) => (
+                  <div
+                    key={category}
+                    className="flex items-center space-x-2 gap-2"
+                  >
+                    <Checkbox
+                      id={`category-${category}`}
+                      checked={selectedCategories.has(category)}
+                      onCheckedChange={() => handleCategoryToggle(category)}
+                      className="border-[#094142] border-2 data-[state=checked]:bg-[#00b0db] data-[state=checked]:text-[#094142] flex items-center justify-center rounded-none"
+                    />
+                    <Label
+                      htmlFor={`category-${category}`}
+                      className={cn(
+                        'text-lg md:text-xl cursor-pointer',
+                        selectedCategories.has(category)
+                          ? 'text-[#00b0db] font-bold'
+                          : 'text-[#094142]',
+                        isArabic
+                          ? 'arabic-subtitle-regular text-right space-x-2'
+                          : 'latin-subtitle-regular'
+                      )}
+                    >
+                      {isArabic
+                        ? Categories[category].ar
+                        : Categories[category].fr}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="w-full xl:w-[50%] h-[0.1rem] bg-[#094142] mb-4" />
             <div className="flex flex-col gap-4">
-              {dates.map((date) => (
+              {festivalDates.map((date) => (
                 <div key={date} className="flex items-center space-x-2 gap-2">
                   <Checkbox
                     id={date}
                     checked={selectedDates.has(date)}
                     onCheckedChange={() => handleDateToggle(date)}
-                    className="border-[#094142] border-2 data-[state=checked]:bg-[#00b0db] data-[state=checked]:text-[#094142] flex items-center justify-center rounded-none "
+                    className="border-[#094142] border-2 data-[state=checked]:bg-[#00b0db] data-[state=checked]:text-[#094142] flex items-center justify-center rounded-none"
                   />
                   <Label
                     htmlFor={date}
@@ -143,7 +266,7 @@ const ProgramSection = () => {
                         : 'latin-subtitle-regular capitalize'
                     )}
                   >
-                    {isArabic ? arabicDates[date] : date}
+                    {formatDateLabel(date)}
                   </Label>
                 </div>
               ))}
@@ -198,7 +321,15 @@ const ProgramSection = () => {
                         >
                           {isArabic ? post.arabicTitle : post.frenchTitle}
                         </h3>
-                        <p className="text-white/60 text-sm">{post.horaire}</p>
+                        <p className="text-white/60 text-sm">
+                          {format(
+                            new Date(post.startDateTime),
+                            'dd MMMM yyyy',
+                            {
+                              locale: isArabic ? arMA : fr,
+                            }
+                          )}
+                        </p>
                       </div>
                     </Link>
                   </motion.div>
