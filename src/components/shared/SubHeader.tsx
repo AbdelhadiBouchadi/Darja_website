@@ -2,17 +2,12 @@
 
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import React from 'react';
 
-const SubHeader = () => {
+export default function Component() {
   return (
-    <div className="subheader w-full flex flex-col py-6 absolute top-0  lg:mt-0 lg:top-[15vh] left-0 px-4">
+    <div className="w-full flex flex-col py-6 relative lg:absolute lg:top-[15vh]">
       {/* First Line */}
-      <div
-        className={cn(
-          'flex flex-col  justify-center items-center text-center font-semibold text-xl lg:text-3xl'
-        )}
-      >
+      <div className="flex flex-col justify-center items-center text-center font-semibold text-xl lg:text-3xl">
         <span className="text-[#094142] latin-title-bold">
           Dérive casablancaise | Rencontres des arts et de la scène
         </span>
@@ -23,9 +18,7 @@ const SubHeader = () => {
 
       {/* Moving Text Animation */}
       <motion.div
-        className={cn(
-          'mt-6 flex justify-center items-center text-center font-semibold text-lg lg:text-2xl'
-        )}
+        className="mt-6 flex justify-center items-center text-center font-semibold text-lg lg:text-2xl"
         whileHover={{ animationPlayState: 'paused' }}
         style={{
           display: 'flex',
@@ -40,20 +33,16 @@ const SubHeader = () => {
         </span>
       </motion.div>
 
-      <style jsx>
-        {`
-          @keyframes scroll {
-            from {
-              transform: translateX(100%);
-            }
-            to {
-              transform: translateX(-100%);
-            }
+      <style jsx>{`
+        @keyframes scroll {
+          from {
+            transform: translateX(100%);
           }
-        `}
-      </style>
+          to {
+            transform: translateX(-100%);
+          }
+        }
+      `}</style>
     </div>
   );
-};
-
-export default SubHeader;
+}
