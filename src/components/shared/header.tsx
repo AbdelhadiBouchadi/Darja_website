@@ -34,7 +34,7 @@ const Header = () => {
         )}
       >
         <motion.div
-          className="md:w-[480px] w-full h-full bg-[#00b0db] relative rounded-3xl"
+          className="md:w-[480px] w-full h-full bg-[#094142] relative rounded-3xl"
           variants={menu(isMobile)}
           animate={isActive ? 'open' : 'closed'}
           initial="closed"
@@ -83,7 +83,7 @@ function Button({
           }}
         >
           <motion.div
-            className="bg-[#00b0db] h-full w-full grid place-items-center text-gray-50"
+            className="bg-[#094142] h-full w-full grid place-items-center text-gray-50"
             onClick={() => {
               toggleMenu();
             }}
@@ -108,7 +108,7 @@ function Button({
           </motion.div>
         </motion.div>
       </div>
-      <div className="fixed  top-11 right-32 z-30 text-[#00b0db]  ">
+      <div className="fixed  top-11 right-32 z-30 text-[#094142]  ">
         <LocaleSwitcher />
       </div>
     </React.Fragment>

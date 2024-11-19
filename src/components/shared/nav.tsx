@@ -14,7 +14,7 @@ interface NavProps {
 const Nav = ({ setIsActive }: NavProps) => {
   const t = useTranslations('Layout');
   const navKeys = [
-    'about',
+    'home',
     'derive',
     'previous',
     'darja',
@@ -51,7 +51,7 @@ const Nav = ({ setIsActive }: NavProps) => {
                   whileHover="whileHover"
                   whileTap="whileHover"
                   exit="exit"
-                  className="text-3xl text-background flex items-center justify-center"
+                  className="text-3xl text-[#00b0db] flex items-center justify-center"
                 >
                   <motion.span
                     variants={{
