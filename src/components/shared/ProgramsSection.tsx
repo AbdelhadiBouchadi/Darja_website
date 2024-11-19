@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { cn, formatDateTime, landingSlideUp } from '@/lib/utils';
+import { cn, landingSlideUp } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 import { getAllPosts } from '@/lib/actions/post.actions';
 import Image from 'next/image';
