@@ -14,7 +14,6 @@ const DerivePage = () => {
 
   return (
     <Transition pageName={pageName}>
-      {/* <ProgramLanding /> */}
       <ProgramSection />
       <SlidingImages />
       <Contact />
