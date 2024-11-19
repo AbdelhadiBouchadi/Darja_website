@@ -190,11 +190,11 @@ const ProgramSection = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="md:w-1/4 flex flex-col justify-center items-center md:items-start md:justify-start"
+            className="md:w-1/4 flex flex-col justify-center items-start md:justify-start"
           >
             <h2
               className={cn(
-                'text-2xl xl:text-4xl text-[#FF5C00] mb-12 w-full xl:w-[50%] text-center md:text-start',
+                'text-2xl xl:text-4xl text-[#FF5C00] mb-12 w-full xl:w-[50%] text-start',
                 isArabic ? 'arabic-title-bold' : 'latin-title-bold'
               )}
             >

@@ -95,7 +95,7 @@ function Button({
             </TextReveal>
           </motion.div>
           <motion.div
-            className="bg-[#ee7103] h-full w-full grid place-items-center text-gray-50"
+            className="bg-[#00b0db] h-full w-full grid place-items-center text-[#094142]"
             onClick={() => {
               toggleMenu();
             }}
