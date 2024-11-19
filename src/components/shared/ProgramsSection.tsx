@@ -174,7 +174,7 @@ const ProgramSection = () => {
         variants={landingSlideUp}
         initial="initial"
         animate="enter"
-        className="relative flex w-full mb-8 lg:mb-16 2xl:mb-64"
+        className="relative flex w-full lg:mb-16 2xl:mb-64"
       >
         <SubHeader />
       </motion.div>
@@ -182,7 +182,7 @@ const ProgramSection = () => {
         variants={landingSlideUp}
         initial="initial"
         animate="enter"
-        className="mx-auto mt-64 xl:mt-80 py-16 px-4 md:px-8 lg:px-16 "
+        className="mx-auto xl:mt-80 py-8 xl:py-20 px-4 md:px-8 lg:px-16 "
       >
         <div className="flex flex-col md:flex-row gap-8 mt-16 sm:mt-0">
           {/* Date Selection */}

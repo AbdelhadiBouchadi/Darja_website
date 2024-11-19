@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function Component() {
   return (
-    <div className="w-full flex flex-col py-6 relative lg:absolute lg:top-[15vh]">
+    <div className="w-full flex flex-col py-6 mt-16 relative xl:absolute xl:top-[15vh]">
       {/* First Line */}
       <div className="flex flex-col justify-center items-center text-center font-semibold text-xl lg:text-3xl">
         <span className="text-[#094142] latin-title-bold">
