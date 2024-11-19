@@ -170,14 +170,9 @@ const ProgramSection = () => {
 
   return (
     <section ref={sectionRef} id="program_section" className="">
-      <motion.div
-        variants={landingSlideUp}
-        initial="initial"
-        animate="enter"
-        className="relative flex w-full mb-8 lg:mb-16 2xl:mb-64"
-      >
+      <div className="relative flex w-full mb-8 lg:mb-16 2xl:mb-64">
         <SubHeader />
-      </motion.div>
+      </div>
       <motion.div
         variants={landingSlideUp}
         initial="initial"

@@ -19,7 +19,7 @@ const DesktopHeader = () => {
   return (
     <div
       className={cn(
-        'w-screen justify-center hidden xl:flex xl:justify-center xl:items-center fixed top-0 z-50 transition-all duration-300 gap-20 bg-[#094142] h-[15vh] shadow-xl '
+        'w-screen justify-center hidden xl:flex xl:justify-center xl:items-center fixed top-0 z-50 transition-all duration-300 gap-20 bg-[#094142] xl:h-[15vh] shadow-xl '
       )}
     >
       <DesktopNav />

@@ -13,14 +13,11 @@ const DerivePage = () => {
   const pageName = t('Navigation.derive.title');
 
   return (
-    // <Transition pageName={pageName}>
-
-    // </Transition>
-    <>
+    <Transition pageName={pageName}>
       <ProgramSection />
       <SlidingImages />
       <Contact />
-    </>
+    </Transition>
   );
 };
 
