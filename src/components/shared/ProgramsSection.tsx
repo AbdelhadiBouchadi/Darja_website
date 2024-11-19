@@ -169,12 +169,12 @@ const ProgramSection = () => {
   };
 
   return (
-    <section ref={sectionRef} id="program_section" className="min-h-screen ">
+    <section ref={sectionRef} id="program_section" className="">
       <motion.main
         variants={landingSlideUp}
         initial="initial"
         animate="enter"
-        className="relative flex h-full w-full mb-8 lg:mb-16 2xl:mb-64"
+        className="relative flex w-full mb-8 lg:mb-16 2xl:mb-64"
       >
         <SubHeader />
       </motion.main>
