@@ -6,6 +6,7 @@ import { cn } from '../../lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { CircleChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 const Categories = {
   danse: { fr: 'Danse', ar: 'رقص' },
@@ -49,8 +50,14 @@ export default function Projects() {
                       ? Categories[category].ar
                       : Categories[category].fr}
                   </h3>
-                  <motion.div className="w-16 h-16 rounded-full bg-[#00b0db] flex items-center justify-center group-hover:scale-110 transition-all duration-700">
-                    <CircleChevronRight className="text-white text-2xl size-10" />
+                  <motion.div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-700">
+                    <Image
+                      src="/images/spirals.jpg"
+                      className="rounded-full object-cover"
+                      alt="spirals"
+                      width={60}
+                      height={60}
+                    />
                   </motion.div>
                 </div>
               </Link>

@@ -62,21 +62,24 @@ const ProgramLanding = () => {
   return (
     <>
       <section ref={sectionRef} data-scroll-section="" className="">
-        <motion.main
+        {/* <motion.main
           variants={landingSlideUp}
           initial="initial"
           animate="enter"
           className="relative flex h-full w-full"
         >
+          
+        </motion.main> */}
+        <div className="relative flex h-full w-full">
           <SubHeader />
-        </motion.main>
+        </div>
         <motion.div
           ref={imageContainerRef}
-          className="bg-description w-full min-h-screen relative py-8 mb-8  md:my-72 2xl:my-80  flex flex-col lg:flex-row lg:items-center border-b-2"
+          className="bg-description w-full min-h-screen relative py-8 mb-8 md:mt-72 md:mb-16 2xl:my-80  flex flex-col lg:flex-row lg:items-center border-b-2"
           style={{ backgroundSize }}
         >
           <motion.div
-            className="lg:absolute lg:left-0 lg:-bottom-64 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] 2xl:w-[70%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
+            className="lg:absolute lg:left-0 lg:-bottom-32 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
             variants={descOpacity}
             animate={isInView ? 'open' : 'closed'}
           >
@@ -142,11 +145,11 @@ const ProgramLanding = () => {
           onClick={() => openModal()}
         >
           <Image
-            src="/images/teaser-thumb.png"
-            width={1000}
-            height={1000}
+            src="/images/thumbTeaser.jpg"
+            width={600}
+            height={600}
             alt="tease_thumbnail"
-            className="md:w-[400px] xl:w-[800px] h-full object-cover"
+            className="w-full md:w-[80vw] object-contain"
           />
           <PlayCircleIcon className="size-12 absolute top-1/2 left-1/2 text-[#094142] transition-all group-hover:scale-110 duration-700 transform -translate-x-1/2 -translate-y-1/2 animate-pulse" />
         </motion.div>

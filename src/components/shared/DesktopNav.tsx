@@ -32,7 +32,7 @@ const DesktopNav = () => {
 
   return (
     <NavigationMenu className="h-full w-screen justify-between">
-      <NavigationMenuList className="xl:h-[15vh] w-screen justify-between">
+      <NavigationMenuList className="lg:h-[15vh] w-screen justify-between">
         <NavigationMenuItem className="group w-full h-full flex justify-center items-center hover:bg-[#00b0db] hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b0db] text-[#00b0db]  nav-trigger">
           <Link href={`/${locale}`}>
             <NavigationMenuTrigger
