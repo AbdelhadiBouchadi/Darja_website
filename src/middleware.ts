@@ -1,9 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import {
-  authMiddleware,
-  clerkMiddleware,
-  createRouteMatcher,
-} from '@clerk/nextjs/server';
+import { authMiddleware } from '@clerk/nextjs/server';
 import { locales, localePrefix, defaultLocale } from './config';
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 

@@ -67,7 +67,7 @@ const ProgramLanding = () => {
         </div>
         <motion.div
           ref={imageContainerRef}
-          className="bg-description w-full min-h-screen relative py-8 mb-8 md:mt-72 md:mb-16 2xl:my-80  flex flex-col lg:flex-row lg:items-center border-b-2"
+          className="bg-description w-full min-h-screen relative py-8 mb-8 md:mt-72 xl:my-80 md:mb-16 2xl:my-[23rem]  flex flex-col lg:flex-row lg:items-center border-b-2"
           style={{ backgroundSize }}
         >
           <motion.div
