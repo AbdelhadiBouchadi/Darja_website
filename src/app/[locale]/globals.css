@@ -1363,7 +1363,13 @@
 }
 
 .bg-derive {
-  background: url('../../../public/images/bg-derive.jpg') center center
+  background: url('../../../public/images/bg-derive.jpg') center right
+    no-repeat;
+  background-size: cover;
+}
+
+.bg-derive2 {
+  background: url('../../../public/images/bg-derive2.jpg') center center
     no-repeat;
   background-size: cover;
 }

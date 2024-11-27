@@ -21,7 +21,11 @@ const jakarta = Plus_Jakarta_Sans({
 const DeriveLanding = () => {
   const sectionRef = useRef(null);
   const imageContainerRef = useRef(null);
+  const imageContainerRef2 = useRef(null);
+  const imageContainerRef3 = useRef(null);
   const isInView = useInView(imageContainerRef);
+  const isInView2 = useInView(imageContainerRef2);
+  const isInView3 = useInView(imageContainerRef3);
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const locale = useLocale();
@@ -40,7 +44,7 @@ const DeriveLanding = () => {
 
   // Scroll-based animation setup
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
+    target: imageContainerRef,
     offset: ['start end', 'end end'], // When section starts and ends
   });
 
@@ -48,7 +52,7 @@ const DeriveLanding = () => {
   const backgroundSize = useTransform(
     scrollYProgress,
     [0.4, 1],
-    isMobile ? ['cover', 'cover'] : ['80%', '130%']
+    isMobile ? ['cover', 'cover'] : ['100%', '130%']
   );
 
   return (
@@ -58,11 +62,14 @@ const DeriveLanding = () => {
       </div>
       <motion.div
         ref={imageContainerRef}
-        className="bg-derive w-full min-h-screen relative py-8 mb-8 lg:mt-72 md:mb-16 2xl:my-80  flex flex-col lg:flex-row lg:items-center border-b-2"
+        className={cn(
+          'bg-derive w-full min-h-screen relative py-8 lg:mt-72 2xl:my-80  flex flex-col lg:flex-row lg:items-center border-b-2 z-20',
+          isArabic ? 'text-lg' : 'text-sm'
+        )}
         style={{ backgroundSize }}
       >
         <motion.div
-          className="hidden lg:absolute lg:left-0 lg:-bottom-72 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
+          className="lg:absolute lg:right-0 lg:-bottom-32 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
         >
@@ -70,7 +77,7 @@ const DeriveLanding = () => {
             variants={descOpacity}
             animate={isInView ? 'open' : 'closed'}
             className={cn(
-              'text-lg lg:text-xl 2xl:text-2xl w-full font-bold text-[#094142] m-0',
+              'w-full font-bold text-[#094142] m-0',
               jakarta.className
             )}
           >
@@ -80,7 +87,7 @@ const DeriveLanding = () => {
             variants={descOpacity}
             animate={isInView ? 'open' : 'closed'}
             className={cn(
-              'text-lg lg:text-xl 2xl:text-2xl w-full font-bold text-[#094142] m-0',
+              'w-full font-bold text-[#094142] m-0',
               jakarta.className
             )}
           >
@@ -90,7 +97,7 @@ const DeriveLanding = () => {
             variants={descOpacity}
             animate={isInView ? 'open' : 'closed'}
             className={cn(
-              'text-lg lg:text-xl 2xl:text-2xl w-full font-bold text-[#094142] m-0',
+              ' w-full font-bold text-[#094142] m-0',
               jakarta.className
             )}
           >
@@ -98,7 +105,7 @@ const DeriveLanding = () => {
           </motion.p>
         </motion.div>
         <motion.div
-          className="lg:absolute lg:right-0 lg:top-0 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
+          className="lg:absolute lg:left-0 lg:top-0 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
         >
@@ -106,7 +113,7 @@ const DeriveLanding = () => {
             variants={descOpacity}
             animate={isInView ? 'open' : 'closed'}
             className={cn(
-              'text-lg lg:text-xl 2xl:text-2xl w-full font-bold text-[#094142] m-0',
+              ' w-full font-bold text-[#094142] m-0',
               jakarta.className
             )}
           >
@@ -116,7 +123,7 @@ const DeriveLanding = () => {
             variants={descOpacity}
             animate={isInView ? 'open' : 'closed'}
             className={cn(
-              'text-lg lg:text-xl 2xl:text-2xl w-full font-bold text-[#094142] m-0',
+              ' w-full font-bold text-[#094142] m-0',
               jakarta.className
             )}
           >
@@ -126,12 +133,133 @@ const DeriveLanding = () => {
             variants={descOpacity}
             animate={isInView ? 'open' : 'closed'}
             className={cn(
-              'text-lg lg:text-xl 2xl:text-2xl w-full font-bold text-[#094142] m-0',
+              ' w-full font-bold text-[#094142] m-0',
               jakarta.className
             )}
           >
             {t('text2')}
           </motion.p>
+        </motion.div>
+      </motion.div>
+      <motion.div
+        ref={imageContainerRef2}
+        className={cn(
+          'bg-derive2 w-full min-h-screen relative py-8 flex flex-col lg:flex-row lg:items-center border-b-2 z-10',
+          isArabic ? 'text-lg' : 'text-sm'
+        )}
+        style={{ backgroundSize }}
+      >
+        {locale === 'fr' && (
+          <>
+            <motion.div
+              className="hidden lg:absolute lg:right-0 lg:-bottom-16 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
+              variants={descOpacity}
+              animate={isInView2 ? 'open' : 'closed'}
+            >
+              <motion.p
+                variants={descOpacity}
+                animate={isInView2 ? 'open' : 'closed'}
+                className={cn(
+                  ' w-full font-bold text-[#094142] m-0',
+                  jakarta.className
+                )}
+              >
+                {t('text10')}
+              </motion.p>
+              <motion.p
+                variants={descOpacity}
+                animate={isInView2 ? 'open' : 'closed'}
+                className={cn(
+                  ' w-full font-bold text-[#094142] m-0',
+                  jakarta.className
+                )}
+              >
+                {t('text11')}
+              </motion.p>
+              <motion.p
+                variants={descOpacity}
+                animate={isInView2 ? 'open' : 'closed'}
+                className={cn(
+                  ' w-full font-bold text-[#094142] m-0',
+                  jakarta.className
+                )}
+              >
+                {t('text12')}
+              </motion.p>
+              <motion.p
+                variants={descOpacity}
+                animate={isInView2 ? 'open' : 'closed'}
+                className={cn(
+                  ' w-full font-bold text-[#094142] m-0',
+                  jakarta.className
+                )}
+              >
+                {t('bottom')}
+              </motion.p>
+            </motion.div>
+          </>
+        )}
+        <motion.div
+          className="lg:absolute lg:left-0 lg:top-0 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
+          variants={descOpacity}
+          animate={isInView2 ? 'open' : 'closed'}
+        >
+          <motion.p
+            variants={descOpacity}
+            animate={isInView2 ? 'open' : 'closed'}
+            className={cn(
+              ' w-full font-bold text-[#094142] m-0',
+              jakarta.className
+            )}
+          >
+            {t('text6')}
+          </motion.p>
+          {locale === 'ar' && (
+            <motion.p
+              variants={descOpacity}
+              animate={isInView2 ? 'open' : 'closed'}
+              className={cn(
+                ' w-full font-bold text-[#094142] m-0',
+                jakarta.className
+              )}
+            >
+              {t('bottom')}
+            </motion.p>
+          )}
+          {locale === 'fr' && (
+            <>
+              <motion.p
+                variants={descOpacity}
+                animate={isInView2 ? 'open' : 'closed'}
+                className={cn(
+                  ' w-full font-bold text-[#094142] m-0',
+                  jakarta.className
+                )}
+              >
+                {t('text7')}
+              </motion.p>
+              <motion.p
+                variants={descOpacity}
+                animate={isInView2 ? 'open' : 'closed'}
+                className={cn(
+                  ' w-full font-bold text-[#094142] m-0',
+                  jakarta.className
+                )}
+              >
+                {t('text8')}
+              </motion.p>
+              <motion.p
+                variants={descOpacity}
+                animate={isInView2 ? 'open' : 'closed'}
+                className={cn(
+                  ' w-full font-bold text-[#094142] m-0',
+                  jakarta.className
+                )}
+              >
+                {t('text9')}
+              </motion.p>
+            </>
+          )}
         </motion.div>
       </motion.div>
     </section>

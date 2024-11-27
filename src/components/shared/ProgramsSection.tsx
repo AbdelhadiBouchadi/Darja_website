@@ -173,7 +173,7 @@ const ProgramSection = () => {
         variants={landingSlideUp}
         initial="initial"
         animate="enter"
-        className="mx-auto lg:mt-60 py-8 xl:py-20 px-4 md:px-8 lg:px-16 "
+        className="mx-auto py-8 xl:py-20 px-4 md:px-8 lg:px-16 "
       >
         <div className="flex flex-col md:flex-row gap-8 mt-16 sm:mt-0">
           {/* Date Selection */}

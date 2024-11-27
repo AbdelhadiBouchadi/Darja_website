@@ -6,11 +6,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { TextReveal } from '../ui/typography';
 import { cn, menu } from '../../lib/utils';
 import Nav from './nav';
-import { Transition } from '../ui/transitions';
-import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import LocaleSwitcher from './locale-switcher-select';
-import Image from 'next/image';
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -29,7 +26,7 @@ const Header = () => {
           height: isActive ? (isMobile ? '100%' : '94%') : '0',
         }}
         className={cn(
-          'fixed md:right-6 right-0 z-20 flex xl:hidden',
+          'fixed md:right-6 right-0 z-50 flex lg:hidden',
           isActive ? 'top-0 md:top-10' : 'top-6 md:top-10'
         )}
       >
