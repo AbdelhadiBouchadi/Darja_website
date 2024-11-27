@@ -8,32 +8,20 @@ export default function Component() {
     <div className="w-full flex flex-col py-6 px-2 mt-16 lg:mt-0 relative lg:absolute lg:top-[15vh]">
       {/* First Line */}
       <div className="flex flex-col justify-center items-center text-center font-semibold text-xl lg:text-3xl">
-        <span className="text-[#094142] latin-title-bold flex w-full flex-row mx-auto justify-center items-center gap-4">
-          Dérive casablancaise{' '}
-          <span>
-            {' '}
-            <Image
-              src="/images/spiralTrans.png"
-              className="rounded-full object-cover"
-              alt="spirals"
-              width={40}
-              height={40}
-            />
-          </span>{' '}
+        <span className="text-[#ee7103] latin-title-bold flex w-full flex-row mx-auto justify-center items-center gap-4">
           Rencontres des arts et de la scène
         </span>
+        <span>
+          {' '}
+          <Image
+            src="/images/spiralTrans.png"
+            className="rounded-full object-cover"
+            alt="spirals"
+            width={40}
+            height={40}
+          />
+        </span>{' '}
         <span className="text-[#ee7103] mt-2 lg:mt-0 lg:ml-4 arabic-title-bold flex w-full flex-row mx-auto justify-center items-center gap-4">
-          منعطف بيضاوي{' '}
-          <span>
-            {' '}
-            <Image
-              src="/images/spiralTrans.png"
-              className="rounded-full object-cover"
-              alt="spirals"
-              width={40}
-              height={40}
-            />
-          </span>{' '}
           ملتقى فنون الأداء
         </span>
       </div>
@@ -50,7 +38,7 @@ export default function Component() {
         <span className="text-[#094142] latin-title-bold">
           Rendez-vous du 04 au 08 décembre 2024 à Casablanca
         </span>
-        <span className="text-[#ee7103] mt-2 lg:mt-0 lg:ml-4 arabic-title-bold">
+        <span className="text-[#094142] mt-2 lg:mt-0 lg:ml-4 arabic-title-bold">
           موعدنا من 4 إلى 8 دجنبر 2024 في الدار البيضاء
         </span>
       </motion.div>

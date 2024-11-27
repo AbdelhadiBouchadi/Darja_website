@@ -5,13 +5,7 @@ import { useInView, motion, useTransform, useScroll } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 import SubHeader from './SubHeader';
 import { useLocale, useTranslations } from 'next-intl';
-import Link from 'next/link';
-import RoundedBtn from './rounded';
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import Image from 'next/image';
-import { PlayCircleIcon } from 'lucide-react';
-import { fadeIn } from '@/variants';
-import TeaserModal from './TeaserModal';
 
 const jakarta = Plus_Jakarta_Sans({
   weight: ['600', '700', '800'],
@@ -57,13 +51,10 @@ const DeriveLanding = () => {
 
   return (
     <section ref={sectionRef} data-scroll-section="" className="">
-      <div className="relative flex h-full w-full">
-        <SubHeader />
-      </div>
       <motion.div
         ref={imageContainerRef}
         className={cn(
-          'bg-derive w-full min-h-screen relative py-8 lg:mt-72 2xl:mt-80  flex flex-col lg:flex-row lg:items-center border-b-2 z-20',
+          'bg-derive w-full min-h-screen relative py-8 lg:mt-[15vh]  flex flex-col lg:flex-row lg:items-center border-b-2 z-20',
           isArabic ? 'text-lg' : 'text-sm'
         )}
         style={{ backgroundSize }}

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { cn, landingSlideUp } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
-import SubHeader from './SubHeader';
 import { motion, useInView } from 'framer-motion';
 import { IArtist } from '@/lib/database/models/artist.model';
 import { CategoryFilter, CategoryKey } from './artists/CategoryFilter';
@@ -58,15 +57,7 @@ const ArtistsSection = () => {
         variants={landingSlideUp}
         initial="initial"
         animate="enter"
-        className="relative flex w-full lg:mb-16 2xl:mb-64"
-      >
-        <SubHeader />
-      </motion.div>
-      <motion.div
-        variants={landingSlideUp}
-        initial="initial"
-        animate="enter"
-        className="mx-auto lg:mt-60  py-8 xl:py-20 px-4 md:px-8 lg:px-16"
+        className="mx-auto sm:mt-20 lg:mt-[15vh]  py-8 xl:py-20 px-4 md:px-8 lg:px-16"
       >
         <div className="flex flex-col md:flex-row gap-8 mt-16 sm:mt-0">
           {/* Categories Filter */}
