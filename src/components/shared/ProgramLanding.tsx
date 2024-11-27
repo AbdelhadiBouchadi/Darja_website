@@ -62,14 +62,6 @@ const ProgramLanding = () => {
   return (
     <>
       <section ref={sectionRef} data-scroll-section="" className="">
-        {/* <motion.main
-          variants={landingSlideUp}
-          initial="initial"
-          animate="enter"
-          className="relative flex h-full w-full"
-        >
-          
-        </motion.main> */}
         <div className="relative flex h-full w-full">
           <SubHeader />
         </div>

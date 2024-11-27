@@ -17,7 +17,6 @@ import {
   format,
   isWithinInterval,
   parseISO,
-  setHours,
   startOfDay,
 } from 'date-fns';
 import { fr, arMA } from 'date-fns/locale';
@@ -174,15 +173,7 @@ const ProgramSection = () => {
         variants={landingSlideUp}
         initial="initial"
         animate="enter"
-        className="relative flex w-full lg:mb-16 2xl:mb-64"
-      >
-        <SubHeader />
-      </motion.div>
-      <motion.div
-        variants={landingSlideUp}
-        initial="initial"
-        animate="enter"
-        className="mx-auto xl:mt-80 py-8 xl:py-20 px-4 md:px-8 lg:px-16 "
+        className="mx-auto lg:mt-60 py-8 xl:py-20 px-4 md:px-8 lg:px-16 "
       >
         <div className="flex flex-col md:flex-row gap-8 mt-16 sm:mt-0">
           {/* Date Selection */}
@@ -290,7 +281,7 @@ const ProgramSection = () => {
                   >
                     <Link
                       href={`/${locale}/derive-2024/${post._id}`}
-                      className="block aspect-[16/9] md:aspect-[3/4] xl:aspect-[1/1] relative group overflow-hidden p-16 group"
+                      className="block aspect-[16/9] md:aspect-[3/4] lg:aspect-[1/1] relative group overflow-hidden p-16 group"
                     >
                       <div
                         className="absolute inset-0 transition-all duration-300"

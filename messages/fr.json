@@ -158,7 +158,15 @@
       "heading": "Programme 2024" ,
       "work": "Nos travaux",
       "artists": "Artistes",
-      "more": "lire plus"
+      "more": "lire plus",
+      "background": {
+        "heading": "Nous sommes en 2024",
+        "text1": "Nous, une poignée d'artistes de la Méditerranée, occupé.es, préoccupé.es et concerné.es par l'état du monde, nous sommes posé la question suivante : quelles formes d'actions sont possibles à partir de notre place, nos contextes et nos domaines de travail dans cette période historique accablante nous rendant témoins de la situation tragique en Palestine et au Liban.",
+        "text2": "Nous tentons une réponse possible, celle d'une action. Dérive Casablancaise en est une.",
+        "text3": "L'action de rassembler, réunir, écouter, regarder et surtout l'action de débattre. Débattre pour questionner les niveaux de cohérence dans nos démarches artistiques et certainement politiques, à travers nos choix, nos multiples ressources, nos matières de travail et les outils avec lesquels nous fabriquons des langues et des langages.",
+        "text4": "Cette action porte en elle le souhait d'être fertile à d'autres actions qui en découleront et qui se définiront dans la durée et la continuité, mais aussi dans la pensée, la construction et la fabrication des œuvres à venir.",
+        "text5": "Car le travail artistique est un long processus, dont une grande partie consiste à se confronter à nos histoires, nos mémoires, nos imaginaires, nos désirs et nos positionnements en tant que citoyen.nes."
+      }
     },
     "ArtistsPage": {
       "heading": "Nos Artistes"

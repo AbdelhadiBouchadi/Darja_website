@@ -89,7 +89,6 @@ const ArtistForm = ({ type, artist, artistId }: ArtistFormProps) => {
         });
 
         if (updatedArtist) {
-          console.log(updatedArtist.artistCategoryId);
           form.reset();
           router.push(`/darja-admin/artists`);
         }
@@ -146,7 +145,7 @@ const ArtistForm = ({ type, artist, artistId }: ArtistFormProps) => {
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
             control={form.control}
-            name="artistCategoryId"
+            name="artistCategory"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>

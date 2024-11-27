@@ -18,7 +18,7 @@ export const postFormSchema = z.object({
   postCategory: z.enum(
     ['danse', 'concert', 'theatre', 'lectures', 'cinema', 'ateliers'],
     {
-      message: 'Veuillez Choisir Une Date',
+      message: 'Veuillez Choisir Une Catégorie',
     }
   ),
   startDateTime: z.date(),
@@ -43,7 +43,9 @@ export const artistFormSchema = z.object({
     .min(3, 'Le texte doit consister de 3 caractères ou plus.'),
   images: z.array(z.string()).default([]),
   videoSource: z.string().optional(),
-  artistCategoryId: z.string(),
+  artistCategory: z.enum(['2022', '2024'], {
+    message: 'Veuillez Choisir Une Catégorie',
+  }),
   isInHomepage: z.boolean(),
   url: z.string().optional(),
 });

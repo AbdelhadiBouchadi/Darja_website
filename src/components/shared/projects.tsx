@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 const Categories = {
   danse: { fr: 'Danse', ar: 'رقص' },
-  concert: { fr: 'Concert', ar: 'حفلة موسيقية' },
+  concert: { fr: 'Concerts', ar: 'حفلة موسيقية' },
   theatre: { fr: 'Théâtre', ar: 'مسرح' },
   lectures: { fr: 'Lectures', ar: 'قراءات' },
   cinema: { fr: 'Cinéma', ar: 'سينما' },
@@ -37,7 +37,7 @@ export default function Projects() {
               <Link
                 href={`/${locale}/derive-2024?category=${category}`}
                 key={category}
-                className="group relative overflow-hidden bg-white/10 hover:bg-white/20 transition-all duration-700 group"
+                className="group relative overflow-hidden bg-[#1b7172] transition-all duration-700 group"
               >
                 <div className="p-8 flex flex-col items-center justify-center text-center">
                   <h3

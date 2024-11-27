@@ -17,7 +17,6 @@ const validCategories = [
 
 type ValidCategory = (typeof validCategories)[number];
 
-// Populate post
 // Populate post (remains unchanged)
 const populatePost = async (query: any) => {
   return query; // No longer populating from another model
@@ -123,7 +122,6 @@ export async function getAllPosts(category?: ValidCategory) {
   }
 }
 
-// Get Related Posts
 // Get Related Posts
 export async function getRelatedPosts({
   postCategory,

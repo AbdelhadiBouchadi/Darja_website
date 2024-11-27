@@ -8,6 +8,7 @@ import { DeleteConfirmation } from './DeleteConfirmation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { getAllArtists } from '@/lib/actions/artists.actions';
+import Image from 'next/image';
 
 interface Artist {
   _id: string;
@@ -15,9 +16,9 @@ interface Artist {
   arabicName: string;
   frenctText: string;
   arabicText: string;
-  imageSource?: string;
+  images: string[];
   videoSource?: string;
-  artistCategory: { _id: string; name: string };
+  artistCategory: '2022' | '2024';
   url?: string;
   createdAt: Date;
 }
@@ -33,7 +34,7 @@ const ArtistsTable = ({ currentUserIsAdmin }: ArtistsTableProps) => {
 
   useEffect(() => {
     async function fetchArtists() {
-      const allArtists = await getAllArtists('');
+      const allArtists = await getAllArtists();
       setArtists(allArtists);
       setFilteredArtists(allArtists);
     }
@@ -54,9 +55,7 @@ const ArtistsTable = ({ currentUserIsAdmin }: ArtistsTableProps) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
     const filtered = artists.filter(
-      (artist) =>
-        artist.frenchName.toLowerCase().includes(term) || // Fixed typo from 'title' to 'frenchTitle'
-        artist.artistCategory.name.toLowerCase().includes(term)
+      (artist) => artist.frenchName.toLowerCase().includes(term) // Fixed typo from 'title' to 'frenchTitle'
     );
     setFilteredArtists(filtered);
   };
@@ -113,9 +112,21 @@ const ArtistsTable = ({ currentUserIsAdmin }: ArtistsTableProps) => {
               >
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
-                    <div className="flex-shrink-0 h-10 w-10">
-                      <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-400 to-blue-500 flex items-center justify-center text-white font-semibold">
-                        {artist.frenchName.charAt(0)}
+                    <div className="flex-shrink-0">
+                      <div className="relative h-10 w-12 rounded-md overflow-hidden bg-neutral-900 border border-neutral-800">
+                        {artist.images.length > 0 ? (
+                          <Image
+                            src={artist.images[0]}
+                            alt={artist.frenchName}
+                            fill
+                            className="object-contain"
+                            sizes="96px"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-gray-500 text-xs">
+                            No image
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="ml-4">
@@ -128,7 +139,7 @@ const ArtistsTable = ({ currentUserIsAdmin }: ArtistsTableProps) => {
 
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-300">
-                    {artist.artistCategory.name}
+                    {artist.artistCategory}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">

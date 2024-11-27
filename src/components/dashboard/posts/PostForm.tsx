@@ -100,7 +100,6 @@ const PostForm = ({ type, post, postId }: PostFormProps) => {
         });
 
         if (updatedPost) {
-          console.log(updatedPost.postCategory);
           form.reset();
           router.push(`/darja-admin/posts`);
         }

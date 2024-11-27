@@ -7,22 +7,17 @@ import { Calendar, Globe, LocateIcon } from 'lucide-react';
 import { format, isEqual } from 'date-fns';
 import { fr, arMA } from 'date-fns/locale';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/ui/collapsible';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import React from 'react';
 import VideoThumbnail from '@/components/shared/VideoThumbnail';
 import SafeHtml from '@/components/shared/SafeHtml';
-import ImageSlider from '@/components/shared/PostSlider';
-import ImageSliderModal from '@/components/shared/PostSlider';
 import ImageGallery from '@/components/shared/PostGallery';
 import Contact from '@/components/shared/contact';
-import AboveContact from '@/components/shared/AboveContact';
 import ClientWrapper from '@/components/shared/PostWrapper';
 
 type PostProps = {
@@ -51,7 +46,7 @@ const page = async ({ params: { postId } }: PostProps) => {
   };
 
   return (
-    <Transition pageName={isArabic ? post.arabicTitle : post.frenchTitle}>
+    <div className="overflow-hidden">
       <div className=" mx-auto  py-8 pt-[20vh] pb-16">
         {/* Title */}
         <h1
@@ -327,7 +322,7 @@ const page = async ({ params: { postId } }: PostProps) => {
       </div>
 
       <Contact />
-    </Transition>
+    </div>
   );
 };
 

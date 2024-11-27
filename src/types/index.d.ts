@@ -101,7 +101,7 @@ export type CreateArtistParams = {
   arabicText: string;
   images: string[];
   videoSource?: string;
-  artistCategoryId: string;
+  artistCategory: '2022' | '2024';
   isInHomepage: boolean;
   url?: string;
 };
@@ -115,7 +115,7 @@ export type UpdateArtistParams = {
     arabicText: string;
     images: string[];
     videoSource?: string;
-    artistCategoryId: string;
+    artistCategory: '2022' | '2024';
     isInHomepage: boolean;
     url?: string;
   };

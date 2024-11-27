@@ -99,11 +99,13 @@ const SlidingImages = () => {
         <Button
           onClick={() => handleScrollLeft('slider1')}
           className={cn(
-            'absolute  z-10 bg-[#00b0db] hover:bg-opacity-80 text-white px-4 py-2 rounded-md mx-4',
+            'absolute  z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4',
             isArabic ? 'right-0' : 'left-0'
           )}
         >
-          <ChevronLeft className={cn('size-4', isArabic ? 'rotate-180' : '')} />
+          <ChevronLeft
+            className={cn('size-16', isArabic ? 'rotate-180' : '')}
+          />
         </Button>
         <motion.div
           style={{ x: x1, translateX: x1Offset }}
@@ -140,12 +142,12 @@ const SlidingImages = () => {
         <Button
           onClick={() => handleScrollRight('slider1')}
           className={cn(
-            'absolute  z-10 bg-[#00b0db] hover:bg-opacity-80 text-white px-4 py-2 rounded-md mx-4',
+            'absolute  z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4',
             isArabic ? 'left-[20vw]' : 'right-[20vw]'
           )}
         >
           <ChevronRight
-            className={cn('size-4', isArabic ? 'rotate-180' : '')}
+            className={cn('size-16', isArabic ? 'rotate-180' : '')}
           />
         </Button>
       </div>
@@ -154,11 +156,13 @@ const SlidingImages = () => {
         <Button
           onClick={() => handleScrollLeft('slider2')}
           className={cn(
-            'absolute  z-10 bg-[#00b0db] hover:bg-opacity-80 text-white px-4 py-2 rounded-md mx-4',
+            'absolute  z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4',
             isArabic ? 'right-0' : 'left-0'
           )}
         >
-          <ChevronLeft className={cn('size-4', isArabic ? 'rotate-180' : '')} />
+          <ChevronLeft
+            className={cn('size-16', isArabic ? 'rotate-180' : '')}
+          />
         </Button>
         <motion.div
           style={{ x: x2, translateX: x2Offset }}
@@ -195,12 +199,12 @@ const SlidingImages = () => {
         <Button
           onClick={() => handleScrollRight('slider2')}
           className={cn(
-            'absolute  z-10 bg-[#00b0db] hover:bg-opacity-80 text-white px-4 py-2 rounded-md mx-4',
+            'absolute  z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4',
             isArabic ? 'left-[20vw]' : 'right-[20vw]'
           )}
         >
           <ChevronRight
-            className={cn('size-4', isArabic ? 'rotate-180' : '')}
+            className={cn('size-16', isArabic ? 'rotate-180' : '')}
           />
         </Button>
       </div>

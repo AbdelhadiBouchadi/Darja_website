@@ -51,7 +51,7 @@ export const artistDefaultValues = {
   arabicText: '',
   images: [],
   videoSource: '',
-  artistCategoryId: '',
+  artistCategory: '',
   isInHomepage: false,
   url: '',
 };

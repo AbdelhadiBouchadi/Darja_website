@@ -3,13 +3,13 @@ import { Schema, Document, model, models } from 'mongoose';
 // Interface for the Artist document
 export interface IArtist extends Document {
   _id: string;
-  frenchTName: string;
+  frenchName: string;
   arabicName: string;
   frenctText: string;
   arabicText: string;
   images: string[];
   videoSource?: string;
-  artistCategory: { _id: string; name: string };
+  artistCategory: '2022' | '2024';
   url?: string;
   isInHomepage: boolean;
   createdAt: Date;
@@ -41,8 +41,10 @@ const ArtistSchema = new Schema({
     type: String,
   },
   artistCategory: {
-    type: Schema.Types.ObjectId,
-    ref: 'artistCategory',
+    type: String,
+    enum: ['2022', '2024'],
+    required: true,
+    default: null,
   },
   url: { type: String },
   isInHomepage: { type: Boolean, default: false },

@@ -1,17 +1,11 @@
-import { useTranslations } from 'next-intl';
 import React from 'react';
-import { Transition } from '../../../components/shared/preloader';
-import ComingSoon from '@/components/shared/ComingSoon';
+import ArtistsSection from '@/components/shared/ArtistsSection';
 
 const Community = () => {
-  const t = useTranslations('Layout');
-
-  const pageName = t('Navigation.community.title');
-
   return (
-    <Transition pageName={pageName}>
-      <ComingSoon />
-    </Transition>
+    <div className="overflow-hidden">
+      <ArtistsSection />
+    </div>
   );
 };
 

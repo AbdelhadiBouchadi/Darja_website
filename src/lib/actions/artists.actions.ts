@@ -5,20 +5,15 @@ import { connectToDatabase } from '../database';
 import { handleError } from '../utils';
 import { revalidatePath } from 'next/cache';
 import { Types } from 'mongoose';
-import ArtistCategory from '../database/models/artistCategory.model';
-import Artist from '../database/models/artist.model';
+import Artist, { IArtist } from '../database/models/artist.model';
 
-const getArtistCategoryByName = async (name: string) => {
-  return ArtistCategory.findOne({ name: { $regex: name, $options: 'i' } });
-};
+const validCategories = ['2022', '2024'] as const;
+
+type ValidCategory = (typeof validCategories)[number];
 
 // Populate post
 const populatePost = async (query: any) => {
-  return query.populate({
-    path: 'artistCategory',
-    model: ArtistCategory,
-    select: '_id name',
-  });
+  return query;
 };
 
 // Create Post
@@ -28,7 +23,7 @@ export async function createArtist(artist: CreateArtistParams) {
 
     const newArtist = await Artist.create({
       ...artist,
-      artistCategory: artist.artistCategoryId,
+      artistCategory: artist.artistCategory,
       images: artist.images,
     });
 
@@ -53,7 +48,7 @@ export async function updateArtist({ artist }: UpdateArtistParams) {
       artist._id,
       {
         ...artist,
-        artistCategory: artist.artistCategoryId,
+        artistCategory: artist.artistCategory,
         images: artist.images,
       },
       { new: true }
@@ -98,17 +93,11 @@ export async function getArtistById(artistId: string) {
 }
 
 // Get All Artists
-export async function getAllArtists(category: string) {
+export async function getAllArtists(category?: ValidCategory) {
   try {
     await connectToDatabase();
 
-    const categoryCondition = category
-      ? await getArtistCategoryByName(category)
-      : null;
-
-    const condition = categoryCondition
-      ? { category: categoryCondition._id }
-      : {};
+    const condition = category ? { artistCategory: category } : {};
 
     const artistsQuery = Artist.find(condition).sort({ createdAt: 'desc' });
 
@@ -123,20 +112,25 @@ export async function getAllArtists(category: string) {
 
 // Get Related Posts
 export async function getRelatedArtists({
-  artistCategoryId,
+  artistCategory,
   artistId,
 }: {
-  artistCategoryId: string;
+  artistCategory: string;
   artistId: string;
 }) {
   try {
     await connectToDatabase();
 
     const conditions = {
-      $and: [{ artistCategory: artistCategoryId }, { _id: { $ne: artistId } }],
+      $and: [
+        { artistCategory },
+        { _id: { $ne: new Types.ObjectId(artistId) } },
+      ],
     };
 
-    const artistsQuery = Artist.find(conditions).sort({ createdAt: 'desc' });
+    const artistsQuery = Artist.find(conditions)
+      .sort({ createdAt: 'desc' })
+      .limit(3); // Limit to 3 related artists
 
     const artists = await populatePost(artistsQuery);
 
@@ -154,12 +148,11 @@ export async function getArtistsCounts() {
 
     // Fetch all artists and artist categories
     const artists = await Artist.find();
-    const artistCategories = await ArtistCategory.find();
 
     // Return the total counts for both
     return {
       totalArtists: artists.length, // Total artist count
-      totalArtistCategories: artistCategories.length, // Total artist categories count
+      totalArtistCategories: 2, // Total artist categories count
     };
   } catch (error) {
     console.error('Failed to fetch artist statistics:', error);
