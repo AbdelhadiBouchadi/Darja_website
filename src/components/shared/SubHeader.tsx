@@ -13,7 +13,7 @@ export default function Component() {
           <span>
             {' '}
             <Image
-              src="/images/spirals.jpg"
+              src="/images/spiralTrans.png"
               className="rounded-full object-cover"
               alt="spirals"
               width={40}
@@ -27,7 +27,7 @@ export default function Component() {
           <span>
             {' '}
             <Image
-              src="/images/spirals.jpg"
+              src="/images/spiralTrans.png"
               className="rounded-full object-cover"
               alt="spirals"
               width={40}

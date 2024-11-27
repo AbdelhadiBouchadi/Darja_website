@@ -47,7 +47,7 @@ const DesktopNav = () => {
           </Link>
           <NavigationMenuContent
             className="bg-[#094142] w-full"
-            style={{ width: `${triggerWidth}px` }}
+            style={{ width: `${triggerWidth + 2}px` }}
           >
             <ul
               className="flex flex-col w-full gap-3 "
