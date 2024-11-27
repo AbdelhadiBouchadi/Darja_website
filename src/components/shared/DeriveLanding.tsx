@@ -63,7 +63,7 @@ const DeriveLanding = () => {
       <motion.div
         ref={imageContainerRef}
         className={cn(
-          'bg-derive w-full min-h-screen relative py-8 lg:mt-72 2xl:my-80  flex flex-col lg:flex-row lg:items-center border-b-2 z-20',
+          'bg-derive w-full min-h-screen relative py-8 lg:mt-72 2xl:mt-80  flex flex-col lg:flex-row lg:items-center border-b-2 z-20',
           isArabic ? 'text-lg' : 'text-sm'
         )}
         style={{ backgroundSize }}
