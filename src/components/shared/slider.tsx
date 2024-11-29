@@ -8,6 +8,7 @@ import React, { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
+import { IArtist } from '@/lib/database/models/artist.model';
 
 const slider1 = [
   {
@@ -51,7 +52,11 @@ const SCROLL_AMOUNT = 150;
 const MAX_SCROLL = -300;
 const INITIAL_OFFSET = 150; // Added initial offset
 
-const SlidingImages = () => {
+interface SlidingImagesProps {
+  artists: IArtist[];
+}
+
+const SlidingImages = ({ artists }: SlidingImagesProps) => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -99,6 +104,10 @@ const SlidingImages = () => {
     return offset > MAX_SCROLL;
   };
 
+  // Split artists into two sliders
+  const slider1Artists = artists.slice(0, 4);
+  const slider2Artists = artists.slice(4, 8);
+
   return (
     <div
       ref={container}
@@ -137,7 +146,7 @@ const SlidingImages = () => {
             isArabic ? 'right-[-10vw]' : 'left-[-10vw]'
           )}
         >
-          {slider1.map((project, index) => (
+          {slider1Artists.map((artist, index) => (
             <div
               key={index}
               className={cn('w-1/4 h-[20vw] flex justify-center items-center')}
@@ -147,14 +156,14 @@ const SlidingImages = () => {
               }}
             >
               <Link
-                href={`/${locale}`}
+                href={`/${locale}/community/${artist._id}`}
                 className="w-full h-full flex justify-center items-center group"
               >
                 <div className={cn('relative w-[80%] h-[80%] overflow-hidden')}>
                   <Image
                     fill={true}
                     alt={'image'}
-                    src={`/images/${project.src}`}
+                    src={artist.images[0]}
                     className="object-cover transition duration-700 group-hover:scale-110"
                   />
                 </div>
@@ -196,7 +205,7 @@ const SlidingImages = () => {
             isArabic ? 'right-[-10vw]' : 'left-[-10vw]'
           )}
         >
-          {slider2.map((project, index) => (
+          {slider2Artists.map((artist, index) => (
             <div
               key={index}
               className={cn('w-1/4 h-[20vw] flex justify-center items-center')}
@@ -213,7 +222,7 @@ const SlidingImages = () => {
                   <Image
                     fill={true}
                     alt={'image'}
-                    src={`/images/${project.src}`}
+                    src={artist.images[0]}
                     className="object-cover transition duration-700 group-hover:scale-110"
                   />
                 </div>

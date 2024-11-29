@@ -1,15 +1,15 @@
 import React from 'react';
 import Projects from '../../components/shared/projects';
-import SlidingImages from '../../components/shared/slider';
 import Contact from '../../components/shared/contact';
 import ProgramLanding from '@/components/shared/ProgramLanding';
+import DynamicSlider from '@/components/shared/DynamicSlider';
 
 const Home = () => {
   return (
     <div className="overflow-hidden">
       <ProgramLanding />
       <Projects />
-      <SlidingImages />
+      <DynamicSlider />
       <Contact />
     </div>
   );
