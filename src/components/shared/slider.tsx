@@ -1,13 +1,13 @@
 'use client';
 
-import { cn } from '../../lib/utils';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
-import { Button } from '../ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from '../ui/button';
 
 const slider1 = [
   {
@@ -47,6 +47,10 @@ const slider2 = [
   },
 ];
 
+const SCROLL_AMOUNT = 150;
+const MAX_SCROLL = -300;
+const INITIAL_OFFSET = 150; // Added initial offset
+
 const SlidingImages = () => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -54,8 +58,8 @@ const SlidingImages = () => {
     offset: ['start end', 'end start'],
   });
 
-  const [x1Offset, setX1Offset] = useState(0);
-  const [x2Offset, setX2Offset] = useState(0);
+  const [x1Offset, setX1Offset] = useState(INITIAL_OFFSET + 150);
+  const [x2Offset, setX2Offset] = useState(INITIAL_OFFSET + 150);
 
   const x1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const x2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
@@ -67,14 +71,32 @@ const SlidingImages = () => {
   const t = useTranslations('HomePage.Community');
 
   const handleScrollRight = (slider: 'slider1' | 'slider2') => {
-    if (slider === 'slider1')
-      setX1Offset((prev) => prev - 150); // Adjust the value as needed
-    else setX2Offset((prev) => prev - 150);
+    if (slider === 'slider1') {
+      setX1Offset((prev) => Math.max(MAX_SCROLL, prev - SCROLL_AMOUNT));
+    } else {
+      setX2Offset((prev) => Math.max(MAX_SCROLL, prev - SCROLL_AMOUNT));
+    }
   };
 
   const handleScrollLeft = (slider: 'slider1' | 'slider2') => {
-    if (slider === 'slider1') setX1Offset((prev) => prev + 150);
-    else setX2Offset((prev) => prev + 150);
+    if (slider === 'slider1') {
+      setX1Offset((prev) => Math.min(150, prev + SCROLL_AMOUNT * 2));
+    } else {
+      setX2Offset((prev) => Math.max(150, prev + SCROLL_AMOUNT * 2));
+    }
+  };
+
+  const canScrollLeft = (slider: 'slider1' | 'slider2') => {
+    const offset =
+      slider === 'slider1'
+        ? x1Offset - INITIAL_OFFSET
+        : x2Offset - INITIAL_OFFSET * 2;
+    return offset < 0;
+  };
+
+  const canScrollRight = (slider: 'slider1' | 'slider2') => {
+    const offset = slider === 'slider1' ? x1Offset : x2Offset;
+    return offset > MAX_SCROLL;
   };
 
   return (
@@ -95,11 +117,12 @@ const SlidingImages = () => {
         </h5>
       </div>
       {/* Slider 1 */}
-      <div className="relative  items-center w-[120vw] hidden md:flex">
+      <div className="relative items-center w-[120vw] hidden md:flex">
         <Button
           onClick={() => handleScrollLeft('slider1')}
+          disabled={!canScrollLeft('slider1')}
           className={cn(
-            'absolute  z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4',
+            'absolute z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4 disabled:opacity-50 disabled:cursor-not-allowed',
             isArabic ? 'right-0' : 'left-0'
           )}
         >
@@ -141,8 +164,9 @@ const SlidingImages = () => {
         </motion.div>
         <Button
           onClick={() => handleScrollRight('slider1')}
+          disabled={!canScrollRight('slider1')}
           className={cn(
-            'absolute  z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4',
+            'absolute z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4 disabled:opacity-50 disabled:cursor-not-allowed',
             isArabic ? 'left-[20vw]' : 'right-[20vw]'
           )}
         >
@@ -155,8 +179,9 @@ const SlidingImages = () => {
       <div className="relative hidden md:flex items-center mt-8 w-[120vw]">
         <Button
           onClick={() => handleScrollLeft('slider2')}
+          disabled={!canScrollLeft('slider2')}
           className={cn(
-            'absolute  z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4',
+            'absolute z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4 disabled:opacity-50 disabled:cursor-not-allowed',
             isArabic ? 'right-0' : 'left-0'
           )}
         >
@@ -198,8 +223,9 @@ const SlidingImages = () => {
         </motion.div>
         <Button
           onClick={() => handleScrollRight('slider2')}
+          disabled={!canScrollRight('slider2')}
           className={cn(
-            'absolute  z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4',
+            'absolute z-10 bg-transparent hover:bg-transparent text-white px-4 py-2 rounded-md mx-4 disabled:opacity-50 disabled:cursor-not-allowed',
             isArabic ? 'left-[20vw]' : 'right-[20vw]'
           )}
         >
