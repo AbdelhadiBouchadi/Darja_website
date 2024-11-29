@@ -55,45 +55,23 @@ const ContactSection = () => {
   };
 
   return (
-    <div className="bg-[#141516]/95 min-h-screen py-32  m-0 contact-header ">
+    <div className="bg-[#E9EAEB] min-h-screen lg:mt-[15vh] m-0 contact-header">
       <div className="container medium">
         <div className="row will-change-transform">
-          <div
-            className="flex-col border-b border-[#696443]/40 relative pb-24 mb-12"
-            ref={container}
-          >
+          <div className="flex-col" ref={container}>
             <motion.h2
               variants={descOpacity}
               animate={isInView ? 'open' : 'closed'}
-              className={`text-4xl lg:text-6xl m-0 font-semibold text-start bg-clip-text py-6 text-transparent bg-gradient-to-b from-[#696443] to-[#696443]/40 ${
+              className={`text-4xl lg:text-6xl m-0 font-semibold text-start py-6 text-[#ee7103] ${
                 isArabic ? 'arabic-title-bold' : 'latin-title-bold'
               }`}
             >
               {t('heading')}
             </motion.h2>
-            <div
-              className={`absolute top-[calc(100%-75px)] ${
-                isArabic
-                  ? 'right-[calc(100%-170px)] md:right-[calc(100%-250px)]'
-                  : 'left-[calc(100%-170px)] md:left-[calc(100%-250px)]'
-              }`}
-            >
-              <RoundedBtn className="roundedBtnSize bg-[#696443] text-white rounded-full absolute flex items-center justify-center overlay">
-                <div className="globe">
-                  <div className="globe-wrap">
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle-hor"></div>
-                    <div className="circle-hor-middle"></div>
-                  </div>
-                </div>
-              </RoundedBtn>
-            </div>
           </div>
         </div>
         <div className="row will-change-transform">
-          <div className="flex-col order-2 md:order-1">
+          <div className="flex-col order-2 md:order-1 mb-32">
             <form onSubmit={handleSubmit} className="form">
               <div
                 className={`form-col ${isNameFilled ? 'not-empty' : ''} ${
@@ -158,10 +136,10 @@ const ContactSection = () => {
               </div>
               <RoundedBtn
                 className={cn(
-                  'group absolute top-[90%]  roundedBtnSize bg-[#00b0db] text-white rounded-full flex items-center justify-center cursor-pointer  mb-32 ',
+                  'group absolute top-[75%]  roundedBtnSize bg-[#094142] text-[#00b0db] rounded-full flex items-center justify-center cursor-pointer  mb-32 ',
                   isArabic
-                    ? 'right-[calc(100%-200px)] md:right-[calc(100%-700px)] '
-                    : 'left-[calc(100%-200px)] md:left-[calc(100%-700px)] '
+                    ? 'right-[calc(100%-200px)] md:right-[calc(100%-700px)] arabic-title-bold '
+                    : 'left-[calc(100%-200px)] md:left-[calc(100%-700px)] latin-title-bold '
                 )}
               >
                 <button
@@ -180,7 +158,7 @@ const ContactSection = () => {
           </div>
           <div
             className={cn(
-              'flex-col pt-[1.66em] text-white order-1 md:order-2 justify-center',
+              'flex-col pt-[1.66em] text-[#094142] order-1 md:order-2 justify-center',
               isArabic ? 'arabic-subtitle-regular' : 'latin-subtitle-regular'
             )}
           >
@@ -194,12 +172,18 @@ const ContactSection = () => {
                   href="mailto:darja.ar2d@gmail.com"
                   target="_blank"
                   dir="ltr"
+                  className="underline hover:translate-x-2 transition-all duration-300"
                 >
                   darja.ar2d@gmail.com
                 </Link>
               </li>
               <li>
-                <Link href="tel:+212663052322" target="_blank" dir="ltr">
+                <Link
+                  href="tel:+212663052322"
+                  target="_blank"
+                  dir="ltr"
+                  className="underline hover:translate-x-2 transition-all duration-300"
+                >
                   +212 6 63 05 23 22
                 </Link>
               </li>
