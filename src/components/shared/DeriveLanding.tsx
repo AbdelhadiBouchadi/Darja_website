@@ -1,9 +1,8 @@
 'use client';
 
-import { cn, descOpacity, landingSlideUp } from '@/lib/utils';
+import { cn, descOpacity } from '@/lib/utils';
 import { useInView, motion, useTransform, useScroll } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
-import SubHeader from './SubHeader';
 import { useLocale, useTranslations } from 'next-intl';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 
@@ -16,16 +15,12 @@ const DeriveLanding = () => {
   const sectionRef = useRef(null);
   const imageContainerRef = useRef(null);
   const imageContainerRef2 = useRef(null);
-  const imageContainerRef3 = useRef(null);
   const isInView = useInView(imageContainerRef);
   const isInView2 = useInView(imageContainerRef2);
-  const isInView3 = useInView(imageContainerRef3);
   const [isMobile, setIsMobile] = useState(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const locale = useLocale();
   const isArabic = locale === 'ar';
   const t = useTranslations('Derive2024.background');
-  const t2 = useTranslations('HomePage');
 
   // Detect if the user is on a smaller screen (e.g., mobile)
   useEffect(() => {
@@ -54,13 +49,13 @@ const DeriveLanding = () => {
       <motion.div
         ref={imageContainerRef}
         className={cn(
-          'bg-derive w-full min-h-screen relative py-8 lg:mt-[15vh]  flex flex-col lg:flex-row lg:items-center border-b-2 z-20',
+          'bg-derive w-full min-h-screen relative py-24 lg:py-0  lg:mt-[15vh]  flex flex-col lg:flex-row lg:items-center border-b-2 z-20',
           isArabic ? 'text-lg' : 'text-sm'
         )}
         style={{ backgroundSize }}
       >
         <motion.div
-          className="lg:absolute lg:right-0 lg:-bottom-32 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
+          className="lg:absolute lg:right-0 lg:-bottom-32 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  lg:my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6 order-2"
           variants={descOpacity}
           animate={isInView ? 'open' : 'closed'}
         >
@@ -143,7 +138,7 @@ const DeriveLanding = () => {
         {locale === 'fr' && (
           <>
             <motion.div
-              className="hidden lg:absolute lg:right-0 lg:-bottom-16 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6"
+              className="lg:absolute lg:right-0 lg:-bottom-16 lg:h-auto lg:bg-[#E9EAEB] lg:w-[40%] bg-white/70 h-fit  lg:my-16 lg:flex flex-col justify-start py-4 lg:py-6 items-start gap-4 2xl:gap-8 text-[#00b0db] md:text-black/90 px-4 lg:px-6 order-2"
               variants={descOpacity}
               animate={isInView2 ? 'open' : 'closed'}
             >

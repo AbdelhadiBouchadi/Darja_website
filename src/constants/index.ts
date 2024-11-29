@@ -55,3 +55,42 @@ export const artistDefaultValues = {
   isInHomepage: false,
   url: '',
 };
+
+// Slider configuration and data
+export const slider1 = [
+  {
+    color: 'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
+    src: 'slider3.jpg',
+  },
+  {
+    color: 'linear-gradient(90deg, #00b0db 0%, #ee7103 100%)',
+    src: 'slider5.jpg',
+  },
+  {
+    color: 'linear-gradient(90deg, #ee7103 0%, #00b0db 100%)',
+    src: 'slider2.jpg',
+  },
+  {
+    color: 'linear-gradient(135deg, #00b0db 0%, #094142 100%)',
+    src: 'slider7.jpg',
+  },
+];
+
+export const slider2 = [
+  {
+    color: 'linear-gradient(135deg, #00b0db 0%, #094142 100%)',
+    src: 'slider2.jpg',
+  },
+  {
+    color: 'linear-gradient(90deg, #ee7103 0%, #00b0db 100%)',
+    src: 'slider1.jpg',
+  },
+  {
+    color: 'linear-gradient(90deg, #00b0db 0%, #ee7103 100%)',
+    src: 'slider7.jpg',
+  },
+  {
+    color: 'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
+    src: 'slider3.jpg',
+  },
+];
