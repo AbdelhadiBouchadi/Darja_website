@@ -215,7 +215,7 @@ const SlidingImages = ({ artists }: SlidingImagesProps) => {
               }}
             >
               <Link
-                href={`/${locale}`}
+                href={`/${locale}/community/${artist._id}`}
                 className="w-full h-full flex justify-center items-center group"
               >
                 <div className={cn('relative w-[80%] h-[80%] overflow-hidden')}>
