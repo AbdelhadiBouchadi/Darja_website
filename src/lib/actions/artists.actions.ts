@@ -5,7 +5,7 @@ import { connectToDatabase } from '../database';
 import { handleError } from '../utils';
 import { revalidatePath } from 'next/cache';
 import { Types } from 'mongoose';
-import Artist, { IArtist } from '../database/models/artist.model';
+import Artist from '../database/models/artist.model';
 
 const validCategories = ['2022', '2024'] as const;
 
