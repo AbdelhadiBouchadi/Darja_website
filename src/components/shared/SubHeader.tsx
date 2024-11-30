@@ -9,7 +9,7 @@ export default function Component() {
       {/* First Line */}
       <div className="flex flex-col justify-center items-center text-center font-semibold text-xl lg:text-3xl">
         <span className="text-[#ee7103] latin-title-bold flex w-full flex-row mx-auto justify-center items-center gap-4">
-          Rencontres des arts et de la scène
+          Rencontres des arts de la scène
         </span>
         <span>
           {' '}

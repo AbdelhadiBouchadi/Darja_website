@@ -34,8 +34,8 @@ const page = async ({ params: { artistId } }: ArtistProps) => {
         {/* Title */}
         <h1
           className={cn(
-            'text-4xl md:text-5xl lg:text-6xl mb-8 text-[#ee7103] px-4',
-            isArabic ? 'arabic-title-bold text-right' : 'latin-title-bold'
+            'text-2xl md:text-3xl lg:text-4xl mb-8 text-[#ee7103] px-4',
+            isArabic ? 'arabic-title-bold text-right' : 'latin-title-light'
           )}
         >
           {isArabic ? artist.arabicName : artist.frenchName}

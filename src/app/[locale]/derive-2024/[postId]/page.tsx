@@ -47,12 +47,12 @@ const page = async ({ params: { postId } }: PostProps) => {
 
   return (
     <div className="overflow-hidden">
-      <div className=" mx-auto  py-8 pt-[20vh] pb-16">
+      <div className=" mx-auto py-8 pt-[20vh] pb-16">
         {/* Title */}
         <h1
           className={cn(
-            'text-4xl md:text-5xl lg:text-6xl mb-8 text-[#ee7103] px-4',
-            isArabic ? 'arabic-title-bold text-right' : 'latin-title-bold'
+            'text-2xl md:text-3xl lg:text-4xl mb-8 text-[#ee7103] px-4 font-normal',
+            isArabic ? 'arabic-title-bold text-right' : 'latin-title-light'
           )}
         >
           {isArabic ? post.arabicTitle : post.frenchTitle}

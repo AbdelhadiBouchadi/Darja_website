@@ -169,12 +169,12 @@ const ContactSection = () => {
             <ul className="links-wrap">
               <li>
                 <Link
-                  href="mailto:darja.ar2d@gmail.com"
+                  href="mailto:derivecasablancaise@gmail.com"
                   target="_blank"
                   dir="ltr"
                   className="underline hover:translate-x-2 transition-all duration-300"
                 >
-                  darja.ar2d@gmail.com
+                  derivecasablancaise@gmail.com
                 </Link>
               </li>
               <li>
@@ -186,25 +186,6 @@ const ContactSection = () => {
                 >
                   +212 6 63 05 23 22
                 </Link>
-              </li>
-            </ul>
-
-            <h5 className={cn('opacity-30 ', isArabic ? 'text-2xl' : '')}>
-              {' '}
-              {t('contact')}{' '}
-            </h5>
-            <ul className="links-wrap">
-              <li>
-                <p dir="ltr">Mers Sultan, Casablanca</p>
-              </li>
-              <li>
-                <p dir="ltr">113 Avenue Mers Sultan</p>
-              </li>
-              <li>
-                <p dir="ltr">6ème étage</p>
-              </li>
-              <li>
-                <p dir="ltr">Appt. 12</p>
               </li>
             </ul>
           </div>
