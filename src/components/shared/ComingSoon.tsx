@@ -2,8 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { LoadingDot } from './LoadingDot';
+import { useLocale } from 'next-intl';
 
 export const ComingSoon = () => {
+  const locale = useLocale();
+  const isArabic = locale === 'ar';
+
   return (
     <div
       className="flex items-center justify-center min-h-screen"
@@ -21,10 +25,10 @@ export const ComingSoon = () => {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-          className="text-4xl md:text-6xl font-bold mb-4 tracking-tight latin-title-light"
+          className="text-4xl md:text-6xl font-bold mb-4 tracking-wide latin-title-light"
         >
-          En Construction
-          <span className="inline-flex ml-2">
+          {isArabic ? 'تحت الإنشاء' : 'En Construction'}
+          <span className="inline-flex mx-4">
             <LoadingDot delay={0} />
             <LoadingDot delay={0.2} />
             <LoadingDot delay={0.4} />
