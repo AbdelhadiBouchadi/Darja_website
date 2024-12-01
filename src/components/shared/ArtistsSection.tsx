@@ -54,7 +54,7 @@ const ArtistsSection = () => {
   return (
     <section ref={sectionRef} id="artists_section" className="">
       <motion.div
-        variants={landingSlideUp}
+        // variants={landingSlideUp}
         initial="initial"
         animate="enter"
         className="mx-auto sm:mt-20 lg:mt-[15vh]  py-8 xl:py-20 px-4 md:px-8 lg:px-16"

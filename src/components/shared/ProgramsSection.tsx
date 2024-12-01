@@ -138,7 +138,7 @@ const ProgramSection = () => {
       } else {
         params.delete('category');
       }
-      router.push(`?${params.toString()}`);
+      router.push(`?${params.toString()}#program_section`, { scroll: false });
 
       return newCategories;
     });
@@ -218,33 +218,25 @@ const ProgramSection = () => {
               </h3>
               <div className="flex flex-col  gap-4">
                 {(Object.keys(Categories) as CategoryKey[]).map((category) => (
-                  <div
+                  <button
                     key={category}
-                    className="flex items-center space-x-2 gap-2"
+                    onClick={() => handleCategoryToggle(category)}
+                    className={cn(
+                      'text-left text-lg md:text-xl transition-all duration-300 relative w-fit',
+                      'before:content-[""] before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5',
+                      'before:bg-[#00b0db] before:transform before:scale-x-0 before:origin-left before:transition-transform before:duration-300',
+                      selectedCategories.has(category)
+                        ? 'text-[#00b0db] before:scale-x-100'
+                        : 'text-[#094142] hover:text-[#00b0db] hover:before:scale-x-100',
+                      isArabic
+                        ? 'arabic-subtitle-regular text-right'
+                        : 'latin-subtitle-regular'
+                    )}
                   >
-                    <Checkbox
-                      id={`category-${category}`}
-                      checked={selectedCategories.has(category)}
-                      onCheckedChange={() => handleCategoryToggle(category)}
-                      className="border-[#094142] border-2 data-[state=checked]:bg-[#00b0db] data-[state=checked]:text-[#094142] flex items-center justify-center rounded-none"
-                    />
-                    <Label
-                      htmlFor={`category-${category}`}
-                      className={cn(
-                        'text-lg md:text-xl cursor-pointer',
-                        selectedCategories.has(category)
-                          ? 'text-[#00b0db] font-bold'
-                          : 'text-[#094142]',
-                        isArabic
-                          ? 'arabic-subtitle-regular text-right space-x-2'
-                          : 'latin-subtitle-regular'
-                      )}
-                    >
-                      {isArabic
-                        ? Categories[category].ar
-                        : Categories[category].fr}
-                    </Label>
-                  </div>
+                    {isArabic
+                      ? Categories[category].ar
+                      : Categories[category].fr}
+                  </button>
                 ))}
               </div>
             </div>
@@ -252,28 +244,23 @@ const ProgramSection = () => {
             <div className="w-full xl:w-[50%] h-[0.1rem] bg-[#094142] mb-4" />
             <div className="flex flex-col gap-4">
               {festivalDates.map((date) => (
-                <div key={date} className="flex items-center space-x-2 gap-2">
-                  <Checkbox
-                    id={date}
-                    checked={selectedDates.has(date)}
-                    onCheckedChange={() => handleDateToggle(date)}
-                    className="border-[#094142] border-2 data-[state=checked]:bg-[#00b0db] data-[state=checked]:text-[#094142] flex items-center justify-center rounded-none"
-                  />
-                  <Label
-                    htmlFor={date}
-                    className={cn(
-                      'text-lg md:text-xl cursor-pointer',
-                      selectedDates.has(date)
-                        ? 'text-[#00b0db] font-bold'
-                        : 'text-[#094142]',
-                      isArabic
-                        ? 'arabic-subtitle-regular text-right space-x-2'
-                        : 'latin-subtitle-regular capitalize'
-                    )}
-                  >
-                    {formatDateLabel(date)}
-                  </Label>
-                </div>
+                <button
+                  key={date}
+                  onClick={() => handleDateToggle(date)}
+                  className={cn(
+                    'text-left text-lg md:text-xl transition-all duration-300 relative w-fit',
+                    'before:content-[""] before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5',
+                    'before:bg-[#00b0db] before:transform before:scale-x-0 before:origin-left before:transition-transform before:duration-300',
+                    selectedDates.has(date)
+                      ? 'text-[#00b0db] before:scale-x-100'
+                      : 'text-[#094142] hover:text-[#00b0db] hover:before:scale-x-100',
+                    isArabic
+                      ? 'arabic-subtitle-regular text-right'
+                      : 'latin-subtitle-regular capitalize'
+                  )}
+                >
+                  {formatDateLabel(date)}
+                </button>
               ))}
             </div>
           </motion.div>
