@@ -18,7 +18,7 @@ const publicClerkMiddleware = authMiddleware({
     '/sign-up(.*)',
     '/api/uploadthing(.*)',
   ],
-  ignoredRoutes: ['/api/webhook', '/api/uploadthing(.*)'],
+  ignoredRoutes: ['/api/webhook/clerk', '/api/uploadthing(.*)'],
 });
 
 export default async function middleware(
