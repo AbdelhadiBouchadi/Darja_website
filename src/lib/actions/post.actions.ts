@@ -122,6 +122,25 @@ export async function getAllPosts(category?: ValidCategory) {
   }
 }
 
+// Get Posts By Start Date
+export async function getPostsByStartDate() {
+  try {
+    await connectToDatabase();
+
+    // Query posts sorted by startDateTime in ascending order
+    const postsQuery = Post.find().sort({ startDateTime: 1 });
+
+    const posts = await postsQuery;
+
+    // Convert the posts to JSON and return them
+    return JSON.parse(JSON.stringify(posts));
+  } catch (error) {
+    console.error('Error fetching posts by start date:', error);
+    handleError(error);
+    return [];
+  }
+}
+
 // Get Related Posts
 export async function getRelatedPosts({
   postCategory,

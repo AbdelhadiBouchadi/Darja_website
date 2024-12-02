@@ -2,7 +2,6 @@ import { RelatedArtists } from '@/components/shared/artists/RelatedArtists';
 import Contact from '@/components/shared/contact';
 import ImageGallery from '@/components/shared/PostGallery';
 import ClientWrapper from '@/components/shared/PostWrapper';
-import VideoThumbnail from '@/components/shared/VideoThumbnail';
 import {
   getArtistById,
   getRelatedArtists,

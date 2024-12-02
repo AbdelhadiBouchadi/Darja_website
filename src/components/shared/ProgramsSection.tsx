@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { cn, landingSlideUp } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
-import { getAllPosts } from '@/lib/actions/post.actions';
+import { getAllPosts, getPostsByStartDate } from '@/lib/actions/post.actions';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar } from 'lucide-react';
@@ -96,7 +96,7 @@ const ProgramSection = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const allPosts = await getAllPosts();
+      const allPosts = await getPostsByStartDate();
       if (allPosts) {
         let filteredPosts = allPosts;
 

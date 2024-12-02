@@ -5,7 +5,7 @@ export interface IArtist extends Document {
   _id: string;
   frenchName: string;
   arabicName: string;
-  frenctText: string;
+  frenchText: string;
   arabicText: string;
   images: string[];
   videoSource?: string;
