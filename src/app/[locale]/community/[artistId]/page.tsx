@@ -47,16 +47,6 @@ const page = async ({ params: { artistId } }: ArtistProps) => {
             images={artist.images}
             alt={isArabic ? artist.arabicName : artist.frenchName}
           />
-
-          {/* Right Column - Video Iframe */}
-          {artist.videoSource && (
-            <div className="my-8 px-4 w-full flex justify-center md:justify-end items-center">
-              <VideoThumbnail
-                thumbnailSrc={artist.images[0]}
-                videoUrl={artist.videoSource}
-              />
-            </div>
-          )}
         </div>
 
         <p

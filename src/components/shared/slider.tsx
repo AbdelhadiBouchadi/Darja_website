@@ -10,44 +10,6 @@ import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
 import { IArtist } from '@/lib/database/models/artist.model';
 
-const slider1 = [
-  {
-    color: 'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
-    src: 'slider3.jpg',
-  },
-  {
-    color: 'linear-gradient(90deg, #00b0db 0%, #ee7103 100%)',
-    src: 'slider5.jpg',
-  },
-  {
-    color: 'linear-gradient(90deg, #ee7103 0%, #00b0db 100%)',
-    src: 'slider2.jpg',
-  },
-  {
-    color: 'linear-gradient(135deg, #00b0db 0%, #094142 100%)',
-    src: 'slider7.jpg',
-  },
-];
-
-const slider2 = [
-  {
-    color: 'linear-gradient(135deg, #00b0db 0%, #094142 100%)',
-    src: 'slider2.jpg',
-  },
-  {
-    color: 'linear-gradient(90deg, #ee7103 0%, #00b0db 100%)',
-    src: 'slider1.jpg',
-  },
-  {
-    color: 'linear-gradient(90deg, #00b0db 0%, #ee7103 100%)',
-    src: 'slider7.jpg',
-  },
-  {
-    color: 'linear-gradient(135deg, #094142 0%, #00b0db 100%)',
-    src: 'slider3.jpg',
-  },
-];
-
 const SCROLL_AMOUNT = 150;
 const MAX_SCROLL = -300;
 const INITIAL_OFFSET = 150; // Added initial offset
@@ -116,14 +78,15 @@ const SlidingImages = ({ artists }: SlidingImagesProps) => {
       )}
     >
       <div className="w-full hidden md:flex py-4 xl:py-8 text-start bg-[#E9EAEB] px-8 xl:px-[100px] ">
-        <h5
+        <Link
+          href={`/${locale}/community`}
           className={cn(
-            'text-2xl md:text-4xl text-[#ee7103]',
+            'text-2xl md:text-4xl text-[#ee7103] hover:scale-110 transition-all duration-300',
             isArabic ? 'arabic-title-bold' : 'latin-title-bold'
           )}
         >
           {t('heading')}
-        </h5>
+        </Link>
       </div>
       {/* Slider 1 */}
       <div className="relative items-center w-[120vw] hidden md:flex">
