@@ -118,7 +118,7 @@ const SlidingImages = ({ artists }: SlidingImagesProps) => {
       <div className="w-full hidden md:flex py-4 xl:py-8 text-start bg-[#E9EAEB] px-8 xl:px-[100px] ">
         <h5
           className={cn(
-            'text-2xl xl:text-6xl text-[#ee7103]',
+            'text-2xl md:text-4xl text-[#ee7103]',
             isArabic ? 'arabic-title-bold' : 'latin-title-bold'
           )}
         >
